@@ -1,5 +1,6 @@
 public class Spell {
     private String name;
+    private String description;
     private int level;
     private int prep;
     private int used;
@@ -8,7 +9,19 @@ public class Spell {
     private String range;
     private String save;
     private String components;
-    private String description;
+
+    public Spell(String name, String description, int level, int prep, int used, String school, String duration, String range, String save, String components) {
+        this.name = name;
+        this.description = description;
+        this.level = level;
+        this.prep = prep;
+        this.used = used;
+        this.school = school;
+        this.duration = duration;
+        this.range = range;
+        this.save = save;
+        this.components = components;
+    }
 
     public String getName() {
         return name;

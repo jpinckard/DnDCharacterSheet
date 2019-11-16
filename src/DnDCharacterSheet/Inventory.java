@@ -2,6 +2,9 @@ package DnDCharacterSheet;
 
 import java.util.*;
 
+/**
+ *
+ */
 public class Inventory {
 
     private DnDCharacterSheet.Currency money;
@@ -9,6 +12,13 @@ public class Inventory {
     private ArrayList<Item> items = new ArrayList<Item>();
     private float carriedWeight;
 
+    /**
+     *
+     * @param money
+     * @param charEquipment
+     * @param items
+     * @param carriedWeight
+     */
     public Inventory(DnDCharacterSheet.Currency money, Equipment charEquipment, ArrayList<Item> items, float carriedWeight) {
         this.money = money;
         this.charEquipment = charEquipment;
@@ -16,38 +26,73 @@ public class Inventory {
         this.carriedWeight = carriedWeight;
     }
 
+    /**
+     *
+     * @return
+     */
     public DnDCharacterSheet.Currency getMoney() {
         return money;
     }
 
+    /**
+     *
+     * @return
+     */
     public Equipment getCharEquipment() {
         return charEquipment;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Item> getItems() {
         return items;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getCarriedWeight() {
         return carriedWeight;
     }
 
+    /**
+     *
+     * @param money
+     */
     public void setMoney(Currency money) {
         this.money = money;
     }
 
+    /**
+     *
+     * @param charEquipment
+     */
     public void setCharEquipment(Equipment charEquipment) {
         this.charEquipment = charEquipment;
     }
 
+    /**
+     *
+     * @param items
+     */
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
+    /**
+     *
+     * @param carriedWeight
+     */
     public void setCarriedWeight(float carriedWeight) {
         this.carriedWeight = carriedWeight;
     }
 
+    /**
+     *
+     */
     public void calcCarriedWeight(){
 
         Iterator<Item> itemsIterator = items.iterator();

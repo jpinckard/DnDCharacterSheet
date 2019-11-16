@@ -4,17 +4,22 @@ import java.util.ArrayList;
 
 public class CharacterSheet {
     private String name;
+    private int level;
     private ArrayList<Profession> professions;
-    private String info;
-    private String story;
-    private int hp;
+    private Profession profession;
+    private ArrayList<Race> races;
+    private Race race;
+    private Info info;
+    private Story story;
+    private HitPoints hitPoints;
     private Skill[] skills;
     private Stats stats;
     private WizText wizText;
-    private String inventory;
-    private String spellSheet;
-    private SavingThrow[] savingThrows;
-    private String miscStats;
+    private Inventory inventory;
+    private SpellSheet spellSheet;
+    //private SavingThrow[] savingThrows;
+    private int[] savingThrows;
+    private MiscStats miscStats;
     private int exp;
     private ArrayList<Feature> features;
     private Story charstory;
@@ -27,6 +32,14 @@ public class CharacterSheet {
         this.name = name;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public ArrayList<Profession> getProfessions() {
         return professions;
     }
@@ -35,28 +48,28 @@ public class CharacterSheet {
         this.professions = professions;
     }
 
-    public String getInfo() {
+    public Info getInfo() {
         return info;
     }
 
-    public void setInfo(String info) {
+    public void setInfo(Info info) {
         this.info = info;
     }
 
-    public String getStory() {
+    public Story getStory() {
         return story;
     }
 
-    public void setStory(String story) {
+    public void setStory(Story story) {
         this.story = story;
     }
 
-    public int getHp() {
-        return hp;
+    public HitPoints getHp() {
+        return hitPoints;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
+    public void setHp(HitPoints hp) {
+        this.hitPoints = hp;
     }
 
     public Skill[] getSkills() {
@@ -83,35 +96,45 @@ public class CharacterSheet {
         this.wizText = wizText;
     }
 
-    public String getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
-    public void setInventory(String inventory) {
+    public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
 
-    public String getSpellSheet() {
+    public SpellSheet getSpellSheet() {
         return spellSheet;
     }
 
-    public void setSpellSheet(String spellSheet) {
+    public void setSpellSheet(SpellSheet spellSheet) {
         this.spellSheet = spellSheet;
     }
 
-    public SavingThrow[] getSavingThrows() {
+    public int[] getSavingThrows() {
+        calcSavingThrows();
         return savingThrows;
     }
 
-    public void setSavingThrows(SavingThrow[] savingThrows) {
-        this.savingThrows = savingThrows;
+    public void calcSavingThrows()
+    {
+        savingThrows = new int[]{0,0,0,0,0,0};
+        for(int i = 0; i < 6; i++)
+        {
+            savingThrows[i] = stats.getStat(i,1);
+            if((profession.getSavingThrows())[i] == 1)
+            {
+                savingThrows[i] = savingThrows[i] + miscStats.getProfBonus();
+            }
+        }
     }
 
-    public String getMiscStats() {
+    public MiscStats getMiscStats() {
         return miscStats;
     }
 
-    public void setMiscStats(String miscStats) {
+    public void setMiscStats(MiscStats miscStats) {
         this.miscStats = miscStats;
     }
 

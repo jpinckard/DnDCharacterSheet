@@ -26,6 +26,11 @@ public class Currency
         cp = c;
     }
 
+    public float getWeight()
+    {
+        return (pp/50 + gp/50 + ep/50 + sp/50 + cp/50);
+    }
+
     public void setCp(int cp) {
         this.cp = cp;
     }

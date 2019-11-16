@@ -9,9 +9,10 @@ public class Profession {
     private String armor;
     private String weapon;
     private String tools;
-    private String savingThrows;
+    private int[] savingThrows;
     private ArrayList<Item> startingEquipment;
     private String skills;
+
 
     public String getName() {
         return name;
@@ -53,11 +54,11 @@ public class Profession {
         this.tools = tools;
     }
 
-    public String getSavingThrows() {
+    public int[] getSavingThrows() {
         return savingThrows;
     }
 
-    public void setSavingThrows(String savingThrows) {
+    public void setSavingThrows(int[] savingThrows) {
         this.savingThrows = savingThrows;
     }
 

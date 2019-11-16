@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StartSceneController">
+   <children>
+      <Hyperlink text="Start Character Creation Wizard" translateY="-10.0" />
+      <Hyperlink fx:id="blankcharbutton" onAction="#openCharSheetPane" text="Blank Character Sheet" />
+      <Hyperlink text="Load Character Sheet" translateY="10.0" />
+   </children>
+</VBox>

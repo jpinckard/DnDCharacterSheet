@@ -54,9 +54,9 @@ public class MiscStats {
         this.carryLoad = carryLoad;
     }
 
-    public void calcAC()
+    public void calcAC(int dexMod)
     {
-        
+
     }
 
     public void calcInit()

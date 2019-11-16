@@ -21,6 +21,8 @@ public class Stats {
 
         for (int i = 0; i < 6; i++){
             statsGrid[i][0] = statsGrid[i][2] + boostTemp[i];
+            statsGrid[i][0] = statsGrid[i][0] + statsGrid[i][4];
+            statsGrid[i][0] = statsGrid[i][0] + statsGrid[i][5];
         }
     }
 

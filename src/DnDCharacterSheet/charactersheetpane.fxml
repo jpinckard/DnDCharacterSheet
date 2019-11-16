@@ -71,7 +71,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="Background" prefWidth="235.0" GridPane.columnIndex="1">
+                                    <TextField id="info.background_str" prefWidth="235.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -156,7 +156,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField id="hp_int_true" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                    <TextField id="exp_int_true" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -207,7 +207,7 @@
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="weight" prefWidth="100.0" GridPane.columnIndex="4">
+                                    <TextField id="info.wt_int" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="4">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -1120,7 +1120,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="235.0" GridPane.columnIndex="1">
+                                    <TextField id="info.background_str" onKeyTyped="#SetValue" prefWidth="235.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -1205,7 +1205,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField id="hp_int_false" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                    <TextField id="exp_int_false" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -1256,7 +1256,7 @@
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="100.0" GridPane.columnIndex="4">
+                                    <TextField id="info.wt_int" prefWidth="100.0" GridPane.columnIndex="4">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>

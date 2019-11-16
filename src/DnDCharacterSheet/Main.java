@@ -21,12 +21,5 @@ public class Main extends Application {
     public static void main(String[] args)
     {
         launch(args);
-
-        // JOY'S SQLITE HANDLER TEST!!! Not important, you can delete it if you want.
-        try {
-            SQLiteHandler.Test();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -14,11 +14,9 @@ public class Stats {
         this.statsGrid[row][col] = tempStat;
     }
 
-    public void calcTotal(int row){
-
-    }
-
     public void calcMod(int row){
+        int tempMod;
 
+        
     }
 }

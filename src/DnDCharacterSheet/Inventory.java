@@ -58,6 +58,9 @@ public class Inventory {
            tempWeight = tempWeight + (itemsIterator.next()).getWeight();
         }
 
+        tempWeight = tempWeight + charEquipment.getWeight();
+        tempWeight = tempWeight + money.getWeight();
+
         setCarriedWeight(tempWeight);
     }
 }

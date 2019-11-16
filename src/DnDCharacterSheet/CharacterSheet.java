@@ -17,6 +17,7 @@ public class CharacterSheet {
     private String miscStats;
     private int exp;
     private ArrayList<Feature> features;
+    private Story charstory;
 
     public String getName() {
         return name;

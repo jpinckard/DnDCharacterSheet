@@ -148,15 +148,14 @@ public class SQLiteHandler {
             //STEP 5: Extract data from result set
             while(rs.next()){
                 // Get Item
-                int id          = rs.getInt(1);
-                String name     = rs.getString(2);
-                String description = rs.getString(3);
-                int level       = rs.getInt(4);
-                int prep        = rs.getInt(5);
-                int used        = rs.getInt(6);
+                int amount          = rs.getInt(1);
+                String category     = rs.getString(2);
+                String description  = rs.getString(3);
+                String name         = rs.getString(4);
+                float weight        = rs.getFloat(5);
 
-                //Item item = new Item(name, level, prep, used, school, duration);
-                //inventory.add(item);
+                Item item = new Item(name, weight, category, description, amount);
+                inventory.add(item);
             }
             //STEP 6: Clean-up environment
             rs.close();

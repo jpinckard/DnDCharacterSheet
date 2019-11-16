@@ -15,13 +15,20 @@ public class Stats {
     }
 
     public void calcTotal(Race tempRace){
-        
+        int[] boostTemp = tempRace.getStatBoost();
+
+        for (int i = 0; i < 6; i++){
+            statsGrid[i][0] = statsGrid[i][2] + boostTemp[i];
+        }
     }
 
     public void calcMod(int row){
-        int tempMod = statsGrid[row][1];
+        int mod;
+        double tempMod = statsGrid[row][0];
+
         tempMod = tempMod - 10;
         tempMod = tempMod / 2;
-        setStat(row, 1, tempMod);
+        mod = (int) Math.round(Math.floor(tempMod));
+        setStat(row, 1, mod);
     }
 }

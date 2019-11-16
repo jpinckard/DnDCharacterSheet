@@ -2,14 +2,14 @@ package DnDCharacterSheet;
 
 public class Item {
 
-    private String itemName;
+    private String name;
     private float weight;
     private String category;
     private String description;
     private int amount;
 
-    public Item(String itemName, float weight, String category, String description, int amount) {
-        this.itemName = itemName;
+    public Item(String name, float weight, String category, String description, int amount) {
+        this.name = name;
         this.weight = weight;
         this.category = category;
         this.description = description;
@@ -17,15 +17,15 @@ public class Item {
     }
 
     public Item(){
-        this.itemName = " ";
+        this.name = " ";
         this.weight = 0.0f;
         this.category = " ";
         this.description = " ";
         this.amount = 0;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getName() {
+        return name;
     }
 
     public float getWeight() {
@@ -44,8 +44,8 @@ public class Item {
         return amount;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setItemName(String name) {
+        this.name = name;
     }
 
     public void setWeight(float weight) {

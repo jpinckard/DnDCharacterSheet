@@ -233,6 +233,53 @@ public class SQLiteHandler {
         }//end try
     }
 
+    public static void AddItem(Connection connection, Item item) throws Exception
+    {
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+
+
+            sql = new StringBuilder().append("INSERT INTO items (AMOUNT, CATEGORY, DESCRIPTION, NAME, WEIGHT) VALUES (\"").append(Integer.toString(item.getAmount())).append("\",\"").append(item.getCategory()).append("\",").append(item.getDescription()).append(",").append(item.getName()).append(",").append(Float.toString(item.getWeight())).append("\");").toString();
+
+            System.out.println("\nCommand: " + sql + "\n");
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+    }
+
     public static void Sort(String table, String filter) throws Exception
     {
         Connection conn = null;
@@ -277,5 +324,40 @@ public class SQLiteHandler {
                 se.printStackTrace();
             }//end finally try
         }//end try
+    }
+
+    public static void Test() throws Exception {
+        Item item;
+        //SQLiteHandler.Setup();
+        Connection connection = SQLiteHandler.Setup();
+        ArrayList<Spell> spells = SQLiteHandler.LoadSpells(connection);
+
+        // Print all spells
+        for(int i = 0; i < spells.size(); i++){
+            System.out.println(spells.get(i).getName());
+        }
+
+        // Add a new spell
+        Spell zoneOfTruth = new Spell(
+                "Zone of Truth",
+                "Cast a sphere in which victims must speak the truth.",
+                1,
+                1,
+                1,
+                "School",
+                "Duration",
+                "Range",
+                "Save",
+                "Components");
+
+        SQLiteHandler.AddSpell(connection, zoneOfTruth);
+        System.out.println(zoneOfTruth.getName() + " has been added to the databases.");
+
+        SQLiteHandler.Sort("spells", "id");
+
+        // Print all spells
+        for(int i = 0; i < spells.size(); i++){
+            System.out.println(spells.get(i).getName());
+        }
     }
 }

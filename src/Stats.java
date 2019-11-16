@@ -14,6 +14,10 @@ public class Stats {
         this.statsGrid[row][col] = tempStat;
     }
 
+    public void calcTotal(Race tempRace){
+        
+    }
+
     public void calcMod(int row){
         int tempMod = statsGrid[row][1];
         tempMod = tempMod - 10;

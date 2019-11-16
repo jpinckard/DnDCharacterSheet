@@ -14,6 +14,7 @@ public class Armor extends Item
         stealthDisadvantage = false;
     }
 
+
     public void setBaseAC(int baseAC) {
         this.baseAC = baseAC;
     }

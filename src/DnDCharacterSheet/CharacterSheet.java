@@ -4,18 +4,19 @@ import java.util.ArrayList;
 
 public class CharacterSheet {
     private String name;
+    private int level;
     private ArrayList<Profession> professions;
     private Profession profession;
     private ArrayList<Race> races;
     private Race race;
-    private String info;
-    private String story;
-    private int hp;
+    private Info info;
+    private Story story;
+    private HitPoints hitPoints;
     private Skill[] skills;
     private Stats stats;
     private WizText wizText;
-    private String inventory;
-    private String spellSheet;
+    private Inventory inventory;
+    private SpellSheet spellSheet;
     //private SavingThrow[] savingThrows;
     private int[] savingThrows;
     private MiscStats miscStats;
@@ -30,6 +31,14 @@ public class CharacterSheet {
         this.name = name;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public ArrayList<Profession> getProfessions() {
         return professions;
     }
@@ -38,28 +47,28 @@ public class CharacterSheet {
         this.professions = professions;
     }
 
-    public String getInfo() {
+    public Info getInfo() {
         return info;
     }
 
-    public void setInfo(String info) {
+    public void setInfo(Info info) {
         this.info = info;
     }
 
-    public String getStory() {
+    public Story getStory() {
         return story;
     }
 
-    public void setStory(String story) {
+    public void setStory(Story story) {
         this.story = story;
     }
 
-    public int getHp() {
-        return hp;
+    public HitPoints getHp() {
+        return hitPoints;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
+    public void setHp(HitPoints hp) {
+        this.hitPoints = hp;
     }
 
     public Skill[] getSkills() {
@@ -86,19 +95,19 @@ public class CharacterSheet {
         this.wizText = wizText;
     }
 
-    public String getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
-    public void setInventory(String inventory) {
+    public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
 
-    public String getSpellSheet() {
+    public SpellSheet getSpellSheet() {
         return spellSheet;
     }
 
-    public void setSpellSheet(String spellSheet) {
+    public void setSpellSheet(SpellSheet spellSheet) {
         this.spellSheet = spellSheet;
     }
 

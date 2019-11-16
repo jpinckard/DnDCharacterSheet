@@ -94,6 +94,12 @@ public class HitPoints
     }
 
 
+    public void calculateMaxHP(Profession profession, Stats stats, int level)
+    {
+        int tempMaxHP = (int) ((profession.getHd()/2 + 1 + stats.getStat(3,1))*(level-1));
+        tempMaxHP = tempMaxHP + profession.getHd()+stats.getStat(3,1);
+        maxHP = tempMaxHP;
+    }
 }
 
 

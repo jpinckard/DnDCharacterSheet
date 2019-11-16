@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Armor
+public class Armor extends Item
 {
     private int baseAC;
     private String aGroup;

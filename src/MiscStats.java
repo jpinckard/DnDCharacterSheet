@@ -54,11 +54,13 @@ public class MiscStats {
         this.carryLoad = carryLoad;
     }
 
-    public void calcAC(){
-
+    public void calcAC()
+    {
+        
     }
 
-    public void calcInit(){
+    public void calcInit()
+    {
 
     }
 

@@ -4,7 +4,7 @@ public class Equipment
 {
     private Armor armor;
     private ArrayList<Weapon> weaponList;
-    //private ArrayList<Item> ammolist;
+    private ArrayList<Item> ammoList;
     private boolean shield;
 
     public Equipment()
@@ -12,6 +12,21 @@ public class Equipment
         armor = null;
         weaponList = null;
         shield = false;
+    }
+
+    public float getWeight()
+    {
+        float weight = armor.getWeight();
+        for(Weapon x : weaponList)
+        {
+            weight = weight + x.getWeight();
+        }
+        for(Item x : ammoList)
+        {
+            weight = weight + x.getWeight();
+        }
+
+        return weight;
     }
 
     public String getArmorType()

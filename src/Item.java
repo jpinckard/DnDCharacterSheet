@@ -14,6 +14,14 @@ public class Item {
         this.amount = amount;
     }
 
+    public Item(){
+        this.itemName = " ";
+        this.weight = 0.0f;
+        this.category = " ";
+        this.description = " ";
+        this.amount = 0;
+    }
+
     public String getItemName() {
         return itemName;
     }

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class CharacterSheet {
     private String name;
     private ArrayList<Profession> professions;
+    private Profession profession;
+    private ArrayList<Race> races;
+    private Race race;
     private String info;
     private String story;
     private int hp;
@@ -13,8 +16,9 @@ public class CharacterSheet {
     private WizText wizText;
     private String inventory;
     private String spellSheet;
-    private SavingThrow[] savingThrows;
-    private String miscStats;
+    //private SavingThrow[] savingThrows;
+    private int[] savingThrows;
+    private MiscStats miscStats;
     private int exp;
     private ArrayList<Feature> features;
 
@@ -98,19 +102,29 @@ public class CharacterSheet {
         this.spellSheet = spellSheet;
     }
 
-    public SavingThrow[] getSavingThrows() {
+    public int[] getSavingThrows() {
+        calcSavingThrows();
         return savingThrows;
     }
 
-    public void setSavingThrows(SavingThrow[] savingThrows) {
-        this.savingThrows = savingThrows;
+    public void calcSavingThrows()
+    {
+        savingThrows = new int[]{0,0,0,0,0,0};
+        for(int i = 0; i < 6; i++)
+        {
+            savingThrows[i] = stats.getStat(i,1);
+            if((profession.getSavingThrows())[i] == 1)
+            {
+                savingThrows[i] = savingThrows[i] + miscStats.getProfBonus();
+            }
+        }
     }
 
-    public String getMiscStats() {
+    public MiscStats getMiscStats() {
         return miscStats;
     }
 
-    public void setMiscStats(String miscStats) {
+    public void setMiscStats(MiscStats miscStats) {
         this.miscStats = miscStats;
     }
 

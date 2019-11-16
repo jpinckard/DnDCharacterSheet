@@ -109,4 +109,13 @@ public class MiscStats {
     {
         carryLoad = 10*stats.getStat(0,0);
     }
+
+    public void calcSpeed(Race race)
+    {
+        speed[1] = race.getSpeed();
+        speed[2] = 0;
+        speed[3] = (int) speed[1]/2;
+        speed[4] = (int) speed[1]/2;
+    }
+
 }

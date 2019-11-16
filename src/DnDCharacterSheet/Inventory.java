@@ -54,7 +54,6 @@ public class Inventory {
         float tempWeight = 0.0f;
 
         while (itemsIterator.hasNext()) {
-
            tempWeight = tempWeight + (itemsIterator.next()).getWeight();
         }
 

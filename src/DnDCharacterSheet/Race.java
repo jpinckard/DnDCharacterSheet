@@ -4,6 +4,7 @@ public class Race {
 
     private String rName;
     private int[] statBoost;
+    private int speed;
 
     public Race()
     {
@@ -32,5 +33,13 @@ public class Race {
 
     public void setrName(String rName) {
         this.rName = rName;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

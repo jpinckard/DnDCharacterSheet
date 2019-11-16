@@ -28,5 +28,6 @@
     </orderEntry>
     <orderEntry type="library" name="javafx13" level="application" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="javafx13" level="application" />
   </component>
 </module>

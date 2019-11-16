@@ -10,6 +10,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class CharacterSheetController {
+    CharacterSheet character = new CharacterSheet();
+
+
+
 
 
 }

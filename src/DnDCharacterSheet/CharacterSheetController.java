@@ -151,7 +151,8 @@ public class CharacterSheetController {
         return text;
     }
 
-    public void SetArrayValue(KeyEvent event){
+    public void SetArrayValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException {
+        //subclass-field_element1-element2
 
         /**************************
          **** DEFINE VARIABLES ****
@@ -161,34 +162,57 @@ public class CharacterSheetController {
 
         // Used to reset the caret position after filter.
         int caretPos = ((TextInputControl)event.getSource()).getCaretPosition();
-
-        //stats-statsGrid_0-2
-
-        // Get the id of the control
-        String id = ((Control)event.getSource()).getId();
-        // Get the value in the field
-        String text = ((TextInputControl)event.getSource()).getText();
-
-        // The field name and data type are separated by an underscore
-        String[] values = id.split("_", 3);
-        // The field is the first value,
-        String field = values[0];
+        String id = ((Control)event.getSource()).getId(); // Get the id of the control
+        String text = ((TextInputControl)event.getSource()).getText(); // Get the value in the field
+        String[] values = id.split("_", 3); // The field name and data type are separated by an underscore
+        String field = values[0]; // The field is the first value,
         String subclass = field.split("-")[0];
         field = field.split("-")[1];
 
         // Get the value to assign
         // Remove all non-numbers..
         text = text.replaceAll("[^\\d]", "");
+
         // Make sure there is at least one number in the field
-        if (!text.equals("")){
+        if (text != "" & text != null) {
+
+            int value = Integer.parseInt(text);
+
             // And the datatype is the second.
-            Integer[] elements = new Integer[2];
-            elements[0] = Integer.parseInt( values[1].split("-")[0] );
-            elements[1] = Integer.parseInt( values[1].split("-")[1] );
+            String[] elements = values[1].split("-");
+            // Set 2-Dimensional Array
+            if (elements.length > 1){
+                characterSheet.getStats().setStat(Integer.parseInt(elements[0]), Integer.parseInt(elements[1]), value);
+            }
+            // Set 1-Dimensional Array
+            else{
+                Field targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+                targetField.setAccessible(true);
 
-            characterSheet.getStats().setStat(elements[0], elements[1], Integer.parseInt(text));
+                Integer[] obj;
 
-            System.out.println("Stat: " + characterSheet.getStats().getStat(elements[0], elements[1]));
+                // Set Value
+                if (subclass!=null){
+                    Field subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+                    subclassField.setAccessible(true);
+
+                    // Make a copy of the target field within CharacterSheet
+                    obj = (Integer[])targetField.get(characterSheet);
+                    // Set the target field to hold our new value
+                    obj[Integer.parseInt(elements[0])] = value;
+                    // Set the target field to hold the copied object
+                    targetField.set(subclassField.get(characterSheet), obj);
+                    // Reset the subclass instantiation within character sheet
+                    subclassField.set(characterSheet, obj);
+                }
+                else{
+                    // Make a copy of the target field within CharacterSheet
+                    obj = (Integer[])targetField.get(characterSheet);
+                    // Set the target field to hold our new value
+                    obj[Integer.parseInt(elements[0])] = value;
+                    // Set the field to hold the copy object
+                    targetField.set(characterSheet, obj);}
+            }
         }
 
         // Assign value to original field.

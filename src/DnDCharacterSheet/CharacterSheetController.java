@@ -16,10 +16,19 @@ public class CharacterSheetController {
 
     CharacterSheet characterSheet = new CharacterSheet();
 
+    public void DefaultCharacterSheet(){
+        characterSheet = new CharacterSheet();
+        characterSheet.setInfo(new Info("", "", "", "", "", "", "",
+                "", "", "", "", "", 0, 10));
+    }
 
     public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
 
+        
+        //  TEST!! DELETE THIS!!!
+        DefaultCharacterSheet();
 
+        // Used to reset the caret position after filter.
         int caretPos = ((TextField)event.getSource()).getCaretPosition();
 
         // Get the id of the control
@@ -29,10 +38,6 @@ public class CharacterSheetController {
 
         // The field name and data type are separated by an underscore
         String[] values = id.split("_", 3);
-
-        // Get class
-        //Class<?> c = Class.forName(values[0]);
-
         // The field is the first value,
         String field = values[0];
         // And the datatype is the second.
@@ -47,7 +52,7 @@ public class CharacterSheetController {
         Class myClass = null;
         // Check to see if we're referencing a subclass
         // The field name and data type are separated by an underscore
-        String[] subclasses = field.split("\\.", 2);
+        String[] subclasses = field.split("-", 2);
 
         if (subclasses.length > 1){
             System.out.println(subclasses[0] + " and " + subclasses[1]);
@@ -69,21 +74,21 @@ public class CharacterSheetController {
         // Filter text values
         text = Filter(myClassField, myField, text, dataType);
 
-        /*
         // Make sure all instances of the control are identical
         // Get the current scene.
         Scene scene = ((TextField) event.getSource()).getScene();
         // Get the other instance of this control if they exist.
         if (values.length > 2){
-            ((TextField) scene.lookup("#" + field + "_" + dataType + "_" + instance )).setText(text);
-
-            ((TextField) scene.lookup("#" + field + "_" + dataType + "_" + !instance )).setText(text);
+            // Set the value of the field.
+            ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + instance )).setText(text);
+            // Set the other field. (Use !instance to find the other field.)
+            ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + !instance )).setText(text);
         }
         else{
-            ((TextField) scene.lookup("#" + field + "_" + dataType )).setText(text);
+            // Assign value to field with no clones.
+            ((TextField) scene.lookup("#" + id)).setText(text);
         }
 
-         */
 
         // Reposition the caret
         ((TextField)event.getSource()).positionCaret(caretPos);
@@ -91,10 +96,11 @@ public class CharacterSheetController {
         System.out.println(field + " is set to " + text + ".");
     }
 
-    public String Filter(Field myClass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
+    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
 
         field.setAccessible(true);
-        myClass.setAccessible(true);
+        Object value = null;
+
         // Ensure text meets requirements
         switch (dataType) {
             case "int":
@@ -103,38 +109,7 @@ public class CharacterSheetController {
                 // Make sure there is at least one number in the field
                 if (!text.equals("")){
                     // Parse the value as an integer.
-                    int value = Integer.parseInt(text);
-                    if (myClass!=null){
-
-
-                        // Set the field's final value
-                        // Background // Info // Charactersheet
-                        //field.set(characterSheet.
-                        /*
-                        String name = myClass.getName();
-                        name = name.substring(0, 1).toLowerCase() + name.substring(1);
-                        System.out.println(name);
-
-                        Field f = myClass.getType().getDeclaredField(field.getName());
-                        f.setAccessible(true);
-                        f.set(characterSheet, value);
-
-                        */
-                       // Object a = myClass.get(characterSheet);
-                       // field.set(a, value);
-
-                        Class c = characterSheet.getClass();
-                        Field f = c.getDeclaredField("info");
-                        Class<?> fieldClass = f.getType();
-                        Field nested = fieldClass.getDeclaredField("wt");
-
-                        f.setAccessible(true);
-                        nested.setAccessible(true);
-
-                        nested.set(characterSheet, value);
-
-
-                    }
+                    value = Integer.parseInt(text);
                 }
                 break;
             case "float":
@@ -143,16 +118,31 @@ public class CharacterSheetController {
                 // Make sure there is at least one number in the field
                 if (!text.equals("")){
                     // Parse the value as an integer.
-                    float value = Float.parseFloat(text);
-                    // Set the field's final value
-                    field.set(characterSheet, value);
-
+                    value = Float.parseFloat(text);
                 }
                 break;
             case "str":
-                field.set(characterSheet, text);
+                value = text;
                 break;
         }
+
+        if (value != null){
+            text = value.toString();
+            // Set Value
+            if (subclass!=null & value != null){
+                // Make the subclass accessible if it's not null
+                subclass.setAccessible(true);
+                // Make a copy of the subclass variable within CharacterSheet
+                Object obj = subclass.get(characterSheet);
+                // Change the subclass instantiation to have our new value
+                field.set(obj, value);
+                // Reset the subclass instantiation within character sheet
+                subclass.set(characterSheet, obj);
+            } else{
+                field.set(characterSheet, value);
+            }
+        }
+
         return text;
 
     }

@@ -23,6 +23,7 @@ public class CharacterSheetController {
                 "", "", "", "", "", 0, 10));
         characterSheet.setMiscStats(new MiscStats());
         characterSheet.setStory(new Story("", "", "", "", "", "", ""));
+        characterSheet.setStats(new Stats());
     }
 
 
@@ -54,9 +55,8 @@ public class CharacterSheetController {
         if (values.length > 2){ instance = !Boolean.parseBoolean(values[2]);}
 
         // Get the field we're editing
-        Field myField = null;
-        Field myClassField = null;
-        Class myClass = null;
+        Field targetField = null;
+        Field subclassField = null;
         // Check to see if we're referencing a subclass
         // The field name and data type are separated by an underscore
         String[] subclasses = field.split("-", 2);
@@ -70,24 +70,25 @@ public class CharacterSheetController {
             String subclass = subclasses[0];
             field = subclasses[1];
             // And its field is the second.
-            myClass = (CharacterSheet.class.getDeclaredField(subclass)).getType();
-            myClassField = (CharacterSheet.class.getDeclaredField(subclass));
-            myField = myClass.getDeclaredField(field);
+            subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+            targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
         } else{
             // Get the field we're editing
-            myField = CharacterSheet.class.getDeclaredField(field);
+            targetField = CharacterSheet.class.getDeclaredField(field);
         }
 
 
         // Filter text values
-        text = Filter(myClassField, myField, text, dataType);
+        text = Filter(subclassField, targetField, text, dataType);
 
         /**************************
          *** SET ALL CONTROL VALS *
          **************************/
         Scene scene = ((Control) event.getSource()).getScene();
+
         // Assign value to original field.
         ((TextInputControl)event.getSource()).setText(text);
+
         if (values.length > 2){
             // Set the other field. (Use !instance to find the other field.)
             ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + !instance )).setText(text);
@@ -123,43 +124,6 @@ public class CharacterSheetController {
                 // Make sure there is at least one number in the field
                 if (!text.equals("")){value = Float.parseFloat(text);}
                 break;
-            case "array":
-                System.out.println("Set Array");
-                // Remove all non-numbers.
-                text = text.replaceAll("[^\\d]", "");
-                // Make sure there is at least one number in the field
-                if (!text.equals("")){ value = Integer.parseInt(text);}
-
-                // Instantiate a new integer array.
-                Integer[] array;
-
-                // Store the array value.
-                if (value != null) {
-                    text = value.toString();
-                    // Set Value
-                    if (subclass != null & value != null) {
-                        // Make the subclass accessible if it's not null
-                        subclass.setAccessible(true);
-                        // Make a copy of the subclass variable within CharacterSheet
-                        Object obj = subclass.get(characterSheet);
-                        // Create a copy of the target array.
-                        array = (Integer[])field.get(obj);
-                        // Change the relevant value.
-                        array[Integer.parseInt(element)] = (Integer)value;
-                        // Store the copy in character sheet
-                        field.set(obj, array);
-                        subclass.set(characterSheet, obj);
-                    } else {
-                        // Create a copy of the target array.
-                        array = (Integer[])field.get(characterSheet);
-                        // Change the relevant value.
-                        array[Integer.parseInt(element)] = (Integer)value;
-                        // Store the copy in character sheet
-                        field.set(characterSheet, array);
-                    }
-                    value = null;
-                }
-                break;
             case "str":
                 value = text;
                 break;
@@ -185,6 +149,52 @@ public class CharacterSheetController {
         }
 
         return text;
+    }
 
+    public void Set2DArrayValue(KeyEvent event){
+
+        /**************************
+         **** DEFINE VARIABLES ****
+         **************************/
+        //  TEST!! DELETE THIS!!!
+        DefaultCharacterSheet();
+
+        // Used to reset the caret position after filter.
+        int caretPos = ((TextInputControl)event.getSource()).getCaretPosition();
+
+        //stats-statsGrid_0-2
+
+        // Get the id of the control
+        String id = ((Control)event.getSource()).getId();
+        // Get the value in the field
+        String text = ((TextInputControl)event.getSource()).getText();
+
+        // The field name and data type are separated by an underscore
+        String[] values = id.split("_", 3);
+        // The field is the first value,
+        String field = values[0];
+        String subclass = field.split("-")[0];
+        field = field.split("-")[1];
+
+        // Get the value to assign
+        // Remove all non-numbers..
+        text = text.replaceAll("[^\\d]", "");
+        // Make sure there is at least one number in the field
+        if (!text.equals("")){
+            // And the datatype is the second.
+            Integer[] elements = new Integer[2];
+            elements[0] = Integer.parseInt( values[1].split("-")[0] );
+            elements[1] = Integer.parseInt( values[1].split("-")[1] );
+
+            characterSheet.getStats().setStat(elements[0], elements[1], Integer.parseInt(text));
+
+            System.out.println("Stat: " + characterSheet.getStats().getStat(elements[0], elements[1]));
+        }
+
+        // Assign value to original field.
+        ((TextInputControl)event.getSource()).setText(text);
+
+        // Reposition the caret
+        ((TextInputControl)event.getSource()).positionCaret(caretPos);
     }
 }

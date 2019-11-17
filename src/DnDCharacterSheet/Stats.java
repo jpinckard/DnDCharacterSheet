@@ -1,7 +1,9 @@
 package DnDCharacterSheet;
 
 /**
- *A class for producing a 2d array of stats for a character.
+ *A class for producing a 2d array of stats for a character. The rows correspond to Strength, Dexterity, Constitution,
+ * Intelligence, Wisdom, and Charisma from 0-5 in the array. The columns are total stat, modifier, base stat, racial bonus,
+ * magical bonus, and temporary effects from 0-5 in the array.
  */
 public class Stats {
 

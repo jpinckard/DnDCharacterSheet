@@ -24,6 +24,28 @@ public class CharacterSheet {
     private ArrayList<Feature> features;
     private Story charstory;
 
+    public CharacterSheet() {
+        this.name = "";
+        this.level = 1;
+        this.professions = new ArrayList<Profession>();
+        this.profession = new Profession();
+        this.races = new ArrayList<Race>();
+        this.race = new Race();
+        this.info = new Info();
+        this.story = new Story();
+        this.hitPoints = new HitPoints();
+        this.skills = new Skill[18];
+        this.stats = new Stats();
+        this.wizText = new WizText();
+        this.inventory = new Inventory();
+        this.spellSheet = new SpellSheet();
+        this.savingThrows = new int[6];
+        this.miscStats = new MiscStats();
+        this.exp = 0;
+        this.features = new ArrayList<Feature>();
+        this.charstory = new Story();
+    }
+
     public String getName() {
         return name;
     }

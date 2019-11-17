@@ -17,25 +17,11 @@ public class CharacterSheetController {
 
     CharacterSheet characterSheet = new CharacterSheet();
 
-    public void DefaultCharacterSheet(){
-        characterSheet = new CharacterSheet();
-        characterSheet.setInfo(new Info("", "", "", "", "", "", "",
-                "", "", "", "", "", 0, 10));
-        characterSheet.setMiscStats(new MiscStats());
-        characterSheet.setStory(new Story("", "", "", "", "", "", ""));
-        characterSheet.setStats(new Stats());
-    }
-
-
-
     public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
 
         /**************************
          **** DEFINE VARIABLES ****
         **************************/
-        //  TEST!! DELETE THIS!!!
-        DefaultCharacterSheet();
-
         // Used to reset the caret position after filter.
         int caretPos = ((TextInputControl)event.getSource()).getCaretPosition();
 
@@ -157,14 +143,11 @@ public class CharacterSheetController {
         /**************************
          **** DEFINE VARIABLES ****
          **************************/
-        //  TEST!! DELETE THIS!!!
-        DefaultCharacterSheet();
-
         // Used to reset the caret position after filter.
         int caretPos = ((TextInputControl)event.getSource()).getCaretPosition();
         String id = ((Control)event.getSource()).getId(); // Get the id of the control
         String text = ((TextInputControl)event.getSource()).getText(); // Get the value in the field
-        String[] values = id.split("_", 3); // The field name and data type are separated by an underscore
+        String[] values = id.replace("array-","").split("_", 3); // The field name and data type are separated by an underscore
         String field = values[0]; // The field is the first value,
         String subclass = field.split("-")[0];
         field = field.split("-")[1];
@@ -189,31 +172,30 @@ public class CharacterSheetController {
                 Field targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
                 targetField.setAccessible(true);
 
-                Integer[] obj;
-
                 // Set Value
                 if (subclass!=null){
                     Field subclassField = (CharacterSheet.class.getDeclaredField(subclass));
                     subclassField.setAccessible(true);
 
-                    // Make a copy of the target field within CharacterSheet
-                    obj = (Integer[])targetField.get(characterSheet);
-                    // Set the target field to hold our new value
-                    obj[Integer.parseInt(elements[0])] = value;
+                    // Get value of target field
+                    int[] temp = (int[])targetField.get(subclassField.get(characterSheet));
+                    // Change the value of the copy
+                    temp[Integer.parseInt(elements[0])] = value;
                     // Set the target field to hold the copied object
-                    targetField.set(subclassField.get(characterSheet), obj);
-                    // Reset the subclass instantiation within character sheet
-                    subclassField.set(characterSheet, obj);
+                    targetField.set(subclassField.get(characterSheet), temp);
                 }
                 else{
                     // Make a copy of the target field within CharacterSheet
-                    obj = (Integer[])targetField.get(characterSheet);
+                    int[] temp = (int[])targetField.get(characterSheet);
                     // Set the target field to hold our new value
-                    obj[Integer.parseInt(elements[0])] = value;
+                    temp[Integer.parseInt(elements[0])] = value;
                     // Set the field to hold the copy object
-                    targetField.set(characterSheet, obj);}
+                    targetField.set(characterSheet, temp);
+                }
             }
         }
+
+        System.out.println("Misc stats AC value: " + characterSheet.getMiscStats().getAC()[3]);
 
         // Assign value to original field.
         ((TextInputControl)event.getSource()).setText(text);

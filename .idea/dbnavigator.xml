@@ -23,11 +23,15 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
+        <schema name="main" object-types="column, dataset trigger, view, table, constraint, index" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-      <console name="Connection" type="STANDARD" schema="main" session="Main">select * from inventory;
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from inventory;
 select * from spells;
 
 CREATE TABLE inventory (
@@ -48,11 +52,11 @@ INSERT INTO inventory (
     CATEGORY
 ) VALUES (
     2,
-    &quot;Golden Apple&quot;,
-    &quot;These can revive zombies and restore health.&quot;,
+    "Golden Apple",
+    "These can revive zombies and restore health.",
     1,
     .1,
-    &quot;Food&quot;
+    "Food"
 );
 
 CREATE TABLE spells     (
@@ -83,21 +87,21 @@ INSERT INTO spells     (
     SAVE,
     COMPONENTS
 ) VALUES (
-    4,
-    &quot;Magic Missile&quot;,
-    &quot;You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.&quot;,
+    4, 
+    "Magic Missile",
+    "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
     1,
     1,
     1,
-    &quot;Sorcerer, Wizard&quot;,
-    &quot;Instantaneous&quot;,
-    &quot;120 Feet&quot;,
-    &quot;Save&quot;,
-    &quot;V S&quot;
+    "Sorcerer, Wizard",
+    "Instantaneous",
+    "120 Feet",
+    "Save",
+    "V S"
 );
 
 
-DROP TABLE &quot;characterSheet&quot;</console>
+DROP TABLE "characterSheet"]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

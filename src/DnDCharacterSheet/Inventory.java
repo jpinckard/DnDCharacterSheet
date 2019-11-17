@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class Inventory {
 
-    private DnDCharacterSheet.Currency money;
+    private Currency money;
     private Equipment charEquipment;
     private ArrayList<Item> items = new ArrayList<Item>();
     private float carriedWeight;
@@ -19,11 +19,18 @@ public class Inventory {
      * @param items
      * @param carriedWeight
      */
-    public Inventory(DnDCharacterSheet.Currency money, Equipment charEquipment, ArrayList<Item> items, float carriedWeight) {
+    public Inventory(Currency money, Equipment charEquipment, ArrayList<Item> items, float carriedWeight) {
         this.money = money;
         this.charEquipment = charEquipment;
         this.items = items;
         this.carriedWeight = carriedWeight;
+    }
+
+    public Inventory() {
+        this.money = new Currency();
+        this.charEquipment = new Equipment();
+        this.items = new ArrayList<Item>();
+        this.carriedWeight = 0.0f;
     }
 
     /**

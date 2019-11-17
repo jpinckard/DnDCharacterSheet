@@ -34,6 +34,16 @@ public class Story {
         this.otherProf = otherProf;
     }
 
+    public Story() {
+        this.personality = "";
+        this.ideals = "";
+        this.bonds = "";
+        this.flaws = "";
+        this.backstory = "";
+        this.allies = "";
+        this.otherProf = "";
+    }
+
     /**
      *
      * @return

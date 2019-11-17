@@ -58,6 +58,23 @@ public class Info {
         this.wt = wt;
     }
 
+    public Info() {
+        this.name = "";
+        this.ht = "";
+        this.eyes = "";
+        this.skin = "";
+        this.hair = "";
+        this.gender = "";
+        this.deity = "";
+        this.homeland = "";
+        this.languages = "";
+        this.alignment = "";
+        this.size = "";
+        this.background = "";
+        this.age = 0;
+        this.wt = 0;
+    }
+
     /**
      *
      * @return

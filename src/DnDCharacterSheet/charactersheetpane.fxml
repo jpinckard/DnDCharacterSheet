@@ -941,8 +941,8 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                                      <TextField id="miscStats-AC_array-4" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                                                      <TextField id="miscStats-AC_3" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                                      <TextField id="miscStats-AC_4" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="9" GridPane.rowIndex="1" />
                                                       <TextField alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1" />
                                                       <TextField alignment="CENTER" editable="false" text="Initiative" GridPane.rowIndex="3">
                                                          <cursor>

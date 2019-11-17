@@ -571,7 +571,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label text="Enhance" GridPane.columnIndex="6">
+                                                      <Label text="Racial" GridPane.columnIndex="6">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
@@ -926,7 +926,7 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_array-0" alignment="CENTER" editable="false" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
@@ -942,7 +942,7 @@
                                                          </cursor>
                                                       </TextField>
                                                       <TextField alignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                                                      <TextField id="miscStats-AC_array-4" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="9" GridPane.rowIndex="1" />
                                                       <TextField alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1" />
                                                       <TextField alignment="CENTER" editable="false" text="Initiative" GridPane.rowIndex="3">
                                                          <cursor>

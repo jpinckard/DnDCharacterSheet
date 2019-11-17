@@ -22,6 +22,7 @@ public class CharacterSheetController {
         characterSheet.setInfo(new Info("", "", "", "", "", "", "",
                 "", "", "", "", "", 0, 10));
         characterSheet.setMiscStats(new MiscStats());
+        characterSheet.setStory(new Story("", "", "", "", "", "", ""));
     }
 
 
@@ -83,17 +84,15 @@ public class CharacterSheetController {
 
         /**************************
          *** SET ALL CONTROL VALS *
-         **************************/        // Get the current scene.
+         **************************/
         Scene scene = ((Control) event.getSource()).getScene();
-        // Get the other instance of this control if they exist.
+        // Assign value to original field.
+        ((TextInputControl)event.getSource()).setText(text);
         if (values.length > 2){
-            // Set the value of the field.
-            ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + instance )).setText(text);
             // Set the other field. (Use !instance to find the other field.)
             ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + !instance )).setText(text);
         }
-        // Assign value to field with no clones.
-        ((TextInputControl)event.getSource()).setText(text);
+
         // Reposition the caret
         ((TextInputControl)event.getSource()).positionCaret(caretPos);
     }
@@ -110,7 +109,6 @@ public class CharacterSheetController {
         }
 
         System.out.println("Data type: " + dataType + "; fieldName: " + field.getName() );
-
         // Ensure text meets requirements
         switch (dataType) {
             case "int":
@@ -174,7 +172,9 @@ public class CharacterSheetController {
                 // Make the subclass accessible if it's not null
                 subclass.setAccessible(true);
                 // Make a copy of the subclass variable within CharacterSheet
+                System.out.println("Subclass: " + subclass.getName());
                 Object obj = subclass.get(characterSheet);
+                System.out.println("obj: " + obj.toString());
                 // Change the subclass instantiation to have our new value
                 field.set(obj, value);
                 // Reset the subclass instantiation within character sheet

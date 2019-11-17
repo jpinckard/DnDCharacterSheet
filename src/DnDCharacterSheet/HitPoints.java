@@ -11,6 +11,8 @@ public class HitPoints
     private int currentHP; // Current number of hit points of a character.
     private int maxHP; // Maximum amount of HP the character can have.
     private int tempHP; // Amount of temporary HP a character has (magical shielding or similar effects providing HP).
+    private int bleedOut; // store the value when you fall unconscious
+    private int nonLethal; // store the value of nonlethal damage
     private int positiveSave; // returns number of positive saves.
     private int negativeSave; // returns number of negative saves.
 
@@ -22,6 +24,8 @@ public class HitPoints
         currentHP = 0;
         maxHP = 0;
         tempHP = 0;
+        bleedOut = 0;
+        nonLethal = 0;
         positiveSave = 0;
         negativeSave = 0;
     }
@@ -169,6 +173,19 @@ public class HitPoints
         int tempMaxHP = (int) ((profession.getHd()/2 + 1 + stats.getStat(3,1))*(level-1));
         tempMaxHP = tempMaxHP + profession.getHd()+stats.getStat(3,1); // First level of HP uses max of die roll
         maxHP = tempMaxHP;
+    }
+
+    /**
+     * Calculates the difference between the value you fall unconscious at and your max HP
+     * This is used to determine the value of the progressbar representing your health
+     * @param maxHP
+     * @param bleedOut
+     * @return
+     */
+
+    public int calculateHpDiff(int maxHP, int bleedOut){
+        int hpDiff = maxHP + bleedOut;
+        return hpDiff;
     }
 }
 

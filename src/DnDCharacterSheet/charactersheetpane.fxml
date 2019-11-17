@@ -71,7 +71,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="info.background_str" prefWidth="235.0" GridPane.columnIndex="1">
+                                    <TextField id="info-background_str_true" onKeyTyped="#SetValue" prefWidth="235.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -104,7 +104,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                    <TextField id="info-alignment_str_true" onKeyPressed="#SetValue" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -115,12 +115,12 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField prefWidth="200.0" GridPane.columnIndex="2">
+                                    <TextField id="info-deity_str_true" onKeyTyped="#SetValue" prefWidth="200.0" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="200.0" GridPane.columnIndex="3">
+                                    <TextField id="info-homeland_str_true" onKeyTyped="#SetValue" prefWidth="200.0" GridPane.columnIndex="3">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -156,7 +156,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField id="exp_int_true" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                    <TextField id="info-size_str_true" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -197,12 +197,12 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField id="gender" prefWidth="100.0" GridPane.columnIndex="2">
+                                    <TextField id="info-gender_str_true" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="height" prefWidth="100.0" GridPane.columnIndex="3">
+                                    <TextField id="info-ht_str_true" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="3">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -212,17 +212,17 @@
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="hair" prefWidth="100.0" GridPane.columnIndex="5">
+                                    <TextField id="info-hair_str_true" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="5">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="eyes" prefWidth="100.0" GridPane.columnIndex="6">
+                                    <TextField id="info-eyes_str_true" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="6">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="skin" prefWidth="100.0" GridPane.columnIndex="7">
+                                    <TextField id="info-skin_str_true" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="7">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -249,7 +249,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField>
+                                    <TextField id="info-languages_str_true" onKeyTyped="#SetValue">
                                        <GridPane.margin>
                                           <Insets />
                                        </GridPane.margin>
@@ -596,7 +596,7 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                      <TextField id="stats-statsGrid[0][2]_int" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                          <GridPane.margin>
                                                             <Insets />
                                                          </GridPane.margin>
@@ -1120,7 +1120,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="info.background_str" onKeyTyped="#SetValue" prefWidth="235.0" GridPane.columnIndex="1">
+                                    <TextField id="info-background_str_false" onKeyTyped="#SetValue" prefWidth="235.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -1153,7 +1153,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                    <TextField id="info-alignment_str_false" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -1164,12 +1164,12 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField prefWidth="200.0" GridPane.columnIndex="2">
+                                    <TextField id="info-deity_str_false" onKeyTyped="#SetValue" prefWidth="200.0" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="200.0" GridPane.columnIndex="3">
+                                    <TextField id="info-homeland_str_false" onKeyTyped="#SetValue" prefWidth="200.0" GridPane.columnIndex="3">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -1205,7 +1205,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField id="exp_int_false" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                    <TextField id="info-size_str_false" onKeyTyped="#SetValue" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -1246,32 +1246,32 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField prefWidth="100.0" GridPane.columnIndex="2">
+                                    <TextField id="info-gender_str_false" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="2">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="info.age_int" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="3">
+                                    <TextField id="info-ht_str_false" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="3">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="info-wt_int_false" prefWidth="100.0" GridPane.columnIndex="4">
+                                    <TextField id="info-wt_int_false" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="4">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="100.0" GridPane.columnIndex="5">
+                                    <TextField id="info-hair_str_false" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="5">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="100.0" GridPane.columnIndex="6">
+                                    <TextField id="info-eyes_str_false" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="6">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField prefWidth="100.0" GridPane.columnIndex="7">
+                                    <TextField id="info-skin_str_false" onKeyTyped="#SetValue" prefWidth="100.0" GridPane.columnIndex="7">
                                        <GridPane.margin>
                                           <Insets left="5.0" right="5.0" />
                                        </GridPane.margin>
@@ -1298,7 +1298,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField>
+                                    <TextField id="info-languages_str_false" onKeyTyped="#SetValue">
                                        <GridPane.margin>
                                           <Insets />
                                        </GridPane.margin>
@@ -1320,9 +1320,9 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <TextArea prefHeight="350.0" wrapText="true" />
+                                          <TextArea id="story-backstory_str" onKeyTyped="#SetValue" prefHeight="350.0" wrapText="true" />
                                           <Label text="Character Backstory" />
-                                          <TextArea wrapText="true">
+                                          <TextArea id="story-otherProf_str" onKeyTyped="#SetValue" wrapText="true">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
@@ -1337,7 +1337,7 @@
                                        <children>
                                           <TextArea prefHeight="350.0" wrapText="true" />
                                           <Label text="Label" />
-                                          <TextArea prefHeight="200.0" prefWidth="200.0" wrapText="true">
+                                          <TextArea id="story-allies_str" onKeyTyped="#SetValue" prefHeight="200.0" prefWidth="200.0" wrapText="true">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
@@ -1350,21 +1350,21 @@
                                     </VBox>
                                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <TextArea wrapText="true" />
+                                          <TextArea id="story-personality_str" onKeyTyped="#SetValue" wrapText="true" />
                                           <Label text="Personality Traits" />
-                                          <TextArea wrapText="true">
+                                          <TextArea id="story-ideals_str" onKeyTyped="#SetValue" wrapText="true">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
                                           </TextArea>
                                           <Label text="Ideals" />
-                                          <TextArea wrapText="true">
+                                          <TextArea id="story-bonds_str" onKeyTyped="#SetValue" wrapText="true">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>
                                           </TextArea>
                                           <Label text="Bonds" />
-                                          <TextArea wrapText="true">
+                                          <TextArea id="story-flaws_str" onKeyTyped="#SetValue" wrapText="true">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
                                              </VBox.margin>

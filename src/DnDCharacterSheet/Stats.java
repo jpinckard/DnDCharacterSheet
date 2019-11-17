@@ -7,7 +7,12 @@ package DnDCharacterSheet;
  */
 public class Stats {
 
-    private int[][] statsGrid = new int[6][6];//2d array for holding the stats
+    private int[][] statsGrid;//2d array for holding the stats
+
+
+    public Stats(){
+         statsGrid = new int[6][6];
+    }
 
     /**
      *Constructs a new Stats object.

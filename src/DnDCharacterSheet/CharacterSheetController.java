@@ -151,7 +151,7 @@ public class CharacterSheetController {
         return text;
     }
 
-    public void Set2DArrayValue(KeyEvent event){
+    public void SetArrayValue(KeyEvent event){
 
         /**************************
          **** DEFINE VARIABLES ****

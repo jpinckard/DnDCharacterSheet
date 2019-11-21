@@ -151,15 +151,18 @@ public class CharacterSheetController {
         String field = values[0]; // The field is the first value,
         String subclass = field.split("-")[0];
         field = field.split("-")[1];
+        int value = 0;
 
         // Get the value to assign
         // Remove all non-numbers..
         text = text.replaceAll("[^\\d]", "");
 
         // Make sure there is at least one number in the field
-        if (text != "" & text != null) {
+        if (text != "" && text != null) {
 
-            int value = Integer.parseInt(text);
+            System.out.println("Value of text: " + text);
+
+            if (!text.equals("")){value = Integer.parseInt(text);}
 
             // And the datatype is the second.
             String[] elements = values[1].split("-");
@@ -203,4 +206,39 @@ public class CharacterSheetController {
         // Reposition the caret
         ((TextInputControl)event.getSource()).positionCaret(caretPos);
     }
+
+    //Define a method that calls setarrayvalue and character stats calculations for the character stats
+    public void setMainStats (KeyEvent event) throws NoSuchFieldException, IllegalAccessException {
+
+        //declare a temporary 2D array to make the IDE happy
+        /******DELETE LATER*******/
+        int tempGrid[][] = new int[6][6];
+
+        //use reflection to get the ID of the box so that we can update every box: stats-statsGrid_i-j
+        //where i is the ROW of the stat and j is the boxes 0 and 1
+
+        Scene scene = ((Control) event.getSource()).getScene(); //get the scene to set the boxes
+        String id = ((Control)event.getSource()).getId(); // Get the id of the control
+        String text = ((TextInputControl)event.getSource()).getText(); // Get the value in the field
+        String[] values = id.replace("array-","").split("_", 3); // The field name and data type are separated by an underscore
+        String field = values[0]; // The field is the first value,
+        String subclass = field.split("-")[0];
+        field = field.split("-")[1];
+
+        //call the setArrayValue function to update the model
+        SetArrayValue(event);
+
+        //call the method that calculates the mod and total and stick it here
+        //method here
+
+
+       // Set the total field.
+       // ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + !instance )).setText(text);
+
+
+
+
+
+    }
+
 }

@@ -8,12 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
 public class CharacterSheetController {
+
 
     CharacterSheet characterSheet = new CharacterSheet();
 
@@ -100,9 +102,18 @@ public class CharacterSheetController {
         switch (dataType) {
             case "int":
                 // Remove all non-numbers..
-                text = text.replaceAll("[^\\d]", "");
-                // Make sure there is at least one number in the field
-                if (!text.equals("")){value = Integer.parseInt(text);}
+               // if(!text.equals("-")) {
+                    text = text.replaceFirst("[^\\d-]", "");
+                    if((text.length() > 1)){
+                        String textsub = text.substring(1);
+                        text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
+                    }
+                      System.out.println("Text is: " + text);
+                    // Make sure there is at least one number in the field
+                    if (!text.equals("") && !text.equals("-")) {
+                        value = Integer.parseInt(text);
+                   // }
+                }
                 break;
             case "float":
                 // Remove all non-numbers..
@@ -122,9 +133,9 @@ public class CharacterSheetController {
                 // Make the subclass accessible if it's not null
                 subclass.setAccessible(true);
                 // Make a copy of the subclass variable within CharacterSheet
-                System.out.println("Subclass: " + subclass.getName());
+                //System.out.println("Subclass: " + subclass.getName());
                 Object obj = subclass.get(characterSheet);
-                System.out.println("obj: " + obj.toString());
+                //System.out.println("obj: " + obj.toString());
                 // Change the subclass instantiation to have our new value
                 field.set(obj, value);
                 // Reset the subclass instantiation within character sheet
@@ -161,7 +172,6 @@ public class CharacterSheetController {
         // Make sure there is at least one number in the field
         if (text != "" && text != null) {
 
-            System.out.println("Value of text: " + text);
 
             if (!text.equals("")){value = Integer.parseInt(text);}
 
@@ -211,5 +221,35 @@ public class CharacterSheetController {
 
         // Reposition the caret
         ((TextInputControl)event.getSource()).positionCaret(caretPos);
+    }
+
+    public void setHP(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+
+        Scene scene = ((Control) event.getSource()).getScene();
+        String id = ((Control)event.getSource()).getId();
+
+
+        if(!id.equals("damagefield")) {
+            // set the value in the GUI
+            SetValue(event);
+
+            if (!id.equals("hitPoints-currentHP_int")) {
+                ((TextField) scene.lookup("#hitPoints-currentHP_int")).setText(String.valueOf(characterSheet.getHp().getCurrentHP()));
+            }
+        }
+        else if(id.equals("damagefield")){
+
+            String text = ((TextInputControl)event.getSource()).getText();
+            text = text.replaceAll("[^\\d]", "");
+            // Make sure there is at least one number in the field
+            ((TextField) scene.lookup("#damagefield" )).setText(text);
+
+            if(event.getCode() == KeyCode.ENTER) {
+                characterSheet.getHp().changeCurrentHP(Integer.parseInt(text));
+            }
+        }
+
+        ((ProgressBar) scene.lookup("#hpBar")).setProgress((float) Math.abs(characterSheet.getHp().getCurrentHP())/(characterSheet.getHp().getMaxHP()));
+
     }
 }

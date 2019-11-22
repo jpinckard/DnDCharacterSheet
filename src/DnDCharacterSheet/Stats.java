@@ -50,12 +50,14 @@ public class Stats {
      * @param tempRace - a Race used for the race boost
      */
     public void calcTotal(Race tempRace){
+
+        // take out the race thing for now for testing
+
        // int[] boostTemp = tempRace.getStatBoost();//temporary array to hold stat boost from Race class
 
         for (int i = 0; i < 6; i++){
             //statsGrid[i][0] = statsGrid[i][2] + boostTemp[i];
             statsGrid[i][0] = statsGrid[i][2] + statsGrid[i][3] + statsGrid[i][4] + statsGrid[i][5];
-            //statsGrid[i][0] = statsGrid[i][0] + statsGrid[i][5];
         }
         System.out.println("The total has been updated to: " + statsGrid[0][0]);
     }

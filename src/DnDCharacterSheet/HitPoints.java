@@ -15,6 +15,7 @@ public class HitPoints
     private int nonLethal; // store the value of nonlethal damage
     private int positiveSave; // returns number of positive saves.
     private int negativeSave; // returns number of negative saves.
+    private String conditions;
 
     /**
      * Default constructor that sets all values to 0
@@ -116,6 +117,18 @@ public class HitPoints
      */
     public int getTotalHP() {
         return currentHP + tempHP;
+    }
+
+    public int getBleedOut(){ return bleedOut; }
+
+    public void changeCurrentHP(int amount){
+        if (amount < 0){
+            dealDamage(Math.abs(amount));
+        System.out.println("Dealing damage. Current HP: " + currentHP);
+        } else{
+            heal(amount);
+            System.out.println("Healing. Current HP: " + currentHP);
+        }
     }
 
     /**

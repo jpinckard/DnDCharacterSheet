@@ -1,5 +1,7 @@
 package DnDCharacterSheet;
 
+import java.security.PrivilegedActionException;
+
 /**
  *A class for producing a 2d array of stats for a character. The rows correspond to Strength, Dexterity, Constitution,
  * Intelligence, Wisdom, and Charisma from 0-5 in the array. The columns are total stat, modifier, base stat, racial bonus,
@@ -40,6 +42,7 @@ public class Stats {
      */
     public void setStat(int row, int col, int tempStat) {
         this.statsGrid[row][col] = tempStat;
+        //System.out.println("The stat has been updated to: " + statsGrid[row][col]);
     }
 
     /**
@@ -47,13 +50,14 @@ public class Stats {
      * @param tempRace - a Race used for the race boost
      */
     public void calcTotal(Race tempRace){
-        int[] boostTemp = tempRace.getStatBoost();//temporary array to hold stat boost from Race class
+       // int[] boostTemp = tempRace.getStatBoost();//temporary array to hold stat boost from Race class
 
         for (int i = 0; i < 6; i++){
-            statsGrid[i][0] = statsGrid[i][2] + boostTemp[i];
-            statsGrid[i][0] = statsGrid[i][0] + statsGrid[i][4];
-            statsGrid[i][0] = statsGrid[i][0] + statsGrid[i][5];
+            //statsGrid[i][0] = statsGrid[i][2] + boostTemp[i];
+            statsGrid[i][0] = statsGrid[i][2] + statsGrid[i][3] + statsGrid[i][4] + statsGrid[i][5];
+            //statsGrid[i][0] = statsGrid[i][0] + statsGrid[i][5];
         }
+        System.out.println("The total has been updated to: " + statsGrid[0][0]);
     }
 
     /**
@@ -68,5 +72,6 @@ public class Stats {
         tempMod = tempMod / 2;
         mod = (int) Math.round(Math.floor(tempMod));
         setStat(row, 1, mod);
+        System.out.println("The mod has been updated to: " + statsGrid[0][1]);
     }
 }

@@ -48,7 +48,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TextField />
       <TabPane maxHeight="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0" VBox.vgrow="ALWAYS">
         <tabs>
           <Tab text="Character Information">
@@ -597,7 +596,7 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="stats-statsGrid_0-2" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                      <TextField id="stats-statsGrid_0-2" alignment="CENTER" onKeyTyped="#setMainStats" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                          <GridPane.margin>
                                                             <Insets />
                                                          </GridPane.margin>

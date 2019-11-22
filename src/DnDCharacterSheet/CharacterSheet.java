@@ -102,12 +102,12 @@ public class CharacterSheet {
         this.skills = skills;
     }
 
-    public Stats getStats() {
-        return stats;
-    }
+    public Stats getStats(){return stats;}
 
-    public void setStats(Stats stats) {
-        this.stats = stats;
+    public void setStat(int row, int col, int tempStat) {
+        stats.setStat(row, col, tempStat);
+        stats.calcTotal(race);
+        stats.calcMod(row);
     }
 
     public WizText getWizText() {

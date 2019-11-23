@@ -1,6 +1,7 @@
 package DnDCharacterSheet;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
@@ -10,14 +11,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
 public class CharacterSheetController {
 
-
     CharacterSheet characterSheet = new CharacterSheet();
+
+    @FXML VBox spellPaneLevel0;
+
+    //ArrayList<HBox> spellLevel0List = new ArrayList<>();
 
     public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
 
@@ -278,6 +283,12 @@ public class CharacterSheetController {
         }
 
         ((ProgressBar) scene.lookup("#hpBar")).setProgress((float) Math.abs(Math.abs(characterSheet.getHp().getBleedOut()) + characterSheet.getHp().getCurrentHP())/(Math.abs(characterSheet.getHp().getBleedOut()) + characterSheet.getHp().getMaxHP()));
+
+    }
+
+    public void dynamicSpellAdder(ActionEvent event){
+
+        spellPaneLevel0.getChildren().add(new ComboBox());
 
     }
 }

@@ -3109,6 +3109,7 @@
                                     </VBox>
                                  </children>
                               </GridPane>
+                              <Button mnemonicParsing="false" onAction="#dynamicSpellAdder" text="Button" />
                               <HBox>
                                  <children>
                                     <Label text="Spells" />
@@ -3160,9 +3161,13 @@
                                     <Label text="Save" GridPane.columnIndex="7" />
                                  </children>
                               </GridPane>
-                              <VBox>
+                              <VBox fx:id="spellPaneLevel0">
                                  <children>
-                                    <ComboBox editable="true" maxWidth="1.7976931348623157E308" minWidth="770.0" />
+                                    <HBox>
+                                       <children>
+                                          <ComboBox editable="true" maxWidth="1.7976931348623157E308" minWidth="770.0" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>

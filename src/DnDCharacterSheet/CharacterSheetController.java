@@ -228,28 +228,56 @@ public class CharacterSheetController {
         Scene scene = ((Control) event.getSource()).getScene();
         String id = ((Control)event.getSource()).getId();
 
-
+        // Check if we're dealing damage, because that's a different thing entirely
         if(!id.equals("damagefield")) {
             // set the value in the GUI
             SetValue(event);
-
+            // if we're NOT typing in the currentHP box, make sure it gets updated
             if (!id.equals("hitPoints-currentHP_int")) {
                 ((TextField) scene.lookup("#hitPoints-currentHP_int")).setText(String.valueOf(characterSheet.getHp().getCurrentHP()));
+            }
+
+            if (!id.equals("#hitPoints-tempHP_int")){
+               // ((TextField) scene.lookup("#hitPoints-tempHP_int")).setText(String.valueOf(characterSheet.getHp().getTempHP()));
             }
         }
         else if(id.equals("damagefield")){
 
+            // basically writing a truncated version of setValue with Filter here
+            int caretPos = ((TextInputControl)event.getSource()).getCaretPosition();
             String text = ((TextInputControl)event.getSource()).getText();
-            text = text.replaceAll("[^\\d]", "");
-            // Make sure there is at least one number in the field
-            ((TextField) scene.lookup("#damagefield" )).setText(text);
 
-            if(event.getCode() == KeyCode.ENTER) {
-                characterSheet.getHp().changeCurrentHP(Integer.parseInt(text));
+            // make sure it's not blank to avoid errors
+            if (text != "" && text != null) {
+                //Check to see if we're entering a negative number
+                // Allow a dash for the first character
+                text = text.replaceFirst("[^\\d-]", "");
+                // If the length of the string is greater than 1, then replace everything NOT an integer
+                if ((text.length() > 1)) {
+                    String textsub = text.substring(1);
+                    text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
+                }
+
+                System.out.println("Text is: " + text);
+
+                ((TextField) scene.lookup("#damagefield")).setText(text);
+                ((TextInputControl) event.getSource()).positionCaret(caretPos);
+
+
+                if (event.getCode() == KeyCode.ENTER) {
+                    // set the current hp
+                    characterSheet.getHp().changeCurrentHP(Integer.parseInt(text));
+                    // clear the damage field
+                    ((TextField) scene.lookup("#damagefield")).setText("");
+                    // set the temp HP in case they had temp HP
+                    ((TextField) scene.lookup("#hitPoints-tempHP_int")).setText(String.valueOf(characterSheet.getHp().getTempHP()));
+                    // set the current HP in case they did not have temp HP
+                    ((TextField) scene.lookup("#hitPoints-currentHP_int")).setText(String.valueOf(characterSheet.getHp().getCurrentHP()));
+                }
             }
         }
 
-        ((ProgressBar) scene.lookup("#hpBar")).setProgress((float) Math.abs(characterSheet.getHp().getCurrentHP())/(characterSheet.getHp().getMaxHP()));
+        ((ProgressBar) scene.lookup("#hpBar")).setProgress((float) Math.abs(Math.abs(characterSheet.getHp().getBleedOut()) + characterSheet.getHp().getCurrentHP())/(Math.abs(characterSheet.getHp().getBleedOut()) + characterSheet.getHp().getMaxHP()));
 
     }
 }

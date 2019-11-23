@@ -143,6 +143,11 @@ public class HitPoints
         {
             currentHP = currentHP + pain;
             tempHP = 0;
+            // Check if we've gone past our bleed out value
+            if(currentHP < bleedOut){
+                // If so, then don't let currentHP be set lower
+                currentHP = bleedOut;
+            }
         }
         else
         {

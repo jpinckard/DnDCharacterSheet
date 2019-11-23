@@ -330,7 +330,7 @@
                                                       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                                                          <children>
                                                             <Label minHeight="30.0" minWidth="65.0" text="Damage Taken/Healed" textAlignment="CENTER" wrapText="true" />
-                                                            <TextField id="damagefield" onKeyPressed="#setHP">
+                                                            <TextField id="damagefield" onKeyPressed="#setHP" onKeyTyped="#setHP">
                                                                <VBox.margin>
                                                                   <Insets left="10.0" right="10.0" />
                                                                </VBox.margin>

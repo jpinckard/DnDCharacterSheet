@@ -23,16 +23,362 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-        <schema name="main" object-types="column, dataset trigger, view, table, constraint, index" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
       <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from inventory;
+select * from armor;
 select * from spells;
+select * from weapons;
+
+CREATE TABLE armor (
+    ID INT primary key,
+    NAME TEXT,
+    COST FLOAT,
+    WEIGHT FLOAT,
+    DESCRIPTION TEXT,
+    CATEGORY TEXT,
+    AMOUNT INT,
+    AC INT,
+    TYPE TEXT,
+    STEALTH BOOLEAN
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    201,
+    "Padded",
+    5,
+    8,
+    "Padded armor consists of quilted layers of cloth and batting.",
+    "Armor",
+    1,
+    11,
+    "Light",
+    1
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    202,
+    "Leather",
+    10,
+    10,
+    "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.",
+    "Armor",
+    1,
+    11,
+    "Light",
+    0
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    203,
+    "Studded Leather",
+    45,
+    13,
+    "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes.",
+    "Armor",
+    1,
+    12,
+    "Light",
+    0
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    204,
+    "Hide",
+    10,
+    12,
+    "This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor.",
+    "Armor",
+    1,
+    12,
+    "Medium",
+    0
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    206,
+    "Scale mail",
+    50,
+    45,
+    "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.",
+    "Armor",
+    1,
+    14,
+    "Medium",
+    1
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    210,
+    "Chain mail",
+    75,
+    55,
+    "Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. This suit includes gauntlets.",
+    "Armor",
+    1,
+    16,
+    "Heavy",
+    1
+);
+
+INSERT INTO ARMOR (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    AC,
+    TYPE,
+    STEALTH
+) VALUES (
+    212,
+    "Plate",
+    1500,
+    65,
+    "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneather the armor. Buckles and straps distribute the weight over the body.",
+    "Armor",
+    1,
+    18,
+    "Heavy",
+    1
+);
+
+
+CREATE TABLE weapons (
+    ID INT primary key,
+    NAME TEXT,
+    COST FLOAT,
+    WEIGHT FLOAT,
+    DESCRIPTION TEXT,
+    CATEGORY TEXT,
+    AMOUNT INT,
+    DAMAGE TEXT,
+    RANGE INT,
+    MARTIAL BOOLEAN,
+    RANGED BOOLEAN,
+    FINESSE BOOLEAN,
+    TYPE TEXT
+);
+
+INSERT INTO WEAPONS (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    DAMAGE,
+    RANGE,
+    MARTIAL,
+    RANGED,
+    FINESSE,
+    TYPE
+) VALUES (
+    301,
+    "Club",
+    0.1,
+    2,
+    "Club",
+    "Weapon",
+    1,
+    "1d4",
+    5,
+    0,
+    0,
+    0,
+    "bludgeoning"
+);
+
+INSERT INTO WEAPONS (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    DAMAGE,
+    RANGE,
+    MARTIAL,
+    RANGED,
+    FINESSE,
+    TYPE
+) VALUES (
+    302,
+    "Dagger",
+    2,
+    1,
+    "Dagger",
+    "Weapon",
+    1,
+    "1d4",
+    5,
+    0,
+    0,
+    1,
+    "piercing"
+);
+
+INSERT INTO WEAPONS (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    DAMAGE,
+    RANGE,
+    MARTIAL,
+    RANGED,
+    FINESSE,
+    TYPE
+) VALUES (
+    313,
+    "Shortbow",
+    25,
+    2,
+    "Shortbow",
+    "Weapon",
+    1,
+    "1d6",
+    80,
+    0,
+    1,
+    0,
+    "piercing"
+);
+
+INSERT INTO WEAPONS (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    DAMAGE,
+    RANGE,
+    MARTIAL,
+    RANGED,
+    FINESSE,
+    TYPE
+) VALUES (
+    315,
+    "Battleaxe",
+    10,
+    4,
+    "Battleaxe",
+    "Weapon",
+    1,
+    "1d8",
+    5,
+    1,
+    0,
+    0,
+    "slashing"
+);
+
+INSERT INTO WEAPONS (
+    ID,
+    NAME,
+    COST,
+    WEIGHT,
+    DESCRIPTION,
+    CATEGORY,
+    AMOUNT,
+    DAMAGE,
+    RANGE,
+    MARTIAL,
+    RANGED,
+    FINESSE,
+    TYPE
+) VALUES (
+    334,
+    "Hand Crossbow",
+    75,
+    3,
+    "Hand Crossbow",
+    "Weapon",
+    1,
+    "1d6",
+    30,
+    1,
+    1,
+    0,
+    "bludgeoning"
+);
 
 CREATE TABLE inventory (
     ID INT primary key,
@@ -40,6 +386,7 @@ CREATE TABLE inventory (
     DESCRIPTION TEXT,
     AMOUNT INT,
     WEIGHT FLOAT,
+    COST FLOAT,
     CATEGORY TEXT
 );
 
@@ -49,14 +396,34 @@ INSERT INTO inventory (
     DESCRIPTION,
     AMOUNT,
     WEIGHT,
+    COST,
     CATEGORY
 ) VALUES (
-    2,
-    "Golden Apple",
-    "These can revive zombies and restore health.",
+    101,
+    "Candle",
+    "For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet.",
     1,
-    .1,
-    "Food"
+    0,
+    .01,
+    "Consumable"
+);
+
+INSERT INTO inventory (
+    ID,
+    NAME,
+    DESCRIPTION,
+    AMOUNT,
+    WEIGHT,
+    COST,
+    CATEGORY
+) VALUES (
+    102,
+    "Crowbar",
+    "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied",
+    1,
+    5,
+    2,
+    "Tool"
 );
 
 CREATE TABLE spells     (
@@ -87,7 +454,7 @@ INSERT INTO spells     (
     SAVE,
     COMPONENTS
 ) VALUES (
-    4, 
+    504,
     "Magic Missile",
     "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
     1,
@@ -354,12 +721,22 @@ DROP TABLE "characterSheet"]]></console>
           <content-type name="DTD" enabled="true" />
           <content-type name="HTML" enabled="true" />
           <content-type name="XHTML" enabled="true" />
+          <content-type name="CSS" enabled="true" />
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
+          <content-type name="JavaScript" enabled="true" />
+          <content-type name="JSP" enabled="true" />
+          <content-type name="JSPx" enabled="true" />
           <content-type name="Groovy" enabled="true" />
+          <content-type name="FTL" enabled="true" />
+          <content-type name="TML" enabled="true" />
+          <content-type name="GSP" enabled="true" />
+          <content-type name="ASP" enabled="true" />
+          <content-type name="VTL" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />
+          <content-type name="Flex" enabled="true" />
           <content-type name="Manifest" enabled="true" />
         </content-types>
       </qualified-text-editor>

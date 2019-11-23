@@ -144,11 +144,11 @@ public class MiscStats {
         AC[3] = stats.getStat(1,1); //Dex Mod
         AC[5] = (10+stats.getStat(1,1));
 
-        if(equip.getArmorType().equals("light"))
+        if(equip.getArmorType().equals("Light"))
         {
             AC[0] = AC[1] + AC[2] + AC[3] + AC[4];
         }
-        if(equip.getArmorType().equals("medium"))
+        if(equip.getArmorType().equals("Medium"))
         {
             if(AC[3] > 2)
             {

@@ -9,8 +9,9 @@ public class Weapon extends Item
     private String damage; // Describes the damage of the weapon Ex. "1d6" means that a 6 sided die is rolled for damage
     private int range; // Describes the range in feet that the weapon can be used at. 5 for melee weapons unless special
     private boolean martial; //A martial weapon is more advanced and requires proficiency to be used. 0 for simple, 1 for martial
-    private boolean ranged; //Described weather a weapon is ranged or melee. 0 for melee, 1 for ranged
-    private String baseMod; //Specify if the stat used for attack damage is strength or dexterity based.
+    private boolean ranged; //Described weather a weapon is ranged or melee. 0 for melee, 1 for ranged. Ranged attacks use dexterity for attack and damage.
+    private boolean finesse; //If finesse is 0, strength is used for attack and damage. If finesse is 1, the highest between strength and dexterity will be used.
+    private String type;  //Type of damage dealt. bludgeoning, piercing, or slashing
 
     /**
      * Instantiates the weapon class and sets all default values to the base for a very simple weapon.
@@ -21,7 +22,8 @@ public class Weapon extends Item
         range = 0;
         martial = false;
         ranged = false;
-        baseMod = "Strength";
+        finesse = false;
+        type = "";
     }
 
     /**
@@ -30,14 +32,6 @@ public class Weapon extends Item
      */
     public void setDamage(String damage) {
         this.damage = damage;
-    }
-
-    /**
-     * Sets the type of baseMod.
-     * @param baseMod the modifier used by the weapon
-     */
-    public void setBaseMod(String baseMod) {
-        this.baseMod = baseMod;
     }
 
     /**
@@ -82,14 +76,6 @@ public class Weapon extends Item
     }
 
     /**
-     * Returns if the base mod is strength or dexterity for the weapon
-     * @return strength or dexterity
-     */
-    public String getBaseMod() {
-        return baseMod;
-    }
-
-    /**
      * Returns weapon status as a martial weapon or not.
      * @return true if weapon is martial
      */
@@ -103,6 +89,14 @@ public class Weapon extends Item
      */
     public boolean isRanged() {
         return ranged;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }
 

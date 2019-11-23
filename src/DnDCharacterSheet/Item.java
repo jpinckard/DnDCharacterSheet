@@ -10,6 +10,7 @@ public class Item {
     private String category;
     private String description;
     private int amount;
+    private float cost; // Cost in gold pieces
 
     /**
      *
@@ -18,13 +19,15 @@ public class Item {
      * @param category
      * @param description
      * @param amount
+     * @param cost
      */
-    public Item(String name, float weight, String category, String description, int amount) {
+    public Item(String name, float weight, String category, String description, int amount, float cost) {
         this.name = name;
         this.weight = weight;
         this.category = category;
         this.description = description;
         this.amount = amount;
+        this.cost = cost;
     }
 
     /**
@@ -36,6 +39,7 @@ public class Item {
         this.category = " ";
         this.description = " ";
         this.amount = 0;
+        cost = 0.0f;
     }
 
     /**
@@ -116,5 +120,13 @@ public class Item {
      */
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    public float getCost() {
+        return cost;
     }
 }

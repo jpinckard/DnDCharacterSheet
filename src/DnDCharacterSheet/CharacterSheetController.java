@@ -34,8 +34,21 @@ public class CharacterSheetController {
             "Radish", "Shallot", "Spinach", "Swede", "Turnip");
 
 
-    @FXML
-    VBox spellPaneLevel0;
+    @FXML TextField strSavingThrow;
+    @FXML TextField dexSavingThrow;
+    @FXML TextField conSavingThrow;
+    @FXML TextField intSavingThrow;
+    @FXML TextField wisSavingThrow;
+    @FXML TextField chaSavingThrow;
+    @FXML TextField profBonus;
+
+    @FXML RadioButton strRadioButton;
+    @FXML RadioButton dexRadioButton;
+    @FXML RadioButton conRadioButton;
+    @FXML RadioButton intRadioButton;
+    @FXML RadioButton wisRadioButton;
+    @FXML RadioButton chaRadioButton;
+
     @FXML
     ComboBox spellLevel0Box;
     @FXML
@@ -44,11 +57,23 @@ public class CharacterSheetController {
 
     ArrayList<HBox> spellLevel0HBoxList = new ArrayList<>();
 
+    /**
+     * FXML function that initializes values on the GUI when loaded.
+     */
     @FXML
     private void initialize() {
         spellLevel0Box.setItems(list);
     }
 
+    /**
+     * Controller function that uses reflection to find the TextField typed into and update the model based upon the
+     * name of the TextField. Calls the filter method to disallow invalid entries for certain fields and then updates
+     * the TextBox based on what was allowed.
+     * @param event
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
+     */
     public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
 
         /**************************
@@ -118,6 +143,18 @@ public class CharacterSheetController {
         ((TextInputControl) event.getSource()).positionCaret(caretPos);
     }
 
+    /**
+     * Controller helper function that filters text entered into TextFields and returns the filtered text/value.
+     * Uses reflection to determine datatype from TextField on GUI and then switches based on the datatype declared in
+     * that name.
+     * @param subclass
+     * @param field
+     * @param text
+     * @param dataType
+     * @return
+     * @throws IllegalAccessException
+     * @throws NoSuchFieldException
+     */
     public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
 
         field.setAccessible(true);
@@ -182,10 +219,19 @@ public class CharacterSheetController {
         return text;
     }
 
+    /**
+     * Special Controller function to set the values in the model for arrays.
+     * Does not call filter to filter the text - performs that operation internally since the only
+     * datatype for these is int. Determines which array based upon reflection and the TextField ID in the
+     * FXML. DOES NOT support any 2D array except for Stats.
+     * @param event
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
     public void SetArrayValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException {
         //subclass-field_element1-element2
 
-        /**************************
+        /* *************************
          **** DEFINE VARIABLES ****
          **************************/
         // Used to reset the caret position after filter.
@@ -220,7 +266,8 @@ public class CharacterSheetController {
                 ((TextField) scene.lookup("#" + subclass + "-" + field + "_" + elements[0] + "-" + "1")).setText(String.valueOf(characterSheet.getStats().getStat(Integer.parseInt(elements[0]), 1)));
                 // now update the total
                 ((TextField) scene.lookup("#" + subclass + "-" + field + "_" + elements[0] + "-" + "0")).setText(String.valueOf(characterSheet.getStats().getStat(Integer.parseInt(elements[0]), 0)));
-
+                // now update saving throws
+                updateSavingThrows();
             }
             // Set 1-Dimensional Array
             else {
@@ -258,6 +305,16 @@ public class CharacterSheetController {
         ((TextInputControl) event.getSource()).positionCaret(caretPos);
     }
 
+    /**
+     * Controller method only for the HP section of the gui.
+     * Calls the setValue method to update the values in the model.
+     * Updates the progress bar to give visual representation of HP value
+     * and calls various helper functions to calculate damage, healing, etc.
+     * @param event
+     * @throws IllegalAccessException
+     * @throws NoSuchFieldException
+     * @throws ClassNotFoundException
+     */
     public void setHP(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
 
         Scene scene = ((Control) event.getSource()).getScene();
@@ -315,6 +372,16 @@ public class CharacterSheetController {
 
     }
 
+    /**
+     * Controller method to add and remove rows and nodes from the spell lists dynamically
+     * Note that this method DOES NOT DELETE the row of thr gridpane, only hides it.
+     * When spells are added, they should be tracked in the model in accordance with how they are in the GUI
+     * and then then cleaned up on save and load.
+     * Ex: player adds two spells - gridpane has rows 0, 1, 2 - spell array has spells 0, 1, 2
+     * player deleted spell, number 1. gridpane has rows 0, 1 (now hidden), 2 - spell array has spells 0, 1 (now set to null), 2.
+     * When sheet is saved, save method steps through spell arraylist and saves ONLY spells != null.
+     * @param event
+     */
     public void dynamicSpellAdder(ActionEvent event) {
 
         /*
@@ -370,6 +437,14 @@ public class CharacterSheetController {
        });
     }
 
+    /**
+     * Controller helper method to find the node in the GridPane object given the row and the column.
+     * Note that Java does not provide the functionality natively.
+     * @param gridPane
+     * @param col
+     * @param row
+     * @return
+     */
     private Node getNodeFromGridPane(GridPane gridPane, int col, int row) {
         ObservableList<Node> children = gridPane.getChildren();
 
@@ -382,5 +457,45 @@ public class CharacterSheetController {
         }
         return null;
 
+    }
+
+    /**
+     * Controller method that checks if the radio button for the saving throw has been toggled
+     * if it has, it updates the textbox with the stat modifier plus the proficiency bonus
+     * if not, then it updates it with the modifier only.
+     * Values do not need to be set in the model since they are calculated from component values.
+     */
+    public void updateSavingThrows(){
+
+        if(strRadioButton.isSelected()) strSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[0] + characterSheet.getProficiency()));
+        else strSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[0]));
+
+        if(dexRadioButton.isSelected()) dexSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[1] + characterSheet.getProficiency()));
+        else dexSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[1]));
+
+        if(conRadioButton.isSelected()) conSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[2] + characterSheet.getProficiency()));
+        else conSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[2]));
+
+        if(intRadioButton.isSelected()) intSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[3] + characterSheet.getProficiency()));
+        else intSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[3]));
+
+        if(wisRadioButton.isSelected()) wisSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[4] + characterSheet.getProficiency()));
+        else wisSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[4]));
+
+        if(chaRadioButton.isSelected()) chaSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[5] + characterSheet.getProficiency()));
+        else chaSavingThrow.setText(String.valueOf(characterSheet.getSavingThrows()[5]));
+    }
+
+    /**
+     * Controller method that updates the value of the proficiency bonus via setValue method
+     * and then updates the saving throws to reflect the change via updateSavingThrow method.
+     * @param event
+     * @throws IllegalAccessException
+     * @throws NoSuchFieldException
+     * @throws ClassNotFoundException
+     */
+    public void updateProf(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+        SetValue(event);
+        updateSavingThrows();
     }
 }

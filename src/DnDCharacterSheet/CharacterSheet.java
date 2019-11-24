@@ -23,6 +23,7 @@ public class CharacterSheet {
     private int exp;
     private ArrayList<Feature> features;
     private Story charstory;
+    private int proficiency;
 
     public CharacterSheet() {
         this.name = "";
@@ -39,7 +40,7 @@ public class CharacterSheet {
         this.wizText = new WizText();
         this.inventory = new Inventory();
         this.spellSheet = new SpellSheet();
-        this.savingThrows = new int[6];
+        //this.savingThrows = new int[6];
         this.miscStats = new MiscStats();
         this.exp = 0;
         this.features = new ArrayList<Feature>();
@@ -145,10 +146,12 @@ public class CharacterSheet {
         for(int i = 0; i < 6; i++)
         {
             savingThrows[i] = stats.getStat(i,1);
+            /*
             if((profession.getSavingThrows())[i] == 1)
             {
                 savingThrows[i] = savingThrows[i] + miscStats.getProfBonus();
             }
+             */
         }
     }
 
@@ -175,4 +178,10 @@ public class CharacterSheet {
     public void setFeatures(ArrayList<Feature> features) {
         this.features = features;
     }
+
+    public void setProficiency(int prof){
+        proficiency = prof;
+    }
+
+    public int getProficiency(){ return proficiency; }
 }

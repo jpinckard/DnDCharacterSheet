@@ -811,15 +811,15 @@
                                                   <columnConstraints>
                                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="70.0" prefWidth="100.0" />
                                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
                                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
                                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
                                                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
                                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="5.0" />
                                                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                   </columnConstraints>
                                                   <rowConstraints>
@@ -926,59 +926,62 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-AC_array-0" alignment="CENTER" editable="false" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_0" alignment="CENTER" editable="false" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_1" alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" editable="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_2" alignment="CENTER" editable="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
                                                       <TextField id="miscStats-AC_3" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                                                       <TextField id="miscStats-AC_4" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                                                      <TextField id="miscStats-AC_5" alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1" />
                                                       <TextField alignment="CENTER" editable="false" text="Initiative" GridPane.rowIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                      <TextField id="miscStats-init_0" alignment="CENTER" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                      <TextField id="miscStats-init_1" alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                                      <TextField id="miscStats-init_2" alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3" />
                                                       <TextField alignment="CENTER" editable="false" text="Speed" GridPane.rowIndex="5">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-                                                      <TextField alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_1" alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_2" alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_3" alignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_4" alignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_5" alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="5" />
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </VBox.margin>
                                                 </GridPane>
                                                 <HBox alignment="CENTER" fillHeight="false">
                                                    <children>
                                                       <VBox alignment="CENTER" minWidth="70.0" HBox.hgrow="ALWAYS">
                                                          <children>
                                                             <Label text="Proficiency Bonus" textAlignment="CENTER" wrapText="true" />
-                                                            <TextField>
+                                                            <TextField id="proficiency_int" fx:id="profBonus" onKeyTyped="#updateProf">
                                                                <VBox.margin>
                                                                   <Insets left="10.0" right="10.0" />
                                                                </VBox.margin>
@@ -1005,32 +1008,32 @@
                                                         </rowConstraints>
                                                          <children>
                                                             <Label text="Saving Throws" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" />
-                                                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <TextField fx:id="strSavingThrow" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                            <TextField fx:id="dexSavingThrow" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                                            <TextField fx:id="conSavingThrow" GridPane.columnIndex="7" GridPane.rowIndex="2">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                            <TextField fx:id="intSavingThrow" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                            <TextField fx:id="wisSavingThrow" GridPane.columnIndex="4" GridPane.rowIndex="4">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
                                                             </TextField>
-                                                            <TextField GridPane.columnIndex="7" GridPane.rowIndex="4">
+                                                            <TextField fx:id="chaSavingThrow" GridPane.columnIndex="7" GridPane.rowIndex="4">
                                                                <GridPane.margin>
                                                                   <Insets />
                                                                </GridPane.margin>
@@ -1041,32 +1044,32 @@
                                                             <Label text="INT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                             <Label text="WIS" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                                                             <Label text="CHA" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                                                            <RadioButton mnemonicParsing="false" GridPane.rowIndex="2">
+                                                            <RadioButton fx:id="strRadioButton" mnemonicParsing="false" onAction="#updateSavingThrows" GridPane.rowIndex="2">
                                                                <GridPane.margin>
                                                                   <Insets right="10.0" />
                                                                </GridPane.margin>
                                                             </RadioButton>
-                                                            <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                            <RadioButton fx:id="dexRadioButton" mnemonicParsing="false" onAction="#updateSavingThrows" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                                <GridPane.margin>
                                                                   <Insets right="10.0" />
                                                                </GridPane.margin>
                                                             </RadioButton>
-                                                            <RadioButton mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                                            <RadioButton fx:id="conRadioButton" mnemonicParsing="false" onAction="#updateSavingThrows" GridPane.columnIndex="6" GridPane.rowIndex="2">
                                                                <GridPane.margin>
                                                                   <Insets right="10.0" />
                                                                </GridPane.margin>
                                                             </RadioButton>
-                                                            <RadioButton mnemonicParsing="false" GridPane.rowIndex="4">
+                                                            <RadioButton fx:id="intRadioButton" mnemonicParsing="false" onAction="#updateSavingThrows" GridPane.rowIndex="4">
                                                                <GridPane.margin>
                                                                   <Insets right="10.0" />
                                                                </GridPane.margin>
                                                             </RadioButton>
-                                                            <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                            <RadioButton fx:id="wisRadioButton" mnemonicParsing="false" onAction="#updateSavingThrows" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                                                <GridPane.margin>
                                                                   <Insets right="10.0" />
                                                                </GridPane.margin>
                                                             </RadioButton>
-                                                            <RadioButton mnemonicParsing="false" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                                                            <RadioButton fx:id="chaRadioButton" mnemonicParsing="false" onAction="#updateSavingThrows" GridPane.columnIndex="6" GridPane.rowIndex="4">
                                                                <GridPane.margin>
                                                                   <Insets right="10.0" />
                                                                </GridPane.margin>
@@ -1672,7 +1675,7 @@
                                                 <Label text="Treasure Carried" />
                                              </children>
                                           </HBox>
-                                          <TextArea prefHeight="200.0" prefWidth="200.0" />
+                                          <TextArea id="inventory-treasure_str" prefHeight="200.0" prefWidth="200.0" />
                                        </children>
                                     </VBox>
                                  </children>

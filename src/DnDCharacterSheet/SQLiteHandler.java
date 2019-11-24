@@ -154,7 +154,7 @@ public class SQLiteHandler {
                 String name         = rs.getString(4);
                 float weight        = rs.getFloat(5);
 
-                Item item = new Item(name, weight, category, description, amount);
+                Item item = new Item(name, weight, category, description, amount, 0);
                 inventory.add(item);
             }
             //STEP 6: Clean-up environment

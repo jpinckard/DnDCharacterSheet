@@ -111,7 +111,7 @@ public class CharacterSheetController {
 
         if (values.length > 2) {
             // Set the other field. (Use !instance to find the other field.)
-            ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + !instance)).setText(text);
+            ((TextField) scene.lookup("#" + values[0] + "_" + dataType + "_" + instance)).setText(text);
         }
 
         // Reposition the caret

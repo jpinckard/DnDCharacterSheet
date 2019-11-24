@@ -20,7 +20,7 @@ public class MiscStats {
         profBonus = 2;
         AC =  new int[]{ 0,0,0,0,0,0 };
         init = new int[]{ 0,0,0};
-        speed = new int[]{30,30,0,15,0};
+        speed = new int[]{30,30,0,15,0,0};
         carryLoad = 0;
     }
 

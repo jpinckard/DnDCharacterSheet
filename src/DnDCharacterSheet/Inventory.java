@@ -11,6 +11,7 @@ public class Inventory {
     private Equipment charEquipment;
     private ArrayList<Item> items = new ArrayList<Item>();
     private float carriedWeight;
+    private String treasure;
 
     /**
      *

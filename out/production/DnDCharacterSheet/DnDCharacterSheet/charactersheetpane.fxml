@@ -1387,7 +1387,7 @@
                 <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox>
+                        <VBox minHeight="992.0" minWidth="785.0">
                            <children>
                               <GridPane>
                                 <columnConstraints>
@@ -1682,7 +1682,7 @@
                               </GridPane>
                            </children>
                            <padding>
-                              <Insets left="15.0" right="15.0" top="15.0" />
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                            </padding>
                         </VBox>
                      </content>
@@ -2212,1080 +2212,1089 @@
             </Tab>
             <Tab text="Spellbook">
                <content>
-                  <ScrollPane fitToHeight="true" fitToWidth="true">
-                     <content>
-                        <VBox maxHeight="1.7976931348623157E308" minHeight="992.0" minWidth="785.0">
-                           <children>
-                              <GridPane minHeight="501.0" prefHeight="501.0" prefWidth="770.0">
-                                <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin>
+                  <VBox>
+                     <children>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox maxHeight="1.7976931348623157E308" minWidth="785.0">
                                  <children>
+                                    <GridPane minHeight="501.0" prefHeight="501.0" prefWidth="770.0">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets top="15.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <VBox>
+                                             <children>
+                                                <GridPane>
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <TextField id="spellSheet-castClass1_str" onKeyTyped="#SetValue">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-castLevel1_str" onKeyTyped="#SetValue" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <Label text="Class" GridPane.rowIndex="1" />
+                                                      <Label text="Level" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                                <HBox>
+                                                   <children>
+                                                      <Label text="Spells Per Day" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="15.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <GridPane gridLinesVisible="true">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Level" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Total" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Class" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Misc" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Known" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="0" GridPane.rowIndex="2" />
+                                                      <Label text="1" GridPane.rowIndex="3" />
+                                                      <Label text="2" GridPane.rowIndex="4" />
+                                                      <Label text="3" GridPane.rowIndex="5" />
+                                                      <Label text="4" GridPane.rowIndex="6" />
+                                                      <Label text="5" GridPane.rowIndex="7" />
+                                                      <Label text="6" GridPane.rowIndex="8" />
+                                                      <Label text="7" GridPane.rowIndex="9" />
+                                                      <Label text="8" GridPane.rowIndex="10" />
+                                                      <Label text="9" GridPane.rowIndex="11" />
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane>
+                                                  <columnConstraints>
+                                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="85.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Spell Points" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Total" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Class" GridPane.columnIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Ability" GridPane.columnIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Other" GridPane.columnIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Current Points" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField id="spellSheet-spTotal1_int" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-spCurrent1_int" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                                      <TextField id="spellSheet-spClass1_int" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-spAbility1_int" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-spOther1_int" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                             <GridPane.margin>
+                                                <Insets right="10.0" />
+                                             </GridPane.margin>
+                                          </VBox>
+                                          <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Label text="Bloodlines &amp; Patrons" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <VBox maxHeight="110.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <VBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <TextField id="spellSheet-patron1_str" onKeyTyped="#SetValue">
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                            </TextField>
+                                                            <Label text="Bloodline/Patron" />
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <TextField id="spellSheet-patron2_str" onKeyTyped="#SetValue" />
+                                                            <Label text="Bloodline/Patron" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label text="Domains">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <VBox VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Domain">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-domain1_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Subdomain">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-subDomain1_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Domain">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-domain2_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Subdomain">
+                                                               <HBox.margin>
+                                                                  <Insets right="10.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-subDomain2_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </VBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label text="Specialty Schools" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <VBox VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Specialty">
+                                                               <HBox.margin>
+                                                                  <Insets right="15.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-specialtySchool_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Focus">
+                                                               <HBox.margin>
+                                                                  <Insets left="25.0" right="15.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-specialtyFocus_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Prohibited">
+                                                               <HBox.margin>
+                                                                  <Insets right="15.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-specialtyProhibited1_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label text="Prohibited">
+                                                               <HBox.margin>
+                                                                  <Insets right="15.0" />
+                                                               </HBox.margin>
+                                                            </Label>
+                                                            <TextField id="spellSheet-specialtyProhibited2_str" onKeyTyped="#SetValue" HBox.hgrow="ALWAYS" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </VBox>
+                                          <VBox GridPane.columnIndex="2">
+                                             <children>
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <TextField id="spellSheet-castClass2_str" onKeyTyped="#SetValue">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-castLevel2_str" onKeyTyped="#SetValue" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <Label text="Class" GridPane.rowIndex="1" />
+                                                      <Label text="Level" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                                <HBox>
+                                                   <children>
+                                                      <Label text="Spells Per Day" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets top="15.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <GridPane gridLinesVisible="true">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Level" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Total" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Class" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Misc" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Known" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="0" GridPane.rowIndex="2" />
+                                                      <Label text="1" GridPane.rowIndex="3" />
+                                                      <Label text="2" GridPane.rowIndex="4" />
+                                                      <Label text="3" GridPane.rowIndex="5" />
+                                                      <Label text="4" GridPane.rowIndex="6" />
+                                                      <Label text="5" GridPane.rowIndex="7" />
+                                                      <Label text="6" GridPane.rowIndex="8" />
+                                                      <Label text="7" GridPane.rowIndex="9" />
+                                                      <Label text="8" GridPane.rowIndex="10" />
+                                                      <Label text="9" GridPane.rowIndex="11" />
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="2" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="3" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="5">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="6">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="7">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="8">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="9">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="10">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField GridPane.columnIndex="4" GridPane.rowIndex="11">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane>
+                                                   <columnConstraints>
+                                                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="85.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Label text="Spell Points" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Total" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Class" GridPane.columnIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Ability" GridPane.columnIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Other" GridPane.columnIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <Label text="Current Points" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Label>
+                                                      <TextField id="spellSheet-spTotal2_int" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets right="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-spCurrent2_int" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                                      <TextField id="spellSheet-spClass2_int" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-spAbility2_int" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                      <TextField id="spellSheet-spOther2_int" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </VBox>
+                                       </children>
+                                    </GridPane>
+                                    <Button mnemonicParsing="false" onAction="#dynamicSpellAdder" text="Button" />
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Spells" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets top="15.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <Label text="Level 0" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                      <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel1Grid2">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <ComboBox fx:id="spellLevel0Box" editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
+                                          <TextField />
+                                       </children>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 1" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
                                     <VBox>
                                        <children>
-                                          <GridPane>
+                                          <GridPane fx:id="spellLevel1Grid">
                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                               <RowConstraints vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <TextField>
-                                                   <GridPane.margin>
-                                                      <Insets right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <Label text="Class" GridPane.rowIndex="1" />
-                                                <Label text="Level" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                             </children>
-                                          </GridPane>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Spells Per Day" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="15.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <GridPane gridLinesVisible="true">
-                                            <columnConstraints>
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Label text="Level" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Total" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Class" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Misc" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Known" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="0" GridPane.rowIndex="2" />
-                                                <Label text="1" GridPane.rowIndex="3" />
-                                                <Label text="2" GridPane.rowIndex="4" />
-                                                <Label text="3" GridPane.rowIndex="5" />
-                                                <Label text="4" GridPane.rowIndex="6" />
-                                                <Label text="5" GridPane.rowIndex="7" />
-                                                <Label text="6" GridPane.rowIndex="8" />
-                                                <Label text="7" GridPane.rowIndex="9" />
-                                                <Label text="8" GridPane.rowIndex="10" />
-                                                <Label text="9" GridPane.rowIndex="11" />
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                             </children>
-                                          </GridPane>
-                                          <GridPane>
-                                            <columnConstraints>
-                                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="85.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Label text="Spell Points" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Total" GridPane.columnIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets right="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Class" GridPane.columnIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Ability" GridPane.columnIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Other" GridPane.columnIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Current Points" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                             </children>
-                                          </GridPane>
-                                       </children>
-                                       <GridPane.margin>
-                                          <Insets right="10.0" />
-                                       </GridPane.margin>
-                                    </VBox>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Bloodlines &amp; Patrons" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets bottom="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <VBox maxHeight="110.0" VBox.vgrow="ALWAYS">
-                                             <children>
-                                                <VBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <TextField>
-                                                         <opaqueInsets>
-                                                            <Insets />
-                                                         </opaqueInsets>
-                                                      </TextField>
-                                                      <Label text="Bloodline/Patron" />
-                                                   </children>
-                                                </VBox>
-                                                <VBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <TextField />
-                                                      <Label text="Bloodline/Patron" />
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </VBox>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Domains">
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets bottom="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <VBox VBox.vgrow="ALWAYS">
-                                             <children>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Domain">
-                                                         <HBox.margin>
-                                                            <Insets right="10.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Subdomain">
-                                                         <HBox.margin>
-                                                            <Insets right="10.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Domain">
-                                                         <HBox.margin>
-                                                            <Insets right="10.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Subdomain">
-                                                         <HBox.margin>
-                                                            <Insets right="10.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
+                                                <ComboBox editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
+                                                <TextField />
                                              </children>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
-                                          </VBox>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Specialty Schools" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets bottom="10.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <VBox VBox.vgrow="ALWAYS">
-                                             <children>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Specialty">
-                                                         <HBox.margin>
-                                                            <Insets right="15.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Focus">
-                                                         <HBox.margin>
-                                                            <Insets left="25.0" right="15.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Prohibited">
-                                                         <HBox.margin>
-                                                            <Insets right="15.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox VBox.vgrow="ALWAYS">
-                                                   <children>
-                                                      <Label text="Prohibited">
-                                                         <HBox.margin>
-                                                            <Insets right="15.0" />
-                                                         </HBox.margin>
-                                                      </Label>
-                                                      <TextField HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
+                                          </GridPane>
                                        </children>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" right="10.0" />
-                                       </GridPane.margin>
                                     </VBox>
-                                    <VBox GridPane.columnIndex="2">
+                                    <HBox minHeight="17.0">
                                        <children>
-                                          <GridPane>
-                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <TextField>
-                                                   <GridPane.margin>
-                                                      <Insets right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <Label text="Class" GridPane.rowIndex="1" />
-                                                <Label text="Level" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                             </children>
-                                          </GridPane>
-                                          <HBox>
-                                             <children>
-                                                <Label text="Spells Per Day" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="15.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <GridPane gridLinesVisible="true">
-                                             <columnConstraints>
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <Label text="Level" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Total" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Class" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Misc" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Known" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="0" GridPane.rowIndex="2" />
-                                                <Label text="1" GridPane.rowIndex="3" />
-                                                <Label text="2" GridPane.rowIndex="4" />
-                                                <Label text="3" GridPane.rowIndex="5" />
-                                                <Label text="4" GridPane.rowIndex="6" />
-                                                <Label text="5" GridPane.rowIndex="7" />
-                                                <Label text="6" GridPane.rowIndex="8" />
-                                                <Label text="7" GridPane.rowIndex="9" />
-                                                <Label text="8" GridPane.rowIndex="10" />
-                                                <Label text="9" GridPane.rowIndex="11" />
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="5">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="6">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="7">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="8">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="9">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="10">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="11">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                             </children>
-                                          </GridPane>
-                                          <GridPane>
-                                             <columnConstraints>
-                                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="85.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <Label text="Spell Points" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Total" GridPane.columnIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets right="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Class" GridPane.columnIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Ability" GridPane.columnIndex="3">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Other" GridPane.columnIndex="4">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <Label text="Current Points" GridPane.rowIndex="2">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </Label>
-                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets right="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                                                <TextField GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                                <TextField GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                                   <GridPane.margin>
-                                                      <Insets left="5.0" />
-                                                   </GridPane.margin>
-                                                </TextField>
-                                             </children>
-                                          </GridPane>
+                                          <Label text="Level 2" />
                                        </children>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </VBox>
-                                 </children>
-                              </GridPane>
-                              <Button mnemonicParsing="false" onAction="#dynamicSpellAdder" text="Button" />
-                              <HBox minHeight="17.0">
-                                 <children>
-                                    <Label text="Spells" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox>
-                                 <children>
-                                    <Label text="Level 0" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
-                              <GridPane gridLinesVisible="true">
-                                <columnConstraints>
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <children>
-                                    <Label text="Level" GridPane.columnIndex="1" />
-                                    <Label text="Prep" GridPane.columnIndex="2" />
-                                    <Label text="Used" />
-                                    <Label text="Name" GridPane.columnIndex="3" />
-                                    <Label text="School" GridPane.columnIndex="4" />
-                                    <Label text="Duration" GridPane.columnIndex="5" />
-                                    <Label text="Range" GridPane.columnIndex="6" />
-                                    <Label text="Save" GridPane.columnIndex="7" />
-                                 </children>
-                              </GridPane>
-                              <VBox fx:id="spellPaneLevel0">
-                                 <children>
-                                    <HBox>
-                                       <children>
-                                          <ComboBox fx:id="spellLevel0Box" editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <HBox minHeight="17.0">
-                                 <children>
-                                    <Label text="Level 0" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <GridPane gridLinesVisible="true">
-                                 <columnConstraints>
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <Label text="Level" GridPane.columnIndex="1" />
-                                    <Label text="Prep" GridPane.columnIndex="2" />
-                                    <Label text="Used" />
-                                    <Label text="Name" GridPane.columnIndex="3" />
-                                    <Label text="School" GridPane.columnIndex="4" />
-                                    <Label text="Duration" GridPane.columnIndex="5" />
-                                    <Label text="Range" GridPane.columnIndex="6" />
-                                    <Label text="Save" GridPane.columnIndex="7" />
-                                 </children>
-                              </GridPane>
-                              <VBox>
-                                 <children>
-                                    <GridPane fx:id="spellLevel1Grid">
-                                      <columnConstraints>
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <ComboBox fx:id="spellLevel0Box1" editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
-                                          <TextField />
-                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel1Grid1">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <ComboBox editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
+                                          <TextField />
+                                       </children>
                                     </GridPane>
                                  </children>
+                                 <padding>
+                                    <Insets left="15.0" right="15.0" />
+                                 </padding>
                               </VBox>
-                              <HBox minHeight="17.0">
-                                 <children>
-                                    <Label text="Level 0" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <GridPane gridLinesVisible="true">
-                                 <columnConstraints>
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <Label text="Level" GridPane.columnIndex="1" />
-                                    <Label text="Prep" GridPane.columnIndex="2" />
-                                    <Label text="Used" />
-                                    <Label text="Name" GridPane.columnIndex="3" />
-                                    <Label text="School" GridPane.columnIndex="4" />
-                                    <Label text="Duration" GridPane.columnIndex="5" />
-                                    <Label text="Range" GridPane.columnIndex="6" />
-                                    <Label text="Save" GridPane.columnIndex="7" />
-                                 </children>
-                              </GridPane>
-                              <GridPane fx:id="spellLevel1Grid1">
-                                 <columnConstraints>
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <ComboBox fx:id="spellLevel0Box11" editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
-                                    <TextField />
-                                 </children>
-                              </GridPane>
-                           </children>
-                           <padding>
-                              <Insets left="15.0" right="15.0" />
-                           </padding>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </content>
             </Tab>
         </tabs>

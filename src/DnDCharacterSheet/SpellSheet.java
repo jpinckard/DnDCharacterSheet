@@ -4,14 +4,38 @@ import java.util.ArrayList;
 
 public class SpellSheet {
     private ArrayList<Spell> spells;
-    private int[] cspd;
-    private int[] abilityBonus;
-    private int[] misc;
-    private int[] known;
-    private int spClass;
-    private int spAbility;
-    private int spOther;
-    private int spCurrent;
+    private int[] cspd1;
+    private int[] abilityBonus1;
+    private int[] misc1;
+    private int[] known1;
+    private int[] cspd2;
+    private int[] abilityBonus2;
+    private int[] misc2;
+    private int[] known2;
+    private int spTotal1;
+    private int spClass1;
+    private int spAbility1;
+    private int spOther1;
+    private int spCurrent1;
+    private int spTotal2;
+    private int spClass2;
+    private int spAbility2;
+    private int spOther2;
+    private int spCurrent2;
+    private String castClass1;
+    private String castClass2;
+    private String castLevel1;
+    private String castLevel2;
+    private String patron1;
+    private String patron2;
+    private String domain1;
+    private String subDomain1;
+    private String domain2;
+    private String subDomain2;
+    private String specialtySchool;
+    private String specialtyFocus;
+    private String specialtyProhibited1;
+    private String specialtyProhibited2;
 
     public ArrayList<Spell> getSpells() {
         return spells;
@@ -21,67 +45,67 @@ public class SpellSheet {
         this.spells = spells;
     }
 
-    public int[] getCspd() {
-        return cspd;
+    public int[] getCspd1() {
+        return cspd1;
     }
 
-    public void setCspd(int[] cspd) {
-        this.cspd = cspd;
+    public void setCspd1(int[] cspd) {
+        this.cspd1 = cspd;
     }
 
-    public int[] getAbilityBonus() {
-        return abilityBonus;
+    public int[] getAbilityBonus1() {
+        return abilityBonus1;
     }
 
-    public void setAbilityBonus(int[] abilityBonus) {
-        this.abilityBonus = abilityBonus;
+    public void setAbilityBonus1(int[] abilityBonus) {
+        this.abilityBonus1 = abilityBonus;
     }
 
-    public int[] getMisc() {
-        return misc;
+    public int[] getMisc1() {
+        return misc1;
     }
 
-    public void setMisc(int[] misc) {
-        this.misc = misc;
+    public void setMisc1(int[] misc) {
+        this.misc1 = misc;
     }
 
-    public int[] getKnown() {
-        return known;
+    public int[] getKnown1() {
+        return known1;
     }
 
-    public void setKnown(int[] known) {
-        this.known = known;
+    public void setKnown1(int[] known) {
+        this.known1 = known;
     }
 
-    public int getSpClass() {
-        return spClass;
+    public int getSpClass1() {
+        return spClass1;
     }
 
-    public void setSpClass(int spClass) {
-        this.spClass = spClass;
+    public void setSpClass1(int spClass) {
+        this.spClass1 = spClass;
     }
 
-    public int getSpAbility() {
-        return spAbility;
+    public int getSpAbility1() {
+        return spAbility1;
     }
 
-    public void setSpAbility(int spAbility) {
-        this.spAbility = spAbility;
+    public void setSpAbility1(int spAbility) {
+        this.spAbility1 = spAbility;
     }
 
-    public int getSpOther() {
-        return spOther;
+    public int getSpOther1() {
+        return spOther1;
     }
 
-    public void setSpOther(int spOther) {
-        this.spOther = spOther;
+    public void setSpOther1(int spOther) {
+        this.spOther1 = spOther;
     }
 
-    public int getSpCurrent() {
-        return spCurrent;
+    public int getSpCurrent1() {
+        return spCurrent1;
     }
 
-    public void setSpCurrent(int spCurrent) {
-        this.spCurrent = spCurrent;
+    public void setSpCurrent1(int spCurrent) {
+        this.spCurrent1 = spCurrent;
     }
 }

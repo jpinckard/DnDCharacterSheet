@@ -3114,7 +3114,6 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
-                                    <Button mnemonicParsing="false" onAction="#dynamicSpellAdder" text="Button" />
                                     <HBox minHeight="17.0">
                                        <children>
                                           <Label text="Spells" />
@@ -3166,19 +3165,12 @@
                                           <Label text="Save" GridPane.columnIndex="7" />
                                        </children>
                                     </GridPane>
-                                    <GridPane fx:id="spellLevel1Grid2">
+                                    <GridPane fx:id="spellLevel0Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <ComboBox fx:id="spellLevel0Box" editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
-                                          <TextField />
-                                       </children>
                                     </GridPane>
                                     <HBox minHeight="17.0">
                                        <children>
@@ -3228,10 +3220,6 @@
                                             <rowConstraints>
                                               <RowConstraints vgrow="SOMETIMES" />
                                             </rowConstraints>
-                                             <children>
-                                                <ComboBox editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
-                                                <TextField />
-                                             </children>
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -3275,23 +3263,303 @@
                                           <Label text="Save" GridPane.columnIndex="7" />
                                        </children>
                                     </GridPane>
-                                    <GridPane fx:id="spellLevel1Grid1">
+                                    <GridPane fx:id="spellLevel2Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 3" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <ComboBox editable="true" maxWidth="1.7976931348623157E308" prefWidth="770.0" GridPane.columnIndex="1" />
-                                          <TextField />
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
                                        </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel3Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 4" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel4Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 5" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel5Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 6" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel6Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 7" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel7Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 8" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel8Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
+                                    </GridPane>
+                                    <HBox minHeight="17.0">
+                                       <children>
+                                          <Label text="Level 9" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </HBox>
+                                    <GridPane gridLinesVisible="true">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="Level" GridPane.columnIndex="1" />
+                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Used" />
+                                          <Label text="Name" GridPane.columnIndex="3" />
+                                          <Label text="School" GridPane.columnIndex="4" />
+                                          <Label text="Duration" GridPane.columnIndex="5" />
+                                          <Label text="Range" GridPane.columnIndex="6" />
+                                          <Label text="Save" GridPane.columnIndex="7" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane fx:id="spellLevel9Grid">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                       </columnConstraints>
                                     </GridPane>
                                  </children>
                                  <padding>
-                                    <Insets left="15.0" right="15.0" />
+                                    <Insets bottom="15.0" left="15.0" right="15.0" />
                                  </padding>
                               </VBox>
                            </content>

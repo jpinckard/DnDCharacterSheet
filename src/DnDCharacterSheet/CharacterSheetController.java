@@ -72,10 +72,16 @@ public class CharacterSheetController {
     @FXML Button buttonGPDown;
     @FXML Button buttonPPDown;
 
-    @FXML
-    ComboBox spellLevel0Box;
-    @FXML
-    GridPane spellLevel1Grid;
+    @FXML GridPane spellLevel0Grid;
+    @FXML GridPane spellLevel1Grid;
+    @FXML GridPane spellLevel2Grid;
+    @FXML GridPane spellLevel3Grid;
+    @FXML GridPane spellLevel4Grid;
+    @FXML GridPane spellLevel5Grid;
+    @FXML GridPane spellLevel6Grid;
+    @FXML GridPane spellLevel7Grid;
+    @FXML GridPane spellLevel8Grid;
+    @FXML GridPane spellLevel9Grid;
 
 
     ArrayList<HBox> spellLevel0HBoxList = new ArrayList<>();
@@ -85,7 +91,17 @@ public class CharacterSheetController {
      */
     @FXML
     private void initialize() {
-        spellLevel0Box.setItems(list);
+        dynamicSpellAdder(spellLevel0Grid);
+        dynamicSpellAdder(spellLevel1Grid);
+        dynamicSpellAdder(spellLevel2Grid);
+        dynamicSpellAdder(spellLevel3Grid);
+        dynamicSpellAdder(spellLevel4Grid);
+        dynamicSpellAdder(spellLevel5Grid);
+        dynamicSpellAdder(spellLevel6Grid);
+        dynamicSpellAdder(spellLevel7Grid);
+        dynamicSpellAdder(spellLevel8Grid);
+        dynamicSpellAdder(spellLevel9Grid);
+
     }
 
     /**
@@ -403,59 +419,42 @@ public class CharacterSheetController {
      * Ex: player adds two spells - gridpane has rows 0, 1, 2 - spell array has spells 0, 1, 2
      * player deleted spell, number 1. gridpane has rows 0, 1 (now hidden), 2 - spell array has spells 0, 1 (now set to null), 2.
      * When sheet is saved, save method steps through spell arraylist and saves ONLY spells != null.
-     * @param event
+     * @param spellgrid
      */
-    public void dynamicSpellAdder(ActionEvent event) {
+    public void dynamicSpellAdder(GridPane spellgrid) {
 
-        /*
-        //get the number of children in the box minus 1 since it already has a box in it
-        int index = spellPaneLevel0.getChildren().size() - 1;
-
-        System.out.println("The size of the VBox is: " + index);
-        // add the HBox to the arraylist so we can keep track of it
-        spellLevel0HBoxList.add(new HBox(new ComboBox(list)));
-        // find the HBox in the arraylist then the ComboBox so we can set the combobox's values
-        ((ComboBox) ((spellLevel0HBoxList.get(index).getChildren()).get(0))).setEditable(true);
-        ((ComboBox) ((spellLevel0HBoxList.get(index).getChildren()).get(0))).setPrefWidth(770);
-        ((ComboBox) ((spellLevel0HBoxList.get(index).getChildren()).get(0))).setMaxWidth(1.7976931348623157E308);
-        // add the member of the arraylist to the GUI
-        spellPaneLevel0.getChildren().add(spellLevel0HBoxList.get(index));
-        // disable the previous box
-        */
-
-        /*
-        ComboBox temp = new ComboBox(list);
-        temp.setEditable(true);
-        temp.setPrefWidth(770);
-        temp.setMaxWidth(1.7976931348623157E308);
-        */
-
-        int rowindex = spellLevel1Grid.getRowCount();
+        int rowindex = spellgrid.getRowCount();
 
         // add new items to list
-        spellLevel1Grid.add(new TextField(), 0, rowindex, 1, 1);
-        spellLevel1Grid.add(new ComboBox(list), 1, rowindex, 1, 1);
-        spellLevel1Grid.add(new Button("X"), 2, rowindex, 1, 1);
-       // spellLevel1Grid.getRowConstraints().add(rowindex, new RowConstraints(30));
-                //set(rowindex, new RowConstraints(30));
-                //add(new RowConstraints(30));
-
+        spellgrid.add(new TextField(), 0, rowindex, 1, 1);
+        spellgrid.add(new ComboBox(list), 1, rowindex, 1, 1);
+        spellgrid.add(new Button("X"), 2, rowindex, 1, 1);
 
         // get all the fields we're currently working with to format them
-        TextField currentfield = (TextField) getNodeFromGridPane(spellLevel1Grid, 0, rowindex);
-        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellLevel1Grid, 1, rowindex);
-        Button currentbutton = (Button) getNodeFromGridPane(spellLevel1Grid, 2, rowindex);
+        TextField currentfield = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
+        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex - 1);
+        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex);
+        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 2, rowindex);
 
         //format the items
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);
+        currentbox.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e){
+                dynamicSpellAdder(spellgrid);
+            }
+        });
         //spellLevel1Grid.setMargin(currentbox, new Insets(3, 0, 0, 0));
+
+        if(prevbox != null)prevbox.setDisable(true);
 
        currentbutton.setOnAction(new EventHandler<ActionEvent>() {
            @Override public void handle(ActionEvent e) {
-
-              spellLevel1Grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) == rowindex);
+               if((getNodeFromGridPane(spellgrid, 1, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
+                   spellgrid.getChildren().removeIf(node -> (GridPane.getRowIndex(node) != null) && (GridPane.getRowIndex(node) == rowindex));
+               }
        }
        });
     }
@@ -522,6 +521,11 @@ public class CharacterSheetController {
         updateSavingThrows();
     }
 
+    /**
+     * Controller function that enables buttons in currency box to increment and decrement currency.
+     * Updates the textboxes with the value of currency when called.
+     * @param event
+     */
     public void changeCurrency (ActionEvent event){
         // Button functionality for CP
         if(event.getSource() == buttonCPUp) {

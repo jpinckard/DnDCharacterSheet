@@ -64,73 +64,40 @@ public class MiscStats {
         return AC;
     }
 
-    /**
-     *
-     * @return
-     */
     public int[] getInit() {
         return init;
     }
 
-    /**
-     *
-     * @return
-     */
     public int[] getSpeed() {
         return speed;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getCarryLoad() {
         return carryLoad;
     }
 
-    /**
-     *
-     * @param profBonus
-     */
     public void setProfBonus(int profBonus) {
         this.profBonus = profBonus;
     }
 
-    /**
-     *
-     * @param AC
-     */
     public void setAC(int[] AC) {
         this.AC = AC;
     }
 
-    /**
-     *
-     * @param init
-     */
     public void setInit(int[] init) {
         this.init = init;
     }
 
-    /**
-     *
-     * @param speed
-     */
     public void setSpeed(int[] speed) {
         this.speed = speed;
     }
 
-    /**
-     *
-     * @param carryLoad
-     */
     public void setCarryLoad(int carryLoad) {
         this.carryLoad = carryLoad;
     }
 
     /**
-     *
-     * @param equip
+     * Calculates the AC of the character based on the equipment.
      */
     public void calcAC(Equipment equip)
     {

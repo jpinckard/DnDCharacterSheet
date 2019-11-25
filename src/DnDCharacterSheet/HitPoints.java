@@ -192,19 +192,6 @@ public class HitPoints
         tempMaxHP = tempMaxHP + profession.getHd()+stats.getStat(3,1); // First level of HP uses max of die roll
         maxHP = tempMaxHP;
     }
-
-    /**
-     * Calculates the difference between the value you fall unconscious at and your max HP
-     * This is used to determine the value of the progressbar representing your health
-     * @param maxHP
-     * @param bleedOut
-     * @return
-     */
-
-    public int calculateHpDiff(int maxHP, int bleedOut){
-        int hpDiff = maxHP + bleedOut;
-        return hpDiff;
-    }
 }
 
 

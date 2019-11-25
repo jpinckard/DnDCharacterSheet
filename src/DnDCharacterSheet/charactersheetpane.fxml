@@ -1565,37 +1565,37 @@
                                                 <Label text="Electrum" GridPane.columnIndex="2" />
                                                 <Label text="Gold" GridPane.columnIndex="3" />
                                                 <Label text="Platinum" GridPane.columnIndex="4" />
-                                                <Button mnemonicParsing="false" text="^" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" text="v" GridPane.rowIndex="3" />
-                                                <Button mnemonicParsing="false" text="^" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" text="^" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" text="^" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" text="^" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" text="v" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <Button mnemonicParsing="false" text="v" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                                <Button mnemonicParsing="false" text="v" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                <Button mnemonicParsing="false" text="v" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                                <TextField alignment="CENTER" GridPane.rowIndex="2">
+                                                <Button fx:id="buttonCPUp" mnemonicParsing="false" onAction="#changeCurrency" text="^" GridPane.rowIndex="1" />
+                                                <Button fx:id="buttonCPDown" mnemonicParsing="false" onAction="#changeCurrency" text="v" GridPane.rowIndex="3" />
+                                                <Button fx:id="buttonSPUp" mnemonicParsing="false" onAction="#changeCurrency" text="^" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button fx:id="buttonEPUp" mnemonicParsing="false" onAction="#changeCurrency" text="^" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Button fx:id="buttonGPUp" mnemonicParsing="false" onAction="#changeCurrency" text="^" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <Button fx:id="buttonPPUp" mnemonicParsing="false" onAction="#changeCurrency" text="^" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                <Button fx:id="buttonSPDown" mnemonicParsing="false" onAction="#changeCurrency" text="v" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Button fx:id="buttonEPDown" mnemonicParsing="false" onAction="#changeCurrency" text="v" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <Button fx:id="buttonGPDown" mnemonicParsing="false" onAction="#changeCurrency" text="v" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Button fx:id="buttonPPDown" mnemonicParsing="false" onAction="#changeCurrency" text="v" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                                <TextField id="currency-cp_int" fx:id="currencyCP" alignment="CENTER" onKeyTyped="#SetValue" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets left="5.0" right="5.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <TextField id="currency-sp_int" fx:id="currencySP" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets left="5.0" right="5.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                <TextField id="currency-ep_int" fx:id="currencyEP" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets left="5.0" right="5.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                <TextField id="currency-gp_int" fx:id="currencyGP" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets left="5.0" right="5.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <TextField alignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                <TextField id="currency-pp_int" fx:id="currencyPP" alignment="CENTER" onKeyTyped="#SetValue" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                                    <GridPane.margin>
                                                       <Insets left="5.0" right="5.0" />
                                                    </GridPane.margin>

@@ -9,11 +9,21 @@ import javafx.scene.control.Hyperlink;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * This class handles everything in the starting scene of the program.
+ * ONLY serves as a point for either beginning wizard, opening new character sheet,
+ * initializing character sheet from saved values. No other functionality.
+ */
 public class StartSceneController {
 
     @FXML
     private Hyperlink blankcharbutton;
 
+    /**
+     * Function that opens the charactersheetpane. The end.
+     * @param event
+     * @throws Exception
+     */
     public void openCharSheetPane (ActionEvent event) throws Exception{
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));

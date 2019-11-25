@@ -14,7 +14,7 @@ public class Inventory {
     private String treasure;
 
     /**
-     *
+     * Parameterized constructor for Inventory class.
      * @param money
      * @param charEquipment
      * @param items
@@ -27,6 +27,9 @@ public class Inventory {
         this.carriedWeight = carriedWeight;
     }
 
+    /**
+     * Default constructor for Inventory class.
+     */
     public Inventory() {
         this.money = new Currency();
         this.charEquipment = new Equipment();
@@ -34,72 +37,40 @@ public class Inventory {
         this.carriedWeight = 0.0f;
     }
 
-    /**
-     *
-     * @return
-     */
     public DnDCharacterSheet.Currency getMoney() {
         return money;
     }
 
-    /**
-     *
-     * @return
-     */
     public Equipment getCharEquipment() {
         return charEquipment;
     }
 
-    /**
-     *
-     * @return
-     */
     public ArrayList<Item> getItems() {
         return items;
     }
 
-    /**
-     *
-     * @return
-     */
     public float getCarriedWeight() {
         return carriedWeight;
     }
 
-    /**
-     *
-     * @param money
-     */
     public void setMoney(Currency money) {
         this.money = money;
     }
 
-    /**
-     *
-     * @param charEquipment
-     */
     public void setCharEquipment(Equipment charEquipment) {
         this.charEquipment = charEquipment;
     }
 
-    /**
-     *
-     * @param items
-     */
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    /**
-     *
-     * @param carriedWeight
-     */
     public void setCarriedWeight(float carriedWeight) {
         this.carriedWeight = carriedWeight;
     }
 
     /**
-     *
+     * Method to calculate the total carried weight of the inventory.
      */
     public void calcCarriedWeight(){
 

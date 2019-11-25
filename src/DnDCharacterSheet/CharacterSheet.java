@@ -24,6 +24,7 @@ public class CharacterSheet {
     private ArrayList<Feature> features;
     private Story charstory;
     private int proficiency;
+    private Currency currency;
 
     public CharacterSheet() {
         this.name = "";
@@ -45,6 +46,7 @@ public class CharacterSheet {
         this.exp = 0;
         this.features = new ArrayList<Feature>();
         this.charstory = new Story();
+        this.currency = new Currency();
     }
 
     public String getName() {
@@ -184,4 +186,6 @@ public class CharacterSheet {
     }
 
     public int getProficiency(){ return proficiency; }
+
+    public Currency getCurrency(){ return currency; }
 }

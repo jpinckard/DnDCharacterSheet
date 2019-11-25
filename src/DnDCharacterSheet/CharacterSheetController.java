@@ -22,7 +22,11 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-
+/**
+ * This class handles everything in the main charactersheet GUI.
+ * On loading a new character need to perform check if file has been provided,
+ * then use initialize method to initialize the character sheet with loaded in values.
+ */
 public class CharacterSheetController {
 
     CharacterSheet characterSheet = new CharacterSheet();
@@ -33,7 +37,7 @@ public class CharacterSheetController {
             "Celery", "Cucumber", "Leek", "Mushroom", "Pepper",
             "Radish", "Shallot", "Spinach", "Swede", "Turnip");
 
-
+    // declare fields for saving throws
     @FXML TextField strSavingThrow;
     @FXML TextField dexSavingThrow;
     @FXML TextField conSavingThrow;
@@ -41,13 +45,32 @@ public class CharacterSheetController {
     @FXML TextField wisSavingThrow;
     @FXML TextField chaSavingThrow;
     @FXML TextField profBonus;
-
+    // declare radiobuttons for savingthrows
     @FXML RadioButton strRadioButton;
     @FXML RadioButton dexRadioButton;
     @FXML RadioButton conRadioButton;
     @FXML RadioButton intRadioButton;
     @FXML RadioButton wisRadioButton;
     @FXML RadioButton chaRadioButton;
+
+    // Declare fields for currency
+    @FXML TextField currencyCP;
+    @FXML TextField currencySP;
+    @FXML TextField currencyEP;
+    @FXML TextField currencyGP;
+    @FXML TextField currencyPP;
+    // Declare up buttons for currency
+    @FXML Button buttonCPUp;
+    @FXML Button buttonSPUp;
+    @FXML Button buttonEPUp;
+    @FXML Button buttonGPUp;
+    @FXML Button buttonPPUp;
+    // Declare down buttons for currency
+    @FXML Button buttonCPDown;
+    @FXML Button buttonSPDown;
+    @FXML Button buttonEPDown;
+    @FXML Button buttonGPDown;
+    @FXML Button buttonPPDown;
 
     @FXML
     ComboBox spellLevel0Box;
@@ -497,5 +520,53 @@ public class CharacterSheetController {
     public void updateProf(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
         SetValue(event);
         updateSavingThrows();
+    }
+
+    public void changeCurrency (ActionEvent event){
+        // Button functionality for CP
+        if(event.getSource() == buttonCPUp) {
+            characterSheet.getCurrency().incCp();
+            currencyCP.setText(String.valueOf(characterSheet.getCurrency().getCp()));
+        }
+        if(event.getSource() == buttonCPDown) {
+            characterSheet.getCurrency().decCp();
+            currencyCP.setText(String.valueOf(characterSheet.getCurrency().getCp()));
+        }
+        // Button functionality for SP
+        if(event.getSource() == buttonSPUp) {
+            characterSheet.getCurrency().incSp();
+            currencySP.setText(String.valueOf(characterSheet.getCurrency().getSp()));
+        }
+        if(event.getSource() == buttonSPDown) {
+            characterSheet.getCurrency().decSp();
+            currencySP.setText(String.valueOf(characterSheet.getCurrency().getSp()));
+        }
+        // Button functionality for GP
+        if(event.getSource() == buttonGPUp) {
+            characterSheet.getCurrency().incGp();
+            currencyGP.setText(String.valueOf(characterSheet.getCurrency().getGp()));
+        }
+        if(event.getSource() == buttonGPDown) {
+            characterSheet.getCurrency().decGp();
+            currencyGP.setText(String.valueOf(characterSheet.getCurrency().getGp()));
+        }
+        // Button functionality for EP
+        if(event.getSource() == buttonEPUp) {
+            characterSheet.getCurrency().incEp();
+            currencyEP.setText(String.valueOf(characterSheet.getCurrency().getEp()));
+        }
+        if(event.getSource() == buttonEPDown) {
+            characterSheet.getCurrency().decEp();
+            currencyEP.setText(String.valueOf(characterSheet.getCurrency().getEp()));
+        }
+        // Button functionality for PP
+        if(event.getSource() == buttonPPUp) {
+            characterSheet.getCurrency().incPp();
+            currencyPP.setText(String.valueOf(characterSheet.getCurrency().getPp()));
+        }
+        if(event.getSource() == buttonPPDown) {
+            characterSheet.getCurrency().decPp();
+            currencyPP.setText(String.valueOf(characterSheet.getCurrency().getPp()));
+        }
     }
 }

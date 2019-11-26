@@ -21,6 +21,13 @@ public class Armor extends Item
         stealthDisadvantage = false;
     }
 
+    public Armor(int baseAC, String aGroup, boolean stealthDisadvantage)
+    {
+        this.baseAC = baseAC;
+        this.aGroup = aGroup;
+        this.stealthDisadvantage = stealthDisadvantage;
+    }
+
     /**
      * Sets value for base AC.
      * @param baseAC value of baseAC

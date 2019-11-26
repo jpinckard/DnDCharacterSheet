@@ -31,14 +31,16 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from INVENTORY;
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[/*
+select * from INVENTORY;
 select * from ARMOR;
 select * from SPELLS;
 select * from WEAPONS;
 select * from RACES;
 select * from PROFESSIONS;
+*/
 
-CREATE TABLE PROFFESIONS (
+CREATE TABLE PROFESSIONS (
     ID INT primary key,
     NAME TEXT,
     HD INT,
@@ -48,7 +50,7 @@ CREATE TABLE PROFFESIONS (
     SKILLS TEXT
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -61,7 +63,7 @@ INSERT INTO PROFFESIONS (
     "101000"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -74,7 +76,7 @@ INSERT INTO PROFFESIONS (
     "010001"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -87,7 +89,7 @@ INSERT INTO PROFFESIONS (
     "000011"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -100,7 +102,7 @@ INSERT INTO PROFFESIONS (
     "000110"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -113,7 +115,7 @@ INSERT INTO PROFFESIONS (
     "110000"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -126,7 +128,7 @@ INSERT INTO PROFFESIONS (
     "010010"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -139,7 +141,7 @@ INSERT INTO PROFFESIONS (
     "100001"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -152,7 +154,7 @@ INSERT INTO PROFFESIONS (
     "010010"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -165,7 +167,7 @@ INSERT INTO PROFFESIONS (
     "010100"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -178,7 +180,7 @@ INSERT INTO PROFFESIONS (
     "001001"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -191,7 +193,7 @@ INSERT INTO PROFFESIONS (
     "000011"
 );
 
-INSERT INTO PROFFESIONS (
+INSERT INTO PROFESSIONS (
     ID,
     NAME,
     HD,
@@ -213,165 +215,140 @@ CREATE TABLE RACES (
 );
 
 INSERT INTO RACES (
-    ID,
-    NAME
-) VALUES (
-    601,
-    "Barbarian",
-    12,
-);
-
-INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    701,
+    "Barbarian",
+    "002010",
+    12
+);
+
+INSERT INTO RACES (
+    NAME,
+    STAT,
+    SPEED
+) VALUES (
     "Dwarf, Hill",
     "002010",
     25
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    702,
     "Dwarf, Mountain",
     "202000",
     25
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    703,
     "Elf, High",
     "020100",
     30
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    704,
     "Elf, Wood",
     "020010",
     35
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    705,
     "Elf, Dark",
     "020001",
     30
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    706,
     "Halfling, Lightfoot",
     "020001",
     25
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    707,
     "Halfling, Stout",
     "021000",
     25
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    708,
     "Human",
     "111111",
     30
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    709,
     "Dragonborn",
     "200001",
     30
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    710,
     "Gnome, Forest",
     "010200",
     25
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    711,
     "Gnome, Rock",
     "001200",
     25
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    712,
     "Half-Orc",
     "201000",
     30
 );
 
 INSERT INTO RACES (
-    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    712,
     "Tiefling",
     "000102",
     30
@@ -393,7 +370,6 @@ CREATE TABLE ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -404,7 +380,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    201,
     "Padded",
     5,
     8,
@@ -417,7 +392,6 @@ INSERT INTO ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -428,7 +402,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    202,
     "Leather",
     10,
     10,
@@ -441,7 +414,6 @@ INSERT INTO ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -452,7 +424,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    203,
     "Studded Leather",
     45,
     13,
@@ -465,7 +436,6 @@ INSERT INTO ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -476,7 +446,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    204,
     "Hide",
     10,
     12,
@@ -489,7 +458,6 @@ INSERT INTO ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -500,7 +468,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    206,
     "Scale mail",
     50,
     45,
@@ -513,7 +480,6 @@ INSERT INTO ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -524,7 +490,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    210,
     "Chain mail",
     75,
     55,
@@ -537,7 +502,6 @@ INSERT INTO ARMOR (
 );
 
 INSERT INTO ARMOR (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -548,7 +512,6 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    212,
     "Plate",
     1500,
     65,
@@ -578,7 +541,6 @@ CREATE TABLE WEAPONS (
 );
 
 INSERT INTO WEAPONS (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -592,7 +554,6 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    301,
     "Club",
     0.1,
     2,
@@ -608,7 +569,6 @@ INSERT INTO WEAPONS (
 );
 
 INSERT INTO WEAPONS (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -622,7 +582,6 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    302,
     "Dagger",
     2,
     1,
@@ -638,7 +597,6 @@ INSERT INTO WEAPONS (
 );
 
 INSERT INTO WEAPONS (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -652,7 +610,6 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    313,
     "Shortbow",
     25,
     2,
@@ -668,7 +625,6 @@ INSERT INTO WEAPONS (
 );
 
 INSERT INTO WEAPONS (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -682,7 +638,6 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    315,
     "Battleaxe",
     10,
     4,
@@ -698,7 +653,6 @@ INSERT INTO WEAPONS (
 );
 
 INSERT INTO WEAPONS (
-    ID,
     NAME,
     COST,
     WEIGHT,
@@ -712,7 +666,6 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    334,
     "Hand Crossbow",
     75,
     3,
@@ -727,7 +680,7 @@ INSERT INTO WEAPONS (
     "bludgeoning"
 );
 
-CREATE TABLE inventory (
+CREATE TABLE INVENTORY (
     ID INT primary key,
     NAME TEXT,
     DESCRIPTION TEXT,
@@ -737,8 +690,7 @@ CREATE TABLE inventory (
     CATEGORY TEXT
 );
 
-INSERT INTO inventory (
-    ID,
+INSERT INTO INVENTORY (
     NAME,
     DESCRIPTION,
     AMOUNT,
@@ -746,7 +698,6 @@ INSERT INTO inventory (
     COST,
     CATEGORY
 ) VALUES (
-    101,
     "Candle",
     "For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet.",
     1,
@@ -755,8 +706,7 @@ INSERT INTO inventory (
     "Consumable"
 );
 
-INSERT INTO inventory (
-    ID,
+INSERT INTO INVENTORY (
     NAME,
     DESCRIPTION,
     AMOUNT,
@@ -764,7 +714,6 @@ INSERT INTO inventory (
     COST,
     CATEGORY
 ) VALUES (
-    102,
     "Crowbar",
     "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied",
     1,
@@ -815,7 +764,7 @@ INSERT INTO SPELLS     (
 );
 
 
-DROP TABLE "characterSheet"]]></console>
+DROP TABLE "spells"]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -876,7 +825,7 @@ DROP TABLE "characterSheet"]]></console>
           <deprecated-pwd value="" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

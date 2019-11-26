@@ -43,7 +43,7 @@ public class StartSceneController {
         stage.show();
         //stage.setResizable(false);
         blankcharbutton.getScene().getWindow().hide();
-        //LoadDefaultValues(stage.getScene());
+        LoadDefaultValues(stage.getScene());
     }
 
     public void LoadDefaultValues(Scene scene) throws Exception {
@@ -54,9 +54,9 @@ public class StartSceneController {
          */
 
         Connection connection = SQLiteHandler.Setup();
-        TableView weaponsAndAttacks = (TableView)scene.lookup("#TableWeapons");
+        TableView weaponsTable = (TableView)scene.lookup("#TableWeapons");
 
-        System.out.println("Table: " + weaponsAndAttacks.toString());
+        System.out.println("Table: " + weaponsTable.toString());
 
         //weaponsAndAttacks.getColumns().clear();
         TableColumn nameColumn = new TableColumn("Name");
@@ -95,16 +95,16 @@ public class StartSceneController {
         TableColumn typeColumn = new TableColumn("Type");
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
 
-        weaponsAndAttacks.getColumns().clear();
+        weaponsTable.getColumns().clear();
 
-        weaponsAndAttacks.getColumns().addAll(nameColumn, costColumn, weightColumn, descriptionColumn, categoryColumn, amountColumn, damageColumn, rangeColumn,
-                martialColumn, rangedColumn, finesseColumn, typeColumn);
+        weaponsTable.getColumns().addAll(nameColumn, costColumn, weightColumn, descriptionColumn, categoryColumn, amountColumn, damageColumn, rangeColumn,
+                martialColumn, rangedColumn, typeColumn);
 
         ArrayList<Weapon> weapons = SQLiteHandler.LoadWeapons(connection);
 
-        System.out.println(weapons.get(0));
+        System.out.println("Weapon 1: " + weapons.get(0).getName());
 
-        weaponsAndAttacks.getItems().add(weapons);
+        weaponsTable.getItems().addAll(weapons);
 
     }
 

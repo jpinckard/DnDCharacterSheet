@@ -19,6 +19,13 @@ public class Race {
         statBoost = new int[6];
     }
 
+    public Race(String rName, int[] statBoost, int speed)
+    {
+        this.rName = rName;
+        this.statBoost = statBoost;
+        this.speed = speed;
+    }
+
     /**
      *Constructs a Race object based on the parameters.
      * @param rName - string associated with the race name

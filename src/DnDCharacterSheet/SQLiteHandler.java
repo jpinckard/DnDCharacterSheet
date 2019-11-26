@@ -73,7 +73,7 @@ public class SQLiteHandler {
             String sql;
 
 
-            sql = "SELECT * FROM spells";
+            sql = "SELECT * FROM SPELLS";
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
@@ -122,6 +122,81 @@ public class SQLiteHandler {
         return spells;
     }
 
+
+
+    public static ArrayList<Weapon> LoadWeapons(Connection connection) throws Exception
+    {
+        ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+
+
+            sql = "SELECT * FROM WEAPONS";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //STEP 5: Extract data from result set
+            while(rs.next()){
+                // Get Weapon
+                int id          = rs.getInt(1);
+                String name     = rs.getString(2);
+                float cost = rs.getFloat(3);
+                float weight = rs.getFloat(4);
+                String description     = rs.getString(5);
+                String category     = rs.getString(6);
+
+                int amount       = rs.getInt(7);
+                int damage        = rs.getInt(8);
+                int range        = rs.getInt(9);
+                boolean martial = rs.getBoolean(10);
+                boolean ranged = rs.getBoolean(11);
+                boolean finesse = rs.getBoolean(12);
+                String type      = rs.getString(13);
+
+                /* String name, float weight, String category, String description, int amount, float cost, String damage, int range, boolean martial, boolean ranged, boolean finesse, String type */
+                Weapon weapon = new Weapon(name, weight, category, description, amount, cost, Integer.toString(damage), range, martial, ranged, finesse, type);
+                weapons.add(weapon);
+            }
+            //STEP 6: Clean-up environment
+            rs.close();
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+
+        return weapons;
+    }
+
     public static ArrayList<Item> LoadInventory(Connection connection) throws Exception
     {
         ArrayList<Item> inventory = new ArrayList<Item>();
@@ -142,7 +217,7 @@ public class SQLiteHandler {
             String sql;
 
 
-            sql = "SELECT * FROM items";
+            sql = "SELECT * FROM INVENTORY";
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
@@ -203,7 +278,7 @@ public class SQLiteHandler {
             String sql;
 
 
-            sql = new StringBuilder().append("INSERT INTO spells (NAME, DESCRIPTION, LEVEL, PREP, USED, SCHOOL, DURATION, RANGE, SAVE, COMPONENTS) VALUES (\"").append(spell.getName()).append("\",\"").append(spell.getDescription()).append("\",").append(Integer.toString(spell.getLevel())).append(",").append(Integer.toString(spell.getPrep())).append(",").append(Integer.toString(spell.getUsed())).append(",\"").append(spell.getSchool()).append("\",\"").append(spell.getDuration()).append("\",\"").append(spell.getRange()).append("\",\"").append(spell.getSave()).append("\",\"").append(spell.getComponents()).append("\");").toString();
+            sql = new StringBuilder().append("INSERT INTO SPELLS (NAME, DESCRIPTION, LEVEL, PREP, USED, SCHOOL, DURATION, RANGE, SAVE, COMPONENTS) VALUES (\"").append(spell.getName()).append("\",\"").append(spell.getDescription()).append("\",").append(Integer.toString(spell.getLevel())).append(",").append(Integer.toString(spell.getPrep())).append(",").append(Integer.toString(spell.getUsed())).append(",\"").append(spell.getSchool()).append("\",\"").append(spell.getDuration()).append("\",\"").append(spell.getRange()).append("\",\"").append(spell.getSave()).append("\",\"").append(spell.getComponents()).append("\");").toString();
 
             System.out.println("\nCommand: " + sql + "\n");
 
@@ -250,7 +325,7 @@ public class SQLiteHandler {
             String sql;
 
 
-            sql = new StringBuilder().append("INSERT INTO items (AMOUNT, CATEGORY, DESCRIPTION, NAME, WEIGHT) VALUES (\"").append(Integer.toString(item.getAmount())).append("\",\"").append(item.getCategory()).append("\",").append(item.getDescription()).append(",").append(item.getName()).append(",").append(Float.toString(item.getWeight())).append("\");").toString();
+            sql = new StringBuilder().append("INSERT INTO INVENTORY (AMOUNT, CATEGORY, DESCRIPTION, NAME, WEIGHT) VALUES (\"").append(Integer.toString(item.getAmount())).append("\",\"").append(item.getCategory()).append("\",").append(item.getDescription()).append(",").append(item.getName()).append(",").append(Float.toString(item.getWeight())).append("\");").toString();
 
             System.out.println("\nCommand: " + sql + "\n");
 
@@ -352,7 +427,7 @@ public class SQLiteHandler {
         SQLiteHandler.AddSpell(connection, zoneOfTruth);
         System.out.println(zoneOfTruth.getName() + " has been added to the databases.");
 
-        SQLiteHandler.Sort("spells", "id");
+        SQLiteHandler.Sort("SPELLS", "id");
 
         // Print all spells
         for(int i = 0; i < spells.size(); i++){

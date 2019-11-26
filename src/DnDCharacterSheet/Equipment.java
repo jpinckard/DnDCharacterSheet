@@ -22,6 +22,14 @@ public class Equipment
         shield = false;
     }
 
+    public Equipment(Armor armor, ArrayList<Weapon> weaponList, ArrayList<Item> ammoList, boolean shield)
+    {
+        this.armor = armor;
+        this.weaponList = weaponList;
+        this.ammoList = ammoList;
+        this.shield = shield;
+    }
+
     /**
      * Returns the weight in lbs of all of the items the character has equipped.
      * @return float weight in lbs

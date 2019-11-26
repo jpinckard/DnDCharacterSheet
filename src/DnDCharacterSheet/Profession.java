@@ -13,6 +13,11 @@ public class Profession {
     private ArrayList<Item> startingEquipment;
     private String skills;
 
+    public Profession()
+    {
+
+    }
+
     public Profession(String name, int hd, int[] savingThrows)
     {
         this.name = name;

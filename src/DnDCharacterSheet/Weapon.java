@@ -26,6 +26,17 @@ public class Weapon extends Item
         type = "";
     }
 
+    public Weapon(String name, float weight, String category, String description, int amount, float cost, String damage, int range, boolean martial, boolean ranged, boolean finesse, String type) {
+        super(name, weight, category, description, amount, cost);
+        this.damage = damage;
+        this.range = range;
+        this.martial = martial;
+        this.ranged = ranged;
+        this.finesse = finesse;
+        this.type = type;
+    }
+
+
     /**
      * Sets the weapon damage.
      * @param damage is the damage caused by the weapon

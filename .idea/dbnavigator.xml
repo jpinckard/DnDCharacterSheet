@@ -23,18 +23,22 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
+        <schema name="main" object-types="table, column, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from inventory;
-select * from armor;
-select * from spells;
-select * from weapons;
-select * from races;
-select * from proffesions;
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from INVENTORY;
+select * from ARMOR;
+select * from SPELLS;
+select * from WEAPONS;
+select * from RACES;
+select * from PROFESSIONS;
 
-CREATE TABLE proffesions (
+CREATE TABLE PROFFESIONS (
     ID INT primary key,
     NAME TEXT,
     HD INT,
@@ -201,7 +205,7 @@ INSERT INTO PROFFESIONS (
 );
 
 
-CREATE TABLE races (
+CREATE TABLE RACES (
     ID INT primary key,
     NAME TEXT,
     STAT TEXT,
@@ -375,7 +379,7 @@ INSERT INTO RACES (
 
 
 
-CREATE TABLE armor (
+CREATE TABLE ARMOR (
     ID INT primary key,
     NAME TEXT,
     COST FLOAT,
@@ -557,7 +561,7 @@ INSERT INTO ARMOR (
 );
 
 
-CREATE TABLE weapons (
+CREATE TABLE WEAPONS (
     ID INT primary key,
     NAME TEXT,
     COST FLOAT,
@@ -769,7 +773,7 @@ INSERT INTO inventory (
     "Tool"
 );
 
-CREATE TABLE spells     (
+CREATE TABLE SPELLS     (
     ID INT primary key,
     NAME TEXT,
     DESCRIPTION TEXT,
@@ -784,7 +788,7 @@ CREATE TABLE spells     (
 );
 
 
-INSERT INTO spells     (
+INSERT INTO SPELLS     (
     ID,
     NAME,
     DESCRIPTION,
@@ -823,6 +827,7 @@ DROP TABLE "characterSheet"]]></console>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.characterSheet" active-filter-id="" />
     <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.spells" active-filter-id="" />
+    <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.inventory" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -1064,22 +1069,12 @@ DROP TABLE "characterSheet"]]></console>
           <content-type name="DTD" enabled="true" />
           <content-type name="HTML" enabled="true" />
           <content-type name="XHTML" enabled="true" />
-          <content-type name="CSS" enabled="true" />
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
-          <content-type name="JavaScript" enabled="true" />
-          <content-type name="JSP" enabled="true" />
-          <content-type name="JSPx" enabled="true" />
           <content-type name="Groovy" enabled="true" />
-          <content-type name="FTL" enabled="true" />
-          <content-type name="TML" enabled="true" />
-          <content-type name="GSP" enabled="true" />
-          <content-type name="ASP" enabled="true" />
-          <content-type name="VTL" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />
-          <content-type name="Flex" enabled="true" />
           <content-type name="Manifest" enabled="true" />
         </content-types>
       </qualified-text-editor>

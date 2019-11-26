@@ -1488,7 +1488,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <TableView prefHeight="100.0">
+                              <TableView id="TableWeapons" prefHeight="100.0">
                                  <columns>
                                     <TableColumn prefWidth="75.0" text="C1" />
                                     <TableColumn prefWidth="75.0" text="C2" />

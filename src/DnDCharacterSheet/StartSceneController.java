@@ -67,6 +67,8 @@ public class StartSceneController {
                 ArrayList<Item> items = new ArrayList<Item>();
                 try {
                     items = SQLiteHandler.Filter(SQLiteHandler.Setup(), category);
+                    // Populate table
+                    LoadInventoryTable(connection, (TableView)scene.lookup("#TableShop"), items);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -78,23 +80,7 @@ public class StartSceneController {
         });
 
         // COLUMNS //
-        TableColumn nameColumn = new TableColumn("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TableColumn costColumn = new TableColumn("Cost");
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
-
-        TableColumn weightColumn = new TableColumn("Weight");
-        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
-
-        TableColumn descriptionColumn = new TableColumn("Description");
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-        TableColumn categoryColumn = new TableColumn("Category");
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-
-        TableColumn amountColumn = new TableColumn("Amount");
-        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-
+        /*
         TableColumn damageColumn = new TableColumn("Damage");
         damageColumn.setCellValueFactory(new PropertyValueFactory<>("damage"));
 
@@ -128,12 +114,7 @@ public class StartSceneController {
 
         ///////////////
         // INVENTORY //
-        TableView inventoryTable = (TableView)scene.lookup("#TableInventory");
 
-        inventoryTable.getColumns().clear();
-        inventoryTable.getColumns().addAll(nameColumn, weightColumn, categoryColumn, descriptionColumn, amountColumn, costColumn);
-        ArrayList<Item> inventory = SQLiteHandler.LoadInventory(connection);
-        inventoryTable.getItems().addAll(inventory);
 
 
 
@@ -153,6 +134,35 @@ public class StartSceneController {
         ArrayList<Armor> armor = SQLiteHandler.LoadArmor(connection);
         armorTable.getItems().addAll(armor);
 
+         */
+
+    }
+
+    /**
+     * Loads item elements into a table view.
+     * @param connection
+     * @param table
+     * @param items
+     */
+    public static void LoadInventoryTable(Connection connection, TableView table, ArrayList<Item> items) throws Exception {
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumn costColumn = new TableColumn("Cost");
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+
+        TableColumn weightColumn = new TableColumn("Weight");
+        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
+
+        TableColumn descriptionColumn = new TableColumn("Description");
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        TableColumn amountColumn = new TableColumn("Amount");
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        table.getColumns().clear();
+        table.getItems().clear();
+        table.getColumns().addAll(nameColumn, descriptionColumn, weightColumn, costColumn, amountColumn);
+        table.getItems().addAll(items);
     }
 
 }

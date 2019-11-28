@@ -1393,12 +1393,12 @@
                      <content>
                         <VBox minHeight="992.0" minWidth="785.0">
                            <children>
-                              <GridPane prefHeight="262.0" prefWidth="776.0">
+                              <GridPane prefHeight="262.0" prefWidth="764.0">
                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
-                                  <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
-                                  <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
-                                    <ColumnConstraints hgrow="ALWAYS" minWidth="500.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" maxWidth="180.0" minWidth="100.0" prefWidth="180.0" />
+                                  <ColumnConstraints hgrow="ALWAYS" maxWidth="95.20001220703125" minWidth="7.200042724609375" prefWidth="49.60003662109375" />
+                                  <ColumnConstraints hgrow="ALWAYS" maxWidth="180.0" minWidth="100.0" prefWidth="180.0" />
+                                    <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="534.8" minWidth="400.0" prefWidth="415.19995117187494" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -1443,11 +1443,7 @@
                                           <Insets left="5.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                      <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
-                                      </columns>
+                                    <TableView id="TableShop" prefHeight="202.0" prefWidth="464.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>

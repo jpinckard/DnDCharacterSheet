@@ -20,11 +20,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
             stmt.close();
@@ -64,11 +62,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -135,11 +131,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -207,11 +201,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -272,11 +264,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -339,11 +329,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -386,11 +374,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -433,11 +419,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
 
@@ -517,11 +501,9 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
 
             String sql;
@@ -580,41 +562,38 @@ public class SQLiteHandler {
             Class.forName(JDBC_DRIVER);
 
             //STEP 3: Open a connection
-            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
             //STEP 4: Execute a query
-            System.out.println("Creating statement...");
             stmt = conn.createStatement();
 
             String sql;
 
-            sql = "SELECT * FROM INVENTORY WHERE CATEGORY = \"" + element + "\"" ; //, WEAPONS, ARMOR // '" + element + "'
-
-            System.out.println(sql);
+            sql = "SELECT * FROM INVENTORY WHERE CATEGORY = \"" + element + "\" ORDER BY NAME ASC" ; //, WEAPONS, ARMOR // '" + element + "'
 
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
-                String name         = rs.getString(1);
-                String description  = rs.getString(2);
-                int amount          = rs.getInt(3);
-                float weight        = rs.getFloat(4);
-                float cost         = rs.getFloat(5);
-                String category     = rs.getString(6);
+                String name         = rs.getString(2);
+                String description  = rs.getString(3);
+                int amount          = rs.getInt(4);
+                float weight        = rs.getFloat(5);
+                float cost         = rs.getFloat(6);
+                String category     = rs.getString(7);
 
-                Item item = new Item(name, weight, category, description, amount, 0);
+                Item item = new Item(name, weight, category, description, amount, cost);
+                System.out.println("Name: " + name);
                 items.add(item);
             }
 
-            sql = "SELECT * FROM WEAPONS WHERE CATEGORY = \"" + element + "\"" ; //, WEAPONS, ARMOR
+            sql = "SELECT * FROM WEAPONS WHERE CATEGORY = \"" + element + "\" ORDER BY NAME ASC" ; //, WEAPONS, ARMOR
             rs = stmt.executeQuery(sql);
             while(rs.next()){
-                String name         = rs.getString(1);
-                float cost         = rs.getFloat(2);
-                float weight        = rs.getFloat(3);
-                String description  = rs.getString(4);
-                String category     = rs.getString(5);
-                int amount          = rs.getInt(6);
+                String name         = rs.getString(2);
+                float cost         = rs.getFloat(3);
+                float weight        = rs.getFloat(4);
+                String description  = rs.getString(5);
+                String category     = rs.getString(6);
+                int amount          = rs.getInt(7);
 
                 int damage        = rs.getInt(8);
                 int range        = rs.getInt(9);
@@ -627,20 +606,20 @@ public class SQLiteHandler {
 
                 items.add(weapon);
             }
-            sql = "SELECT * FROM ARMOR WHERE CATEGORY = \"" + element + "\""; //, WEAPONS, ARMOR
+            sql = "SELECT * FROM ARMOR WHERE CATEGORY = \"" + element + "\" ORDER BY NAME ASC"; //, WEAPONS, ARMOR
 
             rs = stmt.executeQuery(sql);
             while(rs.next()){
-                String name         = rs.getString(1);
-                float cost         = rs.getFloat(2);
-                float weight        = rs.getFloat(3);
-                String description  = rs.getString(4);
-                String category     = rs.getString(5);
-                int amount          = rs.getInt(6);
+                String name         = rs.getString(2);
+                float cost         = rs.getFloat(3);
+                float weight        = rs.getFloat(4);
+                String description  = rs.getString(5);
+                String category     = rs.getString(6);
+                int amount          = rs.getInt(7);
 
-                int ac          = rs.getInt(6);
-                String group    = rs.getString(7);
-                boolean stealth = rs.getBoolean(8);
+                int ac          = rs.getInt(8);
+                String group    = rs.getString(9);
+                boolean stealth = rs.getBoolean(10);
 
                 Armor armor = new Armor(name, weight, category, description, amount, cost, ac, group, stealth);
                 items.add(armor);

@@ -19,6 +19,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -1392,11 +1393,12 @@
                      <content>
                         <VBox minHeight="992.0" minWidth="785.0">
                            <children>
-                              <GridPane>
+                              <GridPane prefHeight="262.0" prefWidth="776.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
                                   <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
-                                  <ColumnConstraints hgrow="ALWAYS" minWidth="565.0" />
+                                  <ColumnConstraints hgrow="ALWAYS" minWidth="100.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="500.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -1405,7 +1407,7 @@
                                 </rowConstraints>
                                  <children>
                                     <Label text="Category" />
-                                    <Label text="Items" GridPane.columnIndex="2">
+                                    <Label text="Items" GridPane.columnIndex="3">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -1423,7 +1425,7 @@
                                           <Insets top="10.0" />
                                        </padding>
                                     </HBox>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <children>
                                           <Button minWidth="50.0" mnemonicParsing="false" text="Buy" />
                                           <TextField>
@@ -1436,12 +1438,12 @@
                                           <Insets top="10.0" />
                                        </padding>
                                     </HBox>
-                                    <TextField promptText="Filter name..." GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <TextField promptText="Filter name..." GridPane.columnIndex="3" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="5.0" top="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                       <columns>
                                         <TableColumn prefWidth="75.0" text="C1" />
                                         <TableColumn prefWidth="75.0" text="C2" />
@@ -1450,14 +1452,15 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </TableView>
-                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
-                                      <columns>
-                                        <TableColumn editable="false" minWidth="172.0" prefWidth="-1.0" sortable="false" text="Category" />
-                                      </columns>
-                                       <GridPane.margin>
-                                          <Insets right="5.0" />
-                                       </GridPane.margin>
-                                    </TableView>
+                                    <ScrollPane prefHeight="200.0" prefWidth="199.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="302.0">
+                                             <children>
+                                                <ListView id="ListCategories" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-100.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
                                  </children>
                               </GridPane>
                               <HBox>
@@ -1471,7 +1474,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <TableView prefHeight="150.0">
+                              <TableView id="TableInventory" prefHeight="150.0">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="C1" />
                                   <TableColumn prefWidth="75.0" text="C2" />
@@ -1505,7 +1508,7 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </HBox>
-                              <TableView prefHeight="100.0">
+                              <TableView id="TableArmor" prefHeight="100.0">
                                  <columns>
                                     <TableColumn prefWidth="75.0" text="C1" />
                                     <TableColumn prefWidth="75.0" text="C2" />

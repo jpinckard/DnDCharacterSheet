@@ -150,14 +150,13 @@ public class SQLiteHandler {
             //STEP 5: Extract data from result set
             while(rs.next()){
                 // Get Weapon
-                int id          = rs.getInt(1);
-                String name     = rs.getString(2);
-                float cost = rs.getFloat(3);
-                float weight = rs.getFloat(4);
-                String description     = rs.getString(5);
-                String category     = rs.getString(6);
+                String name         = rs.getString(1);
+                float cost         = rs.getFloat(2);
+                float weight        = rs.getFloat(3);
+                String description  = rs.getString(4);
+                String category     = rs.getString(5);
+                int amount          = rs.getInt(6);
 
-                int amount       = rs.getInt(7);
                 int damage        = rs.getInt(8);
                 int range        = rs.getInt(9);
                 boolean martial = rs.getBoolean(10);
@@ -223,13 +222,14 @@ public class SQLiteHandler {
             //STEP 5: Extract data from result set
             while(rs.next()){
                 // Get Item
-                int amount          = rs.getInt(1);
-                String category     = rs.getString(2);
-                String description  = rs.getString(3);
-                String name         = rs.getString(4);
-                float weight        = rs.getFloat(5);
+                String name         = rs.getString(1);
+                String description  = rs.getString(2);
+                int amount          = rs.getInt(3);
+                float weight        = rs.getFloat(4);
+                float cost         = rs.getFloat(5);
+                String category     = rs.getString(6);
 
-                Item item = new Item(name, weight, category, description, amount, 0);
+                Item item = new Item(name, weight, category, description, amount, cost);
                 inventory.add(item);
             }
             //STEP 6: Clean-up environment
@@ -259,6 +259,76 @@ public class SQLiteHandler {
 
         return inventory;
     }
+
+
+    public static ArrayList<Armor> LoadArmor(Connection connection) throws Exception
+    {
+        ArrayList<Armor> armor = new ArrayList<Armor>();
+
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+            String sql;
+
+
+            sql = "SELECT * FROM ARMOR";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //STEP 5: Extract data from result set
+            while(rs.next()){
+                String name         = rs.getString(1);
+                float cost         = rs.getFloat(2);
+                float weight        = rs.getFloat(3);
+                String description  = rs.getString(4);
+                String category     = rs.getString(5);
+                int amount          = rs.getInt(6);
+
+                int ac          = rs.getInt(6);
+                String group    = rs.getString(7);
+                boolean stealth = rs.getBoolean(8);
+
+
+                Armor a = new Armor(name, weight, category, description, amount, cost, ac, group, stealth);
+                armor.add(a);
+            }
+            //STEP 6: Clean-up environment
+            rs.close();
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+
+        return armor;
+    }
+
 
     public static void AddSpell(Connection connection, Spell spell) throws Exception
     {
@@ -434,4 +504,172 @@ public class SQLiteHandler {
             System.out.println(spells.get(i).getName());
         }
     }
+
+
+    public static ArrayList<String> GetCategories(Connection connection) throws Exception
+    {
+
+        ArrayList<String> categories = new ArrayList<String>();
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+            String sql;
+
+            sql = "SELECT DISTINCT CATEGORY FROM INVENTORY"; //, WEAPONS, ARMOR
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){categories.add(rs.getString("Category"));}
+
+            sql = "SELECT DISTINCT CATEGORY FROM WEAPONS"; //, WEAPONS, ARMOR
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){categories.add(rs.getString("Category"));}
+
+            sql = "SELECT DISTINCT CATEGORY FROM ARMOR"; //, WEAPONS, ARMOR
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){categories.add(rs.getString("Category"));}
+
+            System.out.println("\nCommand: " + sql + "\n");
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+
+        return categories;
+    }
+
+
+    public static ArrayList<Item> Filter(Connection connection, String element ) throws Exception
+    {
+
+        ArrayList<Item> items = new ArrayList<Item>();
+
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to database...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+            String sql;
+
+            sql = "SELECT DISTINCT FROM INVENTORY WHERE CATEGORY EQUALS " + element ; //, WEAPONS, ARMOR
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                String name         = rs.getString(1);
+                String description  = rs.getString(2);
+                int amount          = rs.getInt(3);
+                float weight        = rs.getFloat(4);
+                float cost         = rs.getFloat(5);
+                String category     = rs.getString(6);
+
+                Item item = new Item(name, weight, category, description, amount, 0);
+                items.add(item);
+            }
+
+            sql = "SELECT DISTINCT " + element + " FROM WEAPONS"; //, WEAPONS, ARMOR
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                String name         = rs.getString(1);
+                float cost         = rs.getFloat(2);
+                float weight        = rs.getFloat(3);
+                String description  = rs.getString(4);
+                String category     = rs.getString(5);
+                int amount          = rs.getInt(6);
+
+                int damage        = rs.getInt(8);
+                int range        = rs.getInt(9);
+                boolean martial = rs.getBoolean(10);
+                boolean ranged = rs.getBoolean(11);
+                boolean finesse = rs.getBoolean(12);
+                String type      = rs.getString(13);
+
+                Weapon weapon = new Weapon(name, weight, category, description, amount, cost, Integer.toString(damage), range, martial, ranged, finesse, type);
+
+                items.add(weapon);
+            }
+
+            sql = "SELECT DISTINCT " + element + " FROM ARMOR"; //, WEAPONS, ARMOR
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                String name         = rs.getString(1);
+                float cost         = rs.getFloat(2);
+                float weight        = rs.getFloat(3);
+                String description  = rs.getString(4);
+                String category     = rs.getString(5);
+                int amount          = rs.getInt(6);
+
+                int ac          = rs.getInt(6);
+                String group    = rs.getString(7);
+                boolean stealth = rs.getBoolean(8);
+
+                Armor armor = new Armor(name, weight, category, description, amount, cost, ac, group, stealth);
+                items.add(armor);
+            }
+
+            System.out.println("\nCommand: " + sql + "\n");
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+
+        return items;
+    }
+
 }

@@ -67,6 +67,7 @@ public class StartSceneController {
                 ArrayList<Item> items = new ArrayList<Item>();
                 try {
                     items = SQLiteHandler.Filter(SQLiteHandler.Setup(), category);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

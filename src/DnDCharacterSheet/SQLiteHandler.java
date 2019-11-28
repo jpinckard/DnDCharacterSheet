@@ -589,7 +589,10 @@ public class SQLiteHandler {
 
             String sql;
 
-            sql = "SELECT DISTINCT FROM INVENTORY WHERE CATEGORY EQUALS " + element ; //, WEAPONS, ARMOR
+            sql = "SELECT * FROM INVENTORY WHERE CATEGORY = \"" + element + "\"" ; //, WEAPONS, ARMOR // '" + element + "'
+
+            System.out.println(sql);
+
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 String name         = rs.getString(1);
@@ -603,7 +606,7 @@ public class SQLiteHandler {
                 items.add(item);
             }
 
-            sql = "SELECT DISTINCT " + element + " FROM WEAPONS"; //, WEAPONS, ARMOR
+            sql = "SELECT * FROM WEAPONS WHERE CATEGORY = \"" + element + "\"" ; //, WEAPONS, ARMOR
             rs = stmt.executeQuery(sql);
             while(rs.next()){
                 String name         = rs.getString(1);
@@ -624,8 +627,8 @@ public class SQLiteHandler {
 
                 items.add(weapon);
             }
+            sql = "SELECT * FROM ARMOR WHERE CATEGORY = \"" + element + "\""; //, WEAPONS, ARMOR
 
-            sql = "SELECT DISTINCT " + element + " FROM ARMOR"; //, WEAPONS, ARMOR
             rs = stmt.executeQuery(sql);
             while(rs.next()){
                 String name         = rs.getString(1);

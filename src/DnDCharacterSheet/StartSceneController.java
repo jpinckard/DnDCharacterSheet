@@ -1,18 +1,18 @@
 package DnDCharacterSheet;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -47,36 +47,40 @@ public class StartSceneController {
     }
 
     public void LoadDefaultValues(Scene scene) throws Exception {
-        /*
-        ComboBox spellComboBox = scene.lookup("#);
-        spellComboBox.getItems().clear();
-        spellComboBox.setItems(SQLiteHandler.LoadSpells());
-         */
-
+        // Form a connection with the database.
         Connection connection = SQLiteHandler.Setup();
-        TableView weaponsTable = (TableView)scene.lookup("#TableWeapons");
 
-        System.out.println("Table: " + weaponsTable.toString());
+        ////////////////
+        // CATEGORIES //
+        ListView categoryList = (ListView)scene.lookup("#ListCategories");
+        ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
+        System.out.println("First category: " + categories.get(0));
+        categoryList.getItems().addAll(categories);
 
-        //weaponsAndAttacks.getColumns().clear();
-        TableColumn nameColumn = new TableColumn("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        // Set onclicked event for list elements
+        categoryList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-        TableColumn costColumn = new TableColumn("Cost");
-        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+            @Override
+            public void handle(MouseEvent event) {
+                String category = categoryList.getSelectionModel().getSelectedItem().toString();
+                System.out.println("Category: " + category);
+                ArrayList<Item> items = new ArrayList<Item>();
+                try {
+                    items = SQLiteHandler.Filter(SQLiteHandler.Setup(), category);
+                    // Populate table
+                    LoadInventoryTable(connection, (TableView)scene.lookup("#TableShop"), items);
 
-        TableColumn weightColumn = new TableColumn("Weight");
-        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-        TableColumn descriptionColumn = new TableColumn("Description");
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+                System.out.println("# Items in this category: " + items.size());
 
-        TableColumn categoryColumn = new TableColumn("Category");
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+            }
+        });
 
-        TableColumn amountColumn = new TableColumn("Amount");
-        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-
+        // COLUMNS //
+        /*
         TableColumn damageColumn = new TableColumn("Damage");
         damageColumn.setCellValueFactory(new PropertyValueFactory<>("damage"));
 
@@ -95,17 +99,70 @@ public class StartSceneController {
         TableColumn typeColumn = new TableColumn("Type");
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
 
+
+        /////////////
+        // WEAPONS //
+        TableView weaponsTable = (TableView)scene.lookup("#TableWeapons");
         weaponsTable.getColumns().clear();
 
         weaponsTable.getColumns().addAll(nameColumn, costColumn, weightColumn, descriptionColumn, categoryColumn, amountColumn, damageColumn, rangeColumn,
-                martialColumn, rangedColumn, typeColumn);
+                martialColumn, rangedColumn,  typeColumn);
 
         ArrayList<Weapon> weapons = SQLiteHandler.LoadWeapons(connection);
-
-        System.out.println("Weapon 1: " + weapons.get(0).getName());
-
         weaponsTable.getItems().addAll(weapons);
 
+
+        ///////////////
+        // INVENTORY //
+
+
+
+
+        ///////////
+        // ARMOR //
+        TableView armorTable = (TableView)scene.lookup("#TableArmor");
+
+        TableColumn ACColumn = new TableColumn("AC");
+        ACColumn.setCellValueFactory(new PropertyValueFactory<>("baseAC"));
+        TableColumn groupColumn = new TableColumn("Group");
+        groupColumn.setCellValueFactory(new PropertyValueFactory<>("aGroup"));
+        TableColumn stealthDisadvantageColumn = new TableColumn("Stealth Disadvantage");
+        stealthDisadvantageColumn.setCellValueFactory(new PropertyValueFactory<>("stealthDisadvantage"));
+
+        armorTable.getColumns().clear();
+        armorTable.getColumns().addAll(nameColumn, weightColumn, categoryColumn, descriptionColumn, amountColumn, costColumn, ACColumn,  stealthDisadvantageColumn); //groupColumn,
+        ArrayList<Armor> armor = SQLiteHandler.LoadArmor(connection);
+        armorTable.getItems().addAll(armor);
+
+         */
+
+    }
+
+    /**
+     * Loads item elements into a table view.
+     * @param connection
+     * @param table
+     * @param items
+     */
+    public static void LoadInventoryTable(Connection connection, TableView table, ArrayList<Item> items) throws Exception {
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumn costColumn = new TableColumn("Cost");
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+
+        TableColumn weightColumn = new TableColumn("Weight");
+        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
+
+        TableColumn descriptionColumn = new TableColumn("Description");
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        TableColumn amountColumn = new TableColumn("Amount");
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        table.getColumns().clear();
+        table.getItems().clear();
+        table.getColumns().addAll(nameColumn, descriptionColumn, weightColumn, costColumn, amountColumn);
+        table.getItems().addAll(items);
     }
 
 }

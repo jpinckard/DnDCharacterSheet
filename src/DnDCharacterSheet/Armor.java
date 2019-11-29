@@ -21,8 +21,8 @@ public class Armor extends Item
         stealthDisadvantage = false;
     }
 
-    public Armor(int baseAC, String aGroup, boolean stealthDisadvantage)
-    {
+    public Armor(String name, float weight, String category, String description, int amount, float cost, int baseAC, String aGroup, boolean stealthDisadvantage) {
+        super(name, weight, category, description, amount, cost);
         this.baseAC = baseAC;
         this.aGroup = aGroup;
         this.stealthDisadvantage = stealthDisadvantage;

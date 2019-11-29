@@ -115,9 +115,8 @@ public class CharacterSheetController {
      * @param event
      * @throws NoSuchFieldException
      * @throws IllegalAccessException
-     * @throws ClassNotFoundException
      */
-    public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
+    public void SetValue(KeyEvent event){
 
         /**************************
          **** DEFINE VARIABLES ****
@@ -152,22 +151,29 @@ public class CharacterSheetController {
         /**************************
          *** GET SELECTED FIELD ***
          **************************/
-        if (subclasses.length > 1) {
-            System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
-            // The subclass is the first value,
-            String subclass = subclasses[0];
-            field = subclasses[1];
-            // And its field is the second.
-            subclassField = (CharacterSheet.class.getDeclaredField(subclass));
-            targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
-        } else {
-            // Get the field we're editing
-            targetField = CharacterSheet.class.getDeclaredField(field);
+        try {
+            if (subclasses.length > 1) {
+                System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
+                // The subclass is the first value,
+                String subclass = subclasses[0];
+                field = subclasses[1];
+                // And its field is the second.
+                subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+                targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+            } else {
+                // Get the field we're editing
+                targetField = CharacterSheet.class.getDeclaredField(field);
+            }
+        } catch (NoSuchFieldException e){
+            e.printStackTrace();
         }
 
-
         // Filter text values
-        text = Filter(subclassField, targetField, text, dataType);
+        try {
+            text = Filter(subclassField, targetField, text, dataType);
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
 
         /**************************
          *** SET ALL CONTROL VALS *

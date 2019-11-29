@@ -2,7 +2,9 @@ package DnDCharacterSheet;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
+import javafx.beans.value.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -19,6 +21,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import javax.swing.*;
 
@@ -32,10 +35,11 @@ public class CharacterSheetController {
     CharacterSheet characterSheet = new CharacterSheet();
 
     //for testing only
-    ObservableList<String> list = FXCollections.observableArrayList(
-            "Asparagus", "Beans", "Broccoli", "Cabbage", "Carrot",
-            "Celery", "Cucumber", "Leek", "Mushroom", "Pepper",
-            "Radish", "Shallot", "Spinach", "Swede", "Turnip");
+    ObservableList<Spell> list = FXCollections.observableArrayList(
+            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yards", "1d6 Charisma", "Ash"),
+            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yards", "1d6 Charisma", "Ash"),
+            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yards", "1d6 Charisma", "Ash")
+    );
 
     // declare fields for saving throws
     @FXML TextField strSavingThrow;
@@ -55,6 +59,7 @@ public class CharacterSheetController {
 
     // Declare fields for currency
     @FXML TextField currencyCP;
+
     @FXML TextField currencySP;
     @FXML TextField currencyEP;
     @FXML TextField currencyGP;
@@ -71,7 +76,7 @@ public class CharacterSheetController {
     @FXML Button buttonEPDown;
     @FXML Button buttonGPDown;
     @FXML Button buttonPPDown;
-
+    // Declare GridPanes for spells
     @FXML GridPane spellLevel0Grid;
     @FXML GridPane spellLevel1Grid;
     @FXML GridPane spellLevel2Grid;
@@ -84,13 +89,12 @@ public class CharacterSheetController {
     @FXML GridPane spellLevel9Grid;
 
 
-    ArrayList<HBox> spellLevel0HBoxList = new ArrayList<>();
-
     /**
      * FXML function that initializes values on the GUI when loaded.
      */
     @FXML
     private void initialize() {
+
         dynamicSpellAdder(spellLevel0Grid);
         dynamicSpellAdder(spellLevel1Grid);
         dynamicSpellAdder(spellLevel2Grid);
@@ -427,7 +431,7 @@ public class CharacterSheetController {
 
         // add new items to list
         spellgrid.add(new TextField(), 0, rowindex, 1, 1);
-        spellgrid.add(new ComboBox(list), 1, rowindex, 1, 1);
+        spellgrid.add(new ComboBox<>(), 1, rowindex, 1, 1);
         spellgrid.add(new Button("X"), 2, rowindex, 1, 1);
 
         // get all the fields we're currently working with to format them
@@ -437,18 +441,66 @@ public class CharacterSheetController {
         Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 2, rowindex);
 
         //format the items
+        currentbox.setItems(list);
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);
-        currentbox.setOnAction(new EventHandler<ActionEvent>(){
+/*
+        currentbox.setConverter(new StringConverter<Spell>(){
             @Override
-            public void handle(ActionEvent e){
-                dynamicSpellAdder(spellgrid);
+            public String toString(Spell spell) {
+                if (spell == null) return null;
+                else {
+                    return spell.getName();
+                }
+            }
+
+            @Override
+            public Spell fromString(String s) {
+                System.out.println("The String inside fromString is: " + s);
+               // return new Spell("test", "test", 0, 0, 0, "test", "test", "test", "test", "test");
+                for (Spell o: list) {
+                    if(o.getName().equals(s)){
+                        return o;
+                    }
+                }
+                return null;
             }
         });
-        //spellLevel1Grid.setMargin(currentbox, new Insets(3, 0, 0, 0));
+*/
+        currentbox.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
 
-        if(prevbox != null)prevbox.setDisable(true);
+            if (currentbox.getSelectionModel().getSelectedItem() != null && list.contains(currentbox.getSelectionModel().getSelectedItem())){
+                dynamicSpellAdder(spellgrid);
+            }
+
+
+            System.out.println(currentbox.getSelectionModel().getSelectedItem());
+            System.out.println("observablevalue is : " + observableValue);
+            System.out.println("o is: " + o);
+            System.out.println("t1 is: " + t1.toString());
+            System.out.println("getValue is: " + currentbox.getValue());
+
+        });
+
+
+        // Tell the combobox the format to display the items in
+        currentbox.setCellFactory(new SpellCellFactory());
+        // Tell the button area the format to display the items in
+        currentbox.setButtonCell(new SpellCell());
+
+
+        if(prevbox != null){
+
+            // When a new box is populated, make sure the old one is not editable
+            prevbox.setEditable(false);
+            // Make sure the old one is also disabled
+            prevbox.setDisable(true);
+            // Set the opacity of the box so that the labels inside are visible
+            // Note that this does not change the opacity of the labels themselves
+            prevbox.setStyle("-fx-opacity: 1");
+
+        }
 
        currentbutton.setOnAction(new EventHandler<ActionEvent>() {
            @Override public void handle(ActionEvent e) {

@@ -9,9 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.Array;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -31,31 +35,39 @@ public class StartSceneController {
      * @param event
      * @throws Exception
      */
-    public void openCharSheetPane (ActionEvent event) throws Exception{
+    public void openCharSheetPane (ActionEvent event){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setOpacity(1);
-        stage.setTitle("D&D Character Sheet Editor");
-        stage.setScene(new Scene(root, 800, 800));
-        stage.show();
-        //stage.setResizable(false);
-        blankcharbutton.getScene().getWindow().hide();
-        LoadDefaultValues(stage.getScene());
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setOpacity(1);
+            stage.setTitle("D&D Character Sheet Editor");
+            stage.setScene(new Scene(root, 800, 800));
+            stage.show();
+            //stage.setResizable(false);
+            blankcharbutton.getScene().getWindow().hide();
+            LoadDefaultValues(stage.getScene());
+        } catch (Exception e){
+            exceptionPane("Exception in main application caught!", e);
+        }
     }
 
-    public void LoadDefaultValues(Scene scene) throws Exception {
+    public void LoadDefaultValues(Scene scene){
         // Form a connection with the database.
         Connection connection = SQLiteHandler.Setup();
 
         ////////////////
         // CATEGORIES //
         ListView categoryList = (ListView)scene.lookup("#ListCategories");
-        ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
-        System.out.println("First category: " + categories.get(0));
-        categoryList.getItems().addAll(categories);
+        try {
+            ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
+            System.out.println("First category: " + categories.get(0));
+            categoryList.getItems().addAll(categories);
+        } catch (Exception e){
+            exceptionPane("Exception loading categories caught!", e);
+        }
 
         // Set onclicked event for list elements
         categoryList.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -163,6 +175,40 @@ public class StartSceneController {
         table.getItems().clear();
         table.getColumns().addAll(nameColumn, descriptionColumn, weightColumn, costColumn, amountColumn);
         table.getItems().addAll(items);
+    }
+
+    public void exceptionPane(String content, Exception ex){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("There's been an exception!");
+        alert.setContentText(content);
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
     }
 
 }

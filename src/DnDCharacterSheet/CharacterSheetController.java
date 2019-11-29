@@ -1,29 +1,19 @@
 package DnDCharacterSheet;
 
+import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.beans.value.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
-import javax.swing.*;
 
 /**
  * This class handles everything in the main charactersheet GUI.
@@ -113,8 +103,6 @@ public class CharacterSheetController {
      * name of the TextField. Calls the filter method to disallow invalid entries for certain fields and then updates
      * the TextBox based on what was allowed.
      * @param event
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
      */
     public void SetValue(KeyEvent event){
 
@@ -165,14 +153,14 @@ public class CharacterSheetController {
                 targetField = CharacterSheet.class.getDeclaredField(field);
             }
         } catch (NoSuchFieldException e){
-            e.printStackTrace();
+            exceptionPane("NoSuchFieldException caught!", e);
         }
 
         // Filter text values
         try {
             text = Filter(subclassField, targetField, text, dataType);
-        } catch (IllegalAccessException | NoSuchFieldException e) {
-            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            exceptionPane("IllegalAccessException caught!", e);
         }
 
         /**************************
@@ -202,9 +190,8 @@ public class CharacterSheetController {
      * @param dataType
      * @return
      * @throws IllegalAccessException
-     * @throws NoSuchFieldException
      */
-    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
+    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException{
 
         field.setAccessible(true);
         Object value = null;
@@ -364,7 +351,7 @@ public class CharacterSheetController {
      * @throws NoSuchFieldException
      * @throws ClassNotFoundException
      */
-    public void setHP(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void setHP(KeyEvent event){
 
         Scene scene = ((Control) event.getSource()).getScene();
         String id = ((Control) event.getSource()).getId();
@@ -570,11 +557,8 @@ public class CharacterSheetController {
      * Controller method that updates the value of the proficiency bonus via setValue method
      * and then updates the saving throws to reflect the change via updateSavingThrow method.
      * @param event
-     * @throws IllegalAccessException
-     * @throws NoSuchFieldException
-     * @throws ClassNotFoundException
      */
-    public void updateProf(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void updateProf(KeyEvent event){
         SetValue(event);
         updateSavingThrows();
     }
@@ -630,5 +614,45 @@ public class CharacterSheetController {
             characterSheet.getCurrency().decPp();
             currencyPP.setText(String.valueOf(characterSheet.getCurrency().getPp()));
         }
+    }
+
+
+    /**
+     * This is just a method to provide reusable dialogue windows for exceptions.
+     * @param content
+     * @param ex
+     */
+    public void exceptionPane(String content, Exception ex){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("There's been an exception!");
+        alert.setContentText(content);
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
     }
 }

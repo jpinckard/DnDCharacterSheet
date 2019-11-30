@@ -26,9 +26,9 @@ public class CharacterSheetController {
 
     //for testing only
     ObservableList<Spell> list = FXCollections.observableArrayList(
-            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yards", "1d6 Charisma", "Ash"),
-            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yards", "1d6 Charisma", "Ash"),
-            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yards", "1d6 Charisma", "Ash")
+            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
+            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
+            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash")
     );
 
     // declare fields for saving throws
@@ -424,14 +424,16 @@ public class CharacterSheetController {
 
         // add new items to list
         spellgrid.add(new TextField(), 0, rowindex, 1, 1);
-        spellgrid.add(new ComboBox<>(), 1, rowindex, 1, 1);
-        spellgrid.add(new Button("X"), 2, rowindex, 1, 1);
+        spellgrid.add(new TextField(), 1, rowindex, 1, 1);
+        spellgrid.add(new ComboBox<>(), 2, rowindex, 1, 1);
+        spellgrid.add(new Button("X"), 3, rowindex, 1, 1);
 
         // get all the fields we're currently working with to format them
-        TextField currentfield = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
-        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex - 1);
-        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex);
-        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 2, rowindex);
+        TextField currentPrep = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
+        TextField currentUsed = (TextField) getNodeFromGridPane(spellgrid, 1, rowindex);
+        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex - 1);
+        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex);
+        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 3, rowindex);
 
         //format the items
         currentbox.setItems(list);
@@ -497,7 +499,7 @@ public class CharacterSheetController {
 
        currentbutton.setOnAction(new EventHandler<ActionEvent>() {
            @Override public void handle(ActionEvent e) {
-               if((getNodeFromGridPane(spellgrid, 1, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
+               if((getNodeFromGridPane(spellgrid, 2, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
                    spellgrid.getChildren().removeIf(node -> (GridPane.getRowIndex(node) != null) && (GridPane.getRowIndex(node) == rowindex));
                }
        }
@@ -616,6 +618,10 @@ public class CharacterSheetController {
         }
     }
 
+
+    public void changeSkills(){
+
+    }
 
     /**
      * This is just a method to provide reusable dialogue windows for exceptions.

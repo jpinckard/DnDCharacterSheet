@@ -31,14 +31,15 @@ public class SpellCell extends ListCell<Spell> {
         Label lblRange = new Label();
         Label lblSave = new Label();
 
+        cellGrid.setPrefWidth(618);
+
             cellGrid.getColumnConstraints().addAll(
                     new ColumnConstraints(50, 50, -1),
-                    new ColumnConstraints(10, 400, -1),
-                    new ColumnConstraints(50, 50, -1),
-                    new ColumnConstraints(50, 50, -1),
-                    new ColumnConstraints(50, 50, -1),
-                    new ColumnConstraints(50, 50, -1),
-                    new ColumnConstraints(30, 29, 20)
+                    new ColumnConstraints(10, 350, -1),
+                    new ColumnConstraints(10, 58, -1),
+                    new ColumnConstraints(10, 58, -1),
+                    new ColumnConstraints(10, 58, -1),
+                    new ColumnConstraints(10, 58, -1)
             );
 
             cellGrid.add(lblLevel, 0, 1);

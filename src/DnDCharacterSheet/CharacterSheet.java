@@ -22,7 +22,7 @@ public class CharacterSheet {
     private MiscStats miscStats;
     private int exp;
     private ArrayList<Feature> features;
-    private Story charstory;
+    //private Story charstory;
     private int proficiency;
     private Currency currency;
 
@@ -45,7 +45,7 @@ public class CharacterSheet {
         this.miscStats = new MiscStats();
         this.exp = 0;
         this.features = new ArrayList<Feature>();
-        this.charstory = new Story();
+        //this.charstory = new Story();
         this.currency = new Currency();
     }
 

@@ -1702,8 +1702,9 @@
                                     <Label text="Skills" />
                                     <GridPane gridLinesVisible="true" VBox.vgrow="ALWAYS">
                                       <columnConstraints>
-                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="125.0" prefWidth="100.0" />
-                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="40.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="50.0" prefWidth="50.0" />
@@ -1728,19 +1729,15 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
                                       </rowConstraints>
                                        <children>
-                                          <Label text="Name">
+                                          <Label text="Name" GridPane.columnIndex="1">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
-                                             </GridPane.margin>
-                                          </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1755,119 +1752,119 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <Label text="Mod" GridPane.columnIndex="1" />
-                                          <Label text="Total" GridPane.columnIndex="2" />
-                                          <Label text="Prof" GridPane.columnIndex="3" />
-                                          <Label text="Expert" GridPane.columnIndex="4" />
-                                          <Label text="Misc" GridPane.columnIndex="5" />
-                                          <Label text="Label" GridPane.rowIndex="1">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="2">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="3">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="4">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="5">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="6">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="7">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="8">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="9">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="10">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="11">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="12">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="13">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="14">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="15">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="16">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.rowIndex="17">
-                                             <padding>
-                                                <Insets left="5.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="17" />
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <Label text="Mod" GridPane.columnIndex="2" />
+                                          <Label text="Total" GridPane.columnIndex="3" />
+                                          <Label text="Prof" GridPane.columnIndex="4" />
+                                          <Label text="Expert" GridPane.columnIndex="5" />
+                                          <Label text="Misc" GridPane.columnIndex="6" />
+                                          <Label text="Acrobatics" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Animal Handling" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Arcana" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Athletics" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Deception" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="History" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Insight" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Intimidation" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Investigation" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Medicine" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Nature" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Preception" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Performance" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Persuasion" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Religion" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Sleight of Hand" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Stealth" GridPane.columnIndex="1" GridPane.rowIndex="17">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Dex" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Label text="Wis" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <Label text="Int" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                          <Label text="Str" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                          <Label text="Cha" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                          <Label text="Int" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                          <Label text="Wis" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                          <Label text="Cha" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                                          <Label text="Int" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                                          <Label text="Wis" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                                          <Label text="Int" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                                          <Label text="Wis" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                                          <Label text="Cha" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                                          <Label text="Cha" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+                                          <Label text="Int" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+                                          <Label text="Dex" GridPane.columnIndex="2" GridPane.rowIndex="16" />
+                                          <Label text="Dex" GridPane.columnIndex="2" GridPane.rowIndex="17" />
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1882,17 +1879,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="4" GridPane.rowIndex="3">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" right="5.0" />
-                                             </GridPane.margin>
-                                          </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1902,12 +1894,17 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                          <TextField GridPane.columnIndex="4" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1922,12 +1919,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1942,12 +1939,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1962,12 +1959,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="7">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1982,12 +1979,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="8">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2002,12 +1999,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="9">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="9">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2022,12 +2019,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="9">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="10">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2042,12 +2039,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="10">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="11">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="11">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2062,12 +2059,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="12">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="11">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="12">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="12">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2082,12 +2079,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="12">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="13">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="13">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2102,12 +2099,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="13">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="14">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="14">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2122,12 +2119,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="14">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="15">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="15">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2142,12 +2139,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="16">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="15">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="16">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="16">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2162,12 +2159,12 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField editable="false" GridPane.columnIndex="2" GridPane.rowIndex="17">
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="16">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="17">
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="17">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -2182,6 +2179,55 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="17">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <Label text="Survival" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="Wis" GridPane.columnIndex="2" GridPane.rowIndex="18" />
+                                          <TextField GridPane.columnIndex="3" GridPane.rowIndex="18">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField GridPane.columnIndex="4" GridPane.rowIndex="18">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField GridPane.columnIndex="5" GridPane.rowIndex="18">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <TextField GridPane.columnIndex="6" GridPane.rowIndex="18">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" right="5.0" />
+                                             </GridPane.margin>
+                                          </TextField>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="1" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="2" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="3" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="4" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="5" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="6" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="7" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="8" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="9" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="10" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="11" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="12" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="13" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="14" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="15" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="16" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="17" />
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="18" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -3136,26 +3182,23 @@
                                        </VBox.margin>
                                     </HBox>
                                     <GridPane gridLinesVisible="true">
-                                      <columnConstraints>
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="29.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3167,6 +3210,7 @@
                                     <GridPane fx:id="spellLevel0Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3185,9 +3229,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3198,8 +3242,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3208,23 +3252,20 @@
                                           <Label text="Save" GridPane.columnIndex="7" />
                                        </children>
                                     </GridPane>
-                                    <VBox>
-                                       <children>
-                                          <GridPane fx:id="spellLevel1Grid">
-                                            <columnConstraints>
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </GridPane>
-                                       </children>
-                                    </VBox>
+                                    <GridPane fx:id="spellLevel1Grid">
+                                      <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </GridPane>
                                     <HBox minHeight="17.0">
                                        <children>
                                           <Label text="Level 2" />
@@ -3239,9 +3280,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3252,8 +3293,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3265,6 +3306,7 @@
                                     <GridPane fx:id="spellLevel2Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3280,9 +3322,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3293,8 +3335,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3306,6 +3348,7 @@
                                     <GridPane fx:id="spellLevel3Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3321,9 +3364,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3334,8 +3377,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3347,6 +3390,7 @@
                                     <GridPane fx:id="spellLevel4Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3362,9 +3406,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3375,8 +3419,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3388,6 +3432,7 @@
                                     <GridPane fx:id="spellLevel5Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3403,9 +3448,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3416,8 +3461,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3429,6 +3474,7 @@
                                     <GridPane fx:id="spellLevel6Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3444,9 +3490,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3457,8 +3503,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3470,6 +3516,7 @@
                                     <GridPane fx:id="spellLevel7Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3485,9 +3532,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3498,8 +3545,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3511,6 +3558,7 @@
                                     <GridPane fx:id="spellLevel8Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>
@@ -3526,9 +3574,9 @@
                                     <GridPane gridLinesVisible="true">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="350.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -3539,8 +3587,8 @@
                                           <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label text="Level" GridPane.columnIndex="1" />
-                                          <Label text="Prep" GridPane.columnIndex="2" />
+                                          <Label text="Level" GridPane.columnIndex="2" />
+                                          <Label text="Prep" GridPane.columnIndex="1" />
                                           <Label text="Used" />
                                           <Label text="Name" GridPane.columnIndex="3" />
                                           <Label text="School" GridPane.columnIndex="4" />
@@ -3552,6 +3600,7 @@
                                     <GridPane fx:id="spellLevel9Grid">
                                        <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                        </columnConstraints>

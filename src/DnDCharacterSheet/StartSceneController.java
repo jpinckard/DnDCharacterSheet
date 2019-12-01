@@ -164,6 +164,7 @@ public class StartSceneController {
         TableColumn stealthDisadvantageColumn = new TableColumn("Stealth Disadvantage");
         stealthDisadvantageColumn.setCellValueFactory(new PropertyValueFactory<>("stealthDisadvantage"));
 
+
         table.getColumns().clear();
         table.getColumns().addAll(nameColumn, weightColumn, descriptionColumn, amountColumn, costColumn, ACColumn,  stealthDisadvantageColumn); //groupColumn,
         //ArrayList<Armor> armor = SQLiteHandler.LoadArmor(connection);
@@ -209,6 +210,7 @@ public class StartSceneController {
         TableColumn typeColumn = new TableColumn("Type");
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
 
+        table.getColumns().clear();
         table.getItems().clear();
         table.getColumns().addAll(nameColumn, descriptionColumn, amountColumn, costColumn, weightColumn,  damageColumn, rangeColumn,
                 martialColumn, rangedColumn,  typeColumn);

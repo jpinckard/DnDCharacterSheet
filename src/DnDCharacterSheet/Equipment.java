@@ -10,8 +10,6 @@ public class Equipment
     private Armor armor; // Armor object for armor being worn
     private ArrayList<Weapon> weaponList; // List of readily available weapons
 
-
-
     private ArrayList<Armor> armorList; // List of armor in storage.
     private ArrayList<Item> ammoList; // List of ammunition available.
     private boolean shield; //True if character has a shield equipped, false if they do not

@@ -667,7 +667,7 @@ public class SQLiteHandler {
 
         return items;
     }
-    
+
     /**
      * Loads inventory items by name and category.
      * @param connection

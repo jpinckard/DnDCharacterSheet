@@ -9,13 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.sql.Array;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -35,39 +31,39 @@ public class StartSceneController {
      * @param event
      * @throws Exception
      */
-    public void openCharSheetPane (ActionEvent event){
+    public void openCharSheetPane (ActionEvent event) throws Exception{
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setOpacity(1);
-            stage.setTitle("D&D Character Sheet Editor");
-            stage.setScene(new Scene(root, 800, 800));
-            stage.show();
-            //stage.setResizable(false);
-            blankcharbutton.getScene().getWindow().hide();
-            LoadDefaultValues(stage.getScene());
-        } catch (Exception e){
-            exceptionPane("Exception in main application caught!", e);
-        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setOpacity(1);
+        stage.setTitle("D&D Character Sheet Editor");
+        stage.setScene(new Scene(root, 800, 800));
+        stage.show();
+        //stage.setResizable(false);
+        blankcharbutton.getScene().getWindow().hide();
+
+        LoadDefaultValues(stage.getScene());
     }
 
-    public void LoadDefaultValues(Scene scene){
+    public void LoadDefaultValues(Scene scene) throws Exception {
         // Form a connection with the database.
         Connection connection = SQLiteHandler.Setup();
+
+        //////////////////////////
+        //// LOAD SAVED VALUES ///
+        // Get save data
+        CharacterSheetController.Load(scene);
+        // Populate armor table
+        //LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.armor);
 
         ////////////////
         // CATEGORIES //
         ListView categoryList = (ListView)scene.lookup("#ListCategories");
-        try {
-            ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
-            System.out.println("First category: " + categories.get(0));
-            categoryList.getItems().addAll(categories);
-        } catch (Exception e){
-            exceptionPane("Exception loading categories caught!", e);
-        }
+        ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
+        System.out.println("First category: " + categories.get(0));
+        categoryList.getItems().addAll(categories);
 
         // Set onclicked event for list elements
         categoryList.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -90,63 +86,7 @@ public class StartSceneController {
 
             }
         });
-
-        // COLUMNS //
-        /*
-        TableColumn damageColumn = new TableColumn("Damage");
-        damageColumn.setCellValueFactory(new PropertyValueFactory<>("damage"));
-
-        TableColumn rangeColumn = new TableColumn("Range");
-        rangeColumn.setCellValueFactory(new PropertyValueFactory<>("range"));
-
-        TableColumn martialColumn = new TableColumn("Martial");
-        martialColumn.setCellValueFactory(new PropertyValueFactory<>("martial"));
-
-        TableColumn rangedColumn = new TableColumn("Ranged");
-        rangedColumn.setCellValueFactory(new PropertyValueFactory<>("ranged"));
-
-        TableColumn finesseColumn = new TableColumn("Finesse");
-        finesseColumn.setCellValueFactory(new PropertyValueFactory<>("finesse"));
-
-        TableColumn typeColumn = new TableColumn("Type");
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-
-
-        /////////////
-        // WEAPONS //
-        TableView weaponsTable = (TableView)scene.lookup("#TableWeapons");
-        weaponsTable.getColumns().clear();
-
-        weaponsTable.getColumns().addAll(nameColumn, costColumn, weightColumn, descriptionColumn, categoryColumn, amountColumn, damageColumn, rangeColumn,
-                martialColumn, rangedColumn,  typeColumn);
-
-        ArrayList<Weapon> weapons = SQLiteHandler.LoadWeapons(connection);
-        weaponsTable.getItems().addAll(weapons);
-
-
-        ///////////////
-        // INVENTORY //
-
-
-
-
-        ///////////
-        // ARMOR //
-        TableView armorTable = (TableView)scene.lookup("#TableArmor");
-
-        TableColumn ACColumn = new TableColumn("AC");
-        ACColumn.setCellValueFactory(new PropertyValueFactory<>("baseAC"));
-        TableColumn groupColumn = new TableColumn("Group");
-        groupColumn.setCellValueFactory(new PropertyValueFactory<>("aGroup"));
-        TableColumn stealthDisadvantageColumn = new TableColumn("Stealth Disadvantage");
-        stealthDisadvantageColumn.setCellValueFactory(new PropertyValueFactory<>("stealthDisadvantage"));
-
-        armorTable.getColumns().clear();
-        armorTable.getColumns().addAll(nameColumn, weightColumn, categoryColumn, descriptionColumn, amountColumn, costColumn, ACColumn,  stealthDisadvantageColumn); //groupColumn,
-        ArrayList<Armor> armor = SQLiteHandler.LoadArmor(connection);
-        armorTable.getItems().addAll(armor);
-
-         */
+        
 
     }
 
@@ -177,38 +117,83 @@ public class StartSceneController {
         table.getItems().addAll(items);
     }
 
-    public void exceptionPane(String content, Exception ex){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Exception Dialog");
-        alert.setHeaderText("There's been an exception!");
-        alert.setContentText(content);
+    /**
+     * Loads item elements into a table view.
+     * @param connection
+     * @param table
+     * @param armor
+     */
+    public static void LoadArmorTable(Connection connection, TableView table, ArrayList<Item> armor) throws Exception {
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumn costColumn = new TableColumn("Cost");
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
 
-// Create expandable Exception.
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        String exceptionText = sw.toString();
+        TableColumn weightColumn = new TableColumn("Weight");
+        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
 
-        Label label = new Label("The exception stacktrace was:");
+        TableColumn descriptionColumn = new TableColumn("Description");
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
+        TableColumn amountColumn = new TableColumn("Amount");
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
+        TableColumn ACColumn = new TableColumn("AC");
+        ACColumn.setCellValueFactory(new PropertyValueFactory<>("baseAC"));
+        TableColumn groupColumn = new TableColumn("Group");
+        groupColumn.setCellValueFactory(new PropertyValueFactory<>("aGroup"));
+        TableColumn stealthDisadvantageColumn = new TableColumn("Stealth Disadvantage");
+        stealthDisadvantageColumn.setCellValueFactory(new PropertyValueFactory<>("stealthDisadvantage"));
 
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
+        table.getColumns().clear();
+        table.getColumns().addAll(nameColumn, weightColumn, descriptionColumn, amountColumn, costColumn, ACColumn,  stealthDisadvantageColumn); //groupColumn,
+        //ArrayList<Armor> armor = SQLiteHandler.LoadArmor(connection);
+        table.getItems().addAll(armor);
+    }
 
-// Set expandable Exception into the dialog pane.
-        alert.getDialogPane().setExpandableContent(expContent);
+    /**
+     * Loads item elements into a table view.
+     * @param connection
+     * @param table
+     * @param weapons
+     */
+    public static void LoadWeaponsTable(Connection connection, TableView table, ArrayList<Item> weapons) throws Exception {
+        TableColumn nameColumn = new TableColumn("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumn costColumn = new TableColumn("Cost");
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
 
-        alert.showAndWait();
+        TableColumn weightColumn = new TableColumn("Weight");
+        weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
+
+        TableColumn descriptionColumn = new TableColumn("Description");
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+        TableColumn amountColumn = new TableColumn("Amount");
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        TableColumn damageColumn = new TableColumn("Damage");
+        damageColumn.setCellValueFactory(new PropertyValueFactory<>("damage"));
+
+        TableColumn rangeColumn = new TableColumn("Range");
+        rangeColumn.setCellValueFactory(new PropertyValueFactory<>("range"));
+
+        TableColumn martialColumn = new TableColumn("Martial");
+        martialColumn.setCellValueFactory(new PropertyValueFactory<>("martial"));
+
+        TableColumn rangedColumn = new TableColumn("Ranged");
+        rangedColumn.setCellValueFactory(new PropertyValueFactory<>("ranged"));
+
+        TableColumn finesseColumn = new TableColumn("Finesse");
+        finesseColumn.setCellValueFactory(new PropertyValueFactory<>("finesse"));
+
+        TableColumn typeColumn = new TableColumn("Type");
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        table.getItems().clear();
+        table.getColumns().addAll(nameColumn, descriptionColumn, amountColumn, costColumn, weightColumn,  damageColumn, rangeColumn,
+                martialColumn, rangedColumn,  typeColumn);
+        table.getItems().addAll(weapons);
     }
 
 }

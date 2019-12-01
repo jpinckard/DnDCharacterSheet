@@ -1,0 +1,3 @@
+name_str_true=Poppy
+info-gender_str_true=Female
+info-age_int_true=100

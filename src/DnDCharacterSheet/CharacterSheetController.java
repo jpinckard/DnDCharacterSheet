@@ -1,19 +1,31 @@
 package DnDCharacterSheet;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import javax.swing.*;
 
 /**
  * This class handles everything in the main charactersheet GUI.
@@ -25,11 +37,10 @@ public class CharacterSheetController {
     CharacterSheet characterSheet = new CharacterSheet();
 
     //for testing only
-    ObservableList<Spell> list = FXCollections.observableArrayList(
-            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
-            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
-            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash")
-    );
+    ObservableList<String> list = FXCollections.observableArrayList(
+            "Asparagus", "Beans", "Broccoli", "Cabbage", "Carrot",
+            "Celery", "Cucumber", "Leek", "Mushroom", "Pepper",
+            "Radish", "Shallot", "Spinach", "Swede", "Turnip");
 
     // declare fields for saving throws
     @FXML TextField strSavingThrow;
@@ -49,7 +60,6 @@ public class CharacterSheetController {
 
     // Declare fields for currency
     @FXML TextField currencyCP;
-
     @FXML TextField currencySP;
     @FXML TextField currencyEP;
     @FXML TextField currencyGP;
@@ -66,7 +76,7 @@ public class CharacterSheetController {
     @FXML Button buttonEPDown;
     @FXML Button buttonGPDown;
     @FXML Button buttonPPDown;
-    // Declare GridPanes for spells
+
     @FXML GridPane spellLevel0Grid;
     @FXML GridPane spellLevel1Grid;
     @FXML GridPane spellLevel2Grid;
@@ -79,12 +89,13 @@ public class CharacterSheetController {
     @FXML GridPane spellLevel9Grid;
 
 
+    ArrayList<HBox> spellLevel0HBoxList = new ArrayList<>();
+
     /**
      * FXML function that initializes values on the GUI when loaded.
      */
     @FXML
     private void initialize() {
-
         dynamicSpellAdder(spellLevel0Grid);
         dynamicSpellAdder(spellLevel1Grid);
         dynamicSpellAdder(spellLevel2Grid);
@@ -103,8 +114,11 @@ public class CharacterSheetController {
      * name of the TextField. Calls the filter method to disallow invalid entries for certain fields and then updates
      * the TextBox based on what was allowed.
      * @param event
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
-    public void SetValue(KeyEvent event){
+    public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
 
         /**************************
          **** DEFINE VARIABLES ****
@@ -139,29 +153,22 @@ public class CharacterSheetController {
         /**************************
          *** GET SELECTED FIELD ***
          **************************/
-        try {
-            if (subclasses.length > 1) {
-                System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
-                // The subclass is the first value,
-                String subclass = subclasses[0];
-                field = subclasses[1];
-                // And its field is the second.
-                subclassField = (CharacterSheet.class.getDeclaredField(subclass));
-                targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
-            } else {
-                // Get the field we're editing
-                targetField = CharacterSheet.class.getDeclaredField(field);
-            }
-        } catch (NoSuchFieldException e){
-            exceptionPane("NoSuchFieldException caught!", e);
+        if (subclasses.length > 1) {
+            System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
+            // The subclass is the first value,
+            String subclass = subclasses[0];
+            field = subclasses[1];
+            // And its field is the second.
+            subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+            targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+        } else {
+            // Get the field we're editing
+            targetField = CharacterSheet.class.getDeclaredField(field);
         }
 
+
         // Filter text values
-        try {
-            text = Filter(subclassField, targetField, text, dataType);
-        } catch (IllegalAccessException e) {
-            exceptionPane("IllegalAccessException caught!", e);
-        }
+        text = Filter(subclassField, targetField, text, dataType);
 
         /**************************
          *** SET ALL CONTROL VALS *
@@ -178,6 +185,71 @@ public class CharacterSheetController {
 
         // Reposition the caret
         ((TextInputControl) event.getSource()).positionCaret(caretPos);
+
+        Save(id, text);
+
+    }
+
+    /**
+     * Saves a variable to the save file.
+     * @param id
+     * @param value
+     */
+    public static void Save(String id, String value){
+        /**************************
+         ****** SAVE TO FILE ******
+         **************************/
+        String path = "save.txt";
+        try {
+            String line = "";
+            String save = "";
+            BufferedReader bufferreader = new BufferedReader(new FileReader(path));
+
+            // If we have already saved this value to a file, we need to replace the value.
+            while ((line = bufferreader.readLine()) != null) {
+                if (!line.contains(id))
+                    save += line + "\n";
+            }
+
+            // Save current content
+            save += id + "=" + value + "\n";
+
+            // Get file reader that accesses save
+            FileWriter file = new FileWriter(path);
+
+            // Save data
+            file.write(save);
+
+            // Close file writer
+            file.flush();
+            file.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void Load(Scene scene){
+        /**************************
+         **** LOAD FROM FILE ******
+         **************************/
+        String path = "save.txt";
+        try {
+            String line = "";
+            BufferedReader bufferreader = new BufferedReader(new FileReader(path));
+
+            // For each line in the save file, set values in character creator and the gui.
+            while ((line = bufferreader.readLine()) != null) {
+                // Get ID and value
+                String[] values = line.split("=");
+                // Set text field
+                ((TextField) scene.lookup("#" + values[0])).setText(values[1]);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -190,8 +262,9 @@ public class CharacterSheetController {
      * @param dataType
      * @return
      * @throws IllegalAccessException
+     * @throws NoSuchFieldException
      */
-    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException{
+    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
 
         field.setAccessible(true);
         Object value = null;
@@ -351,7 +424,7 @@ public class CharacterSheetController {
      * @throws NoSuchFieldException
      * @throws ClassNotFoundException
      */
-    public void setHP(KeyEvent event){
+    public void setHP(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
 
         Scene scene = ((Control) event.getSource()).getScene();
         String id = ((Control) event.getSource()).getId();
@@ -424,82 +497,32 @@ public class CharacterSheetController {
 
         // add new items to list
         spellgrid.add(new TextField(), 0, rowindex, 1, 1);
-        spellgrid.add(new TextField(), 1, rowindex, 1, 1);
-        spellgrid.add(new ComboBox<>(), 2, rowindex, 1, 1);
-        spellgrid.add(new Button("X"), 3, rowindex, 1, 1);
+        spellgrid.add(new ComboBox(list), 1, rowindex, 1, 1);
+        spellgrid.add(new Button("X"), 2, rowindex, 1, 1);
 
         // get all the fields we're currently working with to format them
-        TextField currentPrep = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
-        TextField currentUsed = (TextField) getNodeFromGridPane(spellgrid, 1, rowindex);
-        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex - 1);
-        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex);
-        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 3, rowindex);
+        TextField currentfield = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
+        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex - 1);
+        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex);
+        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 2, rowindex);
 
         //format the items
-        currentbox.setItems(list);
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);
-/*
-        currentbox.setConverter(new StringConverter<Spell>(){
+        currentbox.setOnAction(new EventHandler<ActionEvent>(){
             @Override
-            public String toString(Spell spell) {
-                if (spell == null) return null;
-                else {
-                    return spell.getName();
-                }
-            }
-
-            @Override
-            public Spell fromString(String s) {
-                System.out.println("The String inside fromString is: " + s);
-               // return new Spell("test", "test", 0, 0, 0, "test", "test", "test", "test", "test");
-                for (Spell o: list) {
-                    if(o.getName().equals(s)){
-                        return o;
-                    }
-                }
-                return null;
-            }
-        });
-*/
-        currentbox.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
-
-            if (currentbox.getSelectionModel().getSelectedItem() != null && list.contains(currentbox.getSelectionModel().getSelectedItem())){
+            public void handle(ActionEvent e){
                 dynamicSpellAdder(spellgrid);
             }
-
-
-            System.out.println(currentbox.getSelectionModel().getSelectedItem());
-            System.out.println("observablevalue is : " + observableValue);
-            System.out.println("o is: " + o);
-            System.out.println("t1 is: " + t1.toString());
-            System.out.println("getValue is: " + currentbox.getValue());
-
         });
+        //spellLevel1Grid.setMargin(currentbox, new Insets(3, 0, 0, 0));
 
-
-        // Tell the combobox the format to display the items in
-        currentbox.setCellFactory(new SpellCellFactory());
-        // Tell the button area the format to display the items in
-        currentbox.setButtonCell(new SpellCell());
-
-
-        if(prevbox != null){
-
-            // When a new box is populated, make sure the old one is not editable
-            prevbox.setEditable(false);
-            // Make sure the old one is also disabled
-            prevbox.setDisable(true);
-            // Set the opacity of the box so that the labels inside are visible
-            // Note that this does not change the opacity of the labels themselves
-            prevbox.setStyle("-fx-opacity: 1");
-
-        }
+        if(prevbox != null)prevbox.setDisable(true);
 
        currentbutton.setOnAction(new EventHandler<ActionEvent>() {
            @Override public void handle(ActionEvent e) {
-               if((getNodeFromGridPane(spellgrid, 2, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
+               if((getNodeFromGridPane(spellgrid, 1, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
                    spellgrid.getChildren().removeIf(node -> (GridPane.getRowIndex(node) != null) && (GridPane.getRowIndex(node) == rowindex));
                }
        }
@@ -559,8 +582,11 @@ public class CharacterSheetController {
      * Controller method that updates the value of the proficiency bonus via setValue method
      * and then updates the saving throws to reflect the change via updateSavingThrow method.
      * @param event
+     * @throws IllegalAccessException
+     * @throws NoSuchFieldException
+     * @throws ClassNotFoundException
      */
-    public void updateProf(KeyEvent event){
+    public void updateProf(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
         SetValue(event);
         updateSavingThrows();
     }
@@ -616,49 +642,5 @@ public class CharacterSheetController {
             characterSheet.getCurrency().decPp();
             currencyPP.setText(String.valueOf(characterSheet.getCurrency().getPp()));
         }
-    }
-
-
-    public void changeSkills(){
-
-    }
-
-    /**
-     * This is just a method to provide reusable dialogue windows for exceptions.
-     * @param content
-     * @param ex
-     */
-    public void exceptionPane(String content, Exception ex){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Exception Dialog");
-        alert.setHeaderText("There's been an exception!");
-        alert.setContentText(content);
-
-// Create expandable Exception.
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        String exceptionText = sw.toString();
-
-        Label label = new Label("The exception stacktrace was:");
-
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
-
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
-
-// Set expandable Exception into the dialog pane.
-        alert.getDialogPane().setExpandableContent(expContent);
-
-        alert.showAndWait();
     }
 }

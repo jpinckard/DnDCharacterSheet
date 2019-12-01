@@ -852,9 +852,9 @@ public class CharacterSheetController {
                     characterSheet.getInventory().getCharEquipment().setWeaponList(weapons);
                     break;
                 case "Armor":
-                    //ArrayList<Armor> armors = characterSheet.getInventory().getCharEquipment().getArmorList();
-                    //armors.add((Armor)item);
-                    //characterSheet.getInventory().getCharEquipment().setArmorList(armors);
+                    ArrayList<Armor> armor = characterSheet.getInventory().getCharEquipment().getArmorList();
+                    armor.add((Armor)item);
+                    characterSheet.getInventory().getCharEquipment().setArmorList(armor);
                     break;
                 default:
                     ArrayList<Item> items = characterSheet.getInventory().getItems();

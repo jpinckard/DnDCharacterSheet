@@ -25,13 +25,13 @@
     <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-        <schema name="main" object-types="column, table" />
+        <schema name="main" object-types="column, table, view, dataset trigger, constraint, index" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[/*
+      <console name="Connection" type="STANDARD" schema="main" session="Main">/*
 select * from INVENTORY;
 select * from ARMOR;
 select * from SPELLS;
@@ -58,9 +58,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     601,
-    "Barbarian",
+    &quot;Barbarian&quot;,
     12,
-    "101000"
+    &quot;101000&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -71,9 +71,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     602,
-    "Bard",
+    &quot;Bard&quot;,
     8,
-    "010001"
+    &quot;010001&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -84,9 +84,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     603,
-    "Cleric",
+    &quot;Cleric&quot;,
     8,
-    "000011"
+    &quot;000011&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -97,9 +97,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     604,
-    "Druid",
+    &quot;Druid&quot;,
     8,
-    "000110"
+    &quot;000110&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -110,9 +110,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     605,
-    "Fighter",
+    &quot;Fighter&quot;,
     10,
-    "110000"
+    &quot;110000&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -123,9 +123,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     606,
-    "Monk",
+    &quot;Monk&quot;,
     8,
-    "010010"
+    &quot;010010&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -136,9 +136,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     607,
-    "Paladin",
+    &quot;Paladin&quot;,
     10,
-    "100001"
+    &quot;100001&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -149,9 +149,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     608,
-    "Ranger",
+    &quot;Ranger&quot;,
     10,
-    "010010"
+    &quot;010010&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -162,9 +162,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     609,
-    "Rogue",
+    &quot;Rogue&quot;,
     8,
-    "010100"
+    &quot;010100&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -175,9 +175,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     610,
-    "Sorceror",
+    &quot;Sorceror&quot;,
     6,
-    "001001"
+    &quot;001001&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -188,9 +188,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     611,
-    "Warlock",
+    &quot;Warlock&quot;,
     8,
-    "000011"
+    &quot;000011&quot;
 );
 
 INSERT INTO PROFESSIONS (
@@ -201,9 +201,9 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     612,
-    "Wizard",
+    &quot;Wizard&quot;,
     6,
-    "000110"
+    &quot;000110&quot;
 );
 
 
@@ -219,8 +219,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Barbarian",
-    "002010",
+    &quot;Barbarian&quot;,
+    &quot;002010&quot;,
     12
 );
 
@@ -229,8 +229,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Dwarf, Hill",
-    "002010",
+    &quot;Dwarf, Hill&quot;,
+    &quot;002010&quot;,
     25
 );
 
@@ -239,8 +239,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Dwarf, Mountain",
-    "202000",
+    &quot;Dwarf, Mountain&quot;,
+    &quot;202000&quot;,
     25
 );
 
@@ -249,8 +249,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Elf, High",
-    "020100",
+    &quot;Elf, High&quot;,
+    &quot;020100&quot;,
     30
 );
 
@@ -259,8 +259,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Elf, Wood",
-    "020010",
+    &quot;Elf, Wood&quot;,
+    &quot;020010&quot;,
     35
 );
 
@@ -269,8 +269,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Elf, Dark",
-    "020001",
+    &quot;Elf, Dark&quot;,
+    &quot;020001&quot;,
     30
 );
 
@@ -279,8 +279,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Halfling, Lightfoot",
-    "020001",
+    &quot;Halfling, Lightfoot&quot;,
+    &quot;020001&quot;,
     25
 );
 
@@ -289,8 +289,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Halfling, Stout",
-    "021000",
+    &quot;Halfling, Stout&quot;,
+    &quot;021000&quot;,
     25
 );
 
@@ -299,8 +299,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Human",
-    "111111",
+    &quot;Human&quot;,
+    &quot;111111&quot;,
     30
 );
 
@@ -309,8 +309,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Dragonborn",
-    "200001",
+    &quot;Dragonborn&quot;,
+    &quot;200001&quot;,
     30
 );
 
@@ -319,8 +319,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Gnome, Forest",
-    "010200",
+    &quot;Gnome, Forest&quot;,
+    &quot;010200&quot;,
     25
 );
 
@@ -329,8 +329,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Gnome, Rock",
-    "001200",
+    &quot;Gnome, Rock&quot;,
+    &quot;001200&quot;,
     25
 );
 
@@ -339,8 +339,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Half-Orc",
-    "201000",
+    &quot;Half-Orc&quot;,
+    &quot;201000&quot;,
     30
 );
 
@@ -349,8 +349,8 @@ INSERT INTO RACES (
     STAT,
     SPEED
 ) VALUES (
-    "Tiefling",
-    "000102",
+    &quot;Tiefling&quot;,
+    &quot;000102&quot;,
     30
 );
 
@@ -380,14 +380,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Padded",
+    &quot;Padded&quot;,
     5,
     8,
-    "Padded armor consists of quilted layers of cloth and batting.",
-    "Armor",
+    &quot;Padded armor consists of quilted layers of cloth and batting.&quot;,
+    &quot;Armor&quot;,
     1,
     11,
-    "Light",
+    &quot;Light&quot;,
     1
 );
 
@@ -402,14 +402,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Leather",
+    &quot;Leather&quot;,
     10,
     10,
-    "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.",
-    "Armor",
+    &quot;The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.&quot;,
+    &quot;Armor&quot;,
     1,
     11,
-    "Light",
+    &quot;Light&quot;,
     0
 );
 
@@ -424,14 +424,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Studded Leather",
+    &quot;Studded Leather&quot;,
     45,
     13,
-    "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes.",
-    "Armor",
+    &quot;Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes.&quot;,
+    &quot;Armor&quot;,
     1,
     12,
-    "Light",
+    &quot;Light&quot;,
     0
 );
 
@@ -446,14 +446,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Hide",
+    &quot;Hide&quot;,
     10,
     12,
-    "This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor.",
-    "Armor",
+    &quot;This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor.&quot;,
+    &quot;Armor&quot;,
     1,
     12,
-    "Medium",
+    &quot;Medium&quot;,
     0
 );
 
@@ -468,14 +468,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Scale mail",
+    &quot;Scale mail&quot;,
     50,
     45,
-    "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.",
-    "Armor",
+    &quot;This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.&quot;,
+    &quot;Armor&quot;,
     1,
     14,
-    "Medium",
+    &quot;Medium&quot;,
     1
 );
 
@@ -490,14 +490,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Chain mail",
+    &quot;Chain mail&quot;,
     75,
     55,
-    "Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. This suit includes gauntlets.",
-    "Armor",
+    &quot;Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. This suit includes gauntlets.&quot;,
+    &quot;Armor&quot;,
     1,
     16,
-    "Heavy",
+    &quot;Heavy&quot;,
     1
 );
 
@@ -512,14 +512,14 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    "Plate",
+    &quot;Plate&quot;,
     1500,
     65,
-    "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneather the armor. Buckles and straps distribute the weight over the body.",
-    "Armor",
+    &quot;Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneather the armor. Buckles and straps distribute the weight over the body.&quot;,
+    &quot;Armor&quot;,
     1,
     18,
-    "Heavy",
+    &quot;Heavy&quot;,
     1
 );
 
@@ -554,18 +554,18 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    "Club",
+    &quot;Club&quot;,
     0.1,
     2,
-    "Club",
-    "Weapon",
+    &quot;Club&quot;,
+    &quot;Weapon&quot;,
     1,
-    "1d4",
+    &quot;1d4&quot;,
     5,
     0,
     0,
     0,
-    "bludgeoning"
+    &quot;bludgeoning&quot;
 );
 
 INSERT INTO WEAPONS (
@@ -582,18 +582,18 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    "Dagger",
+    &quot;Dagger&quot;,
     2,
     1,
-    "Dagger",
-    "Weapon",
+    &quot;Dagger&quot;,
+    &quot;Weapon&quot;,
     1,
-    "1d4",
+    &quot;1d4&quot;,
     5,
     0,
     0,
     1,
-    "piercing"
+    &quot;piercing&quot;
 );
 
 INSERT INTO WEAPONS (
@@ -610,18 +610,18 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    "Shortbow",
+    &quot;Shortbow&quot;,
     25,
     2,
-    "Shortbow",
-    "Weapon",
+    &quot;Shortbow&quot;,
+    &quot;Weapon&quot;,
     1,
-    "1d6",
+    &quot;1d6&quot;,
     80,
     0,
     1,
     0,
-    "piercing"
+    &quot;piercing&quot;
 );
 
 INSERT INTO WEAPONS (
@@ -638,18 +638,18 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    "Battleaxe",
+    &quot;Battleaxe&quot;,
     10,
     4,
-    "Battleaxe",
-    "Weapon",
+    &quot;Battleaxe&quot;,
+    &quot;Weapon&quot;,
     1,
-    "1d8",
+    &quot;1d8&quot;,
     5,
     1,
     0,
     0,
-    "slashing"
+    &quot;slashing&quot;
 );
 
 INSERT INTO WEAPONS (
@@ -666,18 +666,18 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    "Hand Crossbow",
+    &quot;Hand Crossbow&quot;,
     75,
     3,
-    "Hand Crossbow",
-    "Weapon",
+    &quot;Hand Crossbow&quot;,
+    &quot;Weapon&quot;,
     1,
-    "1d6",
+    &quot;1d6&quot;,
     30,
     1,
     1,
     0,
-    "bludgeoning"
+    &quot;bludgeoning&quot;
 );
 
 CREATE TABLE INVENTORY (
@@ -698,12 +698,12 @@ INSERT INTO INVENTORY (
     COST,
     CATEGORY
 ) VALUES (
-    "Candle",
-    "For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet.",
+    &quot;Candle&quot;,
+    &quot;For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet.&quot;,
     1,
     0,
     .01,
-    "Consumable"
+    &quot;Consumable&quot;
 );
 
 INSERT INTO INVENTORY (
@@ -714,12 +714,12 @@ INSERT INTO INVENTORY (
     COST,
     CATEGORY
 ) VALUES (
-    "Crowbar",
-    "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied",
+    &quot;Crowbar&quot;,
+    &quot;Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied&quot;,
     1,
     5,
     2,
-    "Tool"
+    &quot;Tool&quot;
 );
 
 CREATE TABLE SPELLS     (
@@ -751,20 +751,20 @@ INSERT INTO SPELLS     (
     COMPONENTS
 ) VALUES (
     504,
-    "Magic Missile",
-    "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
+    &quot;Magic Missile&quot;,
+    &quot;You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.&quot;,
     1,
     1,
     1,
-    "Sorcerer, Wizard",
-    "Instantaneous",
-    "120 Feet",
-    "Save",
-    "V S"
+    &quot;Sorcerer, Wizard&quot;,
+    &quot;Instantaneous&quot;,
+    &quot;120 Feet&quot;,
+    &quot;Save&quot;,
+    &quot;V S&quot;
 );
 
 
-DROP TABLE "spells"]]></console>
+DROP TABLE &quot;spells&quot;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -774,6 +774,7 @@ DROP TABLE "spells"]]></console>
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.INVENTORY" active-filter-id="" />
     <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.characterSheet" active-filter-id="" />
     <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.spells" active-filter-id="" />
     <filter-actions connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc" dataset="main.inventory" active-filter-id="" />

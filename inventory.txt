@@ -1,4 +1,1 @@
-Tool="Crowbar"
-Weapon="Club","Shortbow","Hand Crossbow",,,,,,,"Dagger"
-Armor="Hide","Padded"
-Consumable="Candle"
+Armor="Leather"

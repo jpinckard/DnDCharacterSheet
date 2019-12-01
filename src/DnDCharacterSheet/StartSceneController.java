@@ -26,7 +26,7 @@ public class StartSceneController {
     @FXML
     private Hyperlink blankcharbutton;
 
-    private CharacterSheet characterSheet;
+    private CharacterSheet characterSheet; // the interface controller
     /**
      * Function that opens the charactersheetpane. The end.
      * @param event
@@ -42,26 +42,24 @@ public class StartSceneController {
         stage.setTitle("D&D Character Sheet Editor");
         stage.setScene(new Scene(root, 800, 800));
         stage.show();
+        // Retrieve the instance of CharacterSheet that controls the interface.
         characterSheet = ((CharacterSheetController)fxmlLoader.getController()).getCharacterSheet();
         //stage.setResizable(false);
         blankcharbutton.getScene().getWindow().hide();
 
+        // Load default values into text boxes from save.
         LoadDefaultValues(stage.getScene());
     }
 
     public void LoadDefaultValues(Scene scene) throws Exception {
-        // Form a connection with the database.
+        // Form a connection with the database
         Connection connection = SQLiteHandler.Setup();
-
-        //CharacterSheet characterSheet = scene
-
         //////////////////////////
         //// LOAD SAVED VALUES ///
         // Get save data
         CharacterSheetController.Load(scene);
-        // Update saving throws
-        // Populate armor table
-        LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.getInventory().getItems());
+        // Update Tables
+        UpdateTables(connection, scene, characterSheet);
 
         ////////////////
         // CATEGORIES //
@@ -91,8 +89,19 @@ public class StartSceneController {
 
             }
         });
-        
+    }
 
+    /**
+     * Updates tables with information from CharacterSheet.
+     * @param connection
+     * @param scene
+     * @throws Exception
+     */
+    public static void UpdateTables(Connection connection, Scene scene, CharacterSheet characterSheet) throws Exception {
+        // Populate armor table
+        //LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.getInventory().getCharEquipment().getArmor());
+        LoadInventoryTable(connection, (TableView)scene.lookup("#TableInventory"), characterSheet.getInventory().getItems());
+        LoadWeaponsTable(connection, (TableView)scene.lookup("#TableWeapons"), characterSheet.getInventory().getCharEquipment().getWeaponList());
     }
 
     /**
@@ -128,7 +137,7 @@ public class StartSceneController {
      * @param table
      * @param armor
      */
-    public static void LoadArmorTable(Connection connection, TableView table, ArrayList<Item> armor) throws Exception {
+    public static void LoadArmorTable(Connection connection, TableView table, ArrayList<Armor> armor) throws Exception {
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn costColumn = new TableColumn("Cost");
@@ -162,7 +171,7 @@ public class StartSceneController {
      * @param table
      * @param weapons
      */
-    public static void LoadWeaponsTable(Connection connection, TableView table, ArrayList<Item> weapons) throws Exception {
+    public static void LoadWeaponsTable(Connection connection, TableView table, ArrayList<Weapon> weapons) throws Exception {
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn costColumn = new TableColumn("Cost");
@@ -200,5 +209,4 @@ public class StartSceneController {
                 martialColumn, rangedColumn,  typeColumn);
         table.getItems().addAll(weapons);
     }
-
 }

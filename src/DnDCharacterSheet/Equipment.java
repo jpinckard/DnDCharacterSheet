@@ -18,7 +18,7 @@ public class Equipment
     public Equipment()
     {
         armor = null;
-        weaponList = null;
+        weaponList = new ArrayList<Weapon>();
         shield = false;
     }
 

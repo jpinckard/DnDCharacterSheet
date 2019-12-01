@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -500,9 +501,7 @@ public class CharacterSheetController {
                 }
             }
         }
-
         ((ProgressBar) scene.lookup("#hpBar")).setProgress((float) Math.abs(Math.abs(characterSheet.getHp().getBleedOut()) + characterSheet.getHp().getCurrentHP()) / (Math.abs(characterSheet.getHp().getBleedOut()) + characterSheet.getHp().getMaxHP()));
-
     }
 
     /**
@@ -670,5 +669,52 @@ public class CharacterSheetController {
 
     public CharacterSheet getCharacterSheet() {
         return characterSheet;
+    }
+
+    /**
+     * Add an item to the inventory based on its category.
+     * Save changes and update tables.
+     * @param event
+     * @throws Exception
+     */
+    public void AddItem(MouseEvent event) throws Exception {
+        // Get current scene
+        Scene scene = ((Button)event.getSource()).getScene();
+
+        // Get selected item to add
+        Item item = (Item)((TableView)scene.lookup("#TableShop")).getSelectionModel().getSelectedItem();
+
+        // If there is a selected item
+        if (item != null) {
+            // Add item to proper list depending on its category
+            switch (item.getCategory()) {
+                case "Weapon":
+                    ArrayList<Weapon> weapons = characterSheet.getInventory().getCharEquipment().getWeaponList();
+                    weapons.add((Weapon) item);
+                    characterSheet.getInventory().getCharEquipment().setWeaponList(weapons);
+                    break;
+                case "Armor":
+                    //ArrayList<Armor> armors = characterSheet.getInventory().getCharEquipment().getArmorList();
+                    //armors.add((Armor)item);
+                    //characterSheet.getInventory().getCharEquipment().setArmorList(armors);
+                    break;
+                default:
+                    ArrayList<Item> items = characterSheet.getInventory().getItems();
+                    items.add(item);
+                    characterSheet.getInventory().setItems(items);
+                    break;
+            }
+
+            // Show changes
+            StartSceneController.UpdateTables(SQLiteHandler.Setup(), scene, characterSheet);
+        }
+
+    }
+
+    public void BuyItem(MouseEvent event) throws Exception {
+
+        // Remove Cost
+
+        AddItem(event);
     }
 }

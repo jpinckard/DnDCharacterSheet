@@ -56,8 +56,11 @@ public class StartSceneController {
         Connection connection = SQLiteHandler.Setup();
         //////////////////////////
         //// LOAD SAVED VALUES ///
+        // Get inventory
+
         // Get save data
         CharacterSheetController.Load(scene);
+        CharacterSheetController.LoadInventory(scene, characterSheet);
         // Update Tables
         UpdateTables(connection, scene, characterSheet);
 

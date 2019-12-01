@@ -1,0 +1,4 @@
+Tool="Crowbar"
+Weapon="Club","Shortbow","Hand Crossbow"
+Armor="Hide","Padded"
+Consumable="Candle"

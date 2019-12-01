@@ -232,6 +232,10 @@ public class CharacterSheetController {
         }
     }
 
+    /**
+     * Loads text values from save into fields.
+     * @param scene
+     */
     public static void Load(Scene scene){
         /**************************
          **** LOAD FROM FILE ******
@@ -246,9 +250,6 @@ public class CharacterSheetController {
                 // Get ID and value
                 String[] values = line.split("=");
 
-                //System.out.println("1:" + values[0]);
-                //System.out.println("2:" + values[1]);
-
                 // Set text field if value is not null
                 if (values.length > 1){
                     if (values[1] != null & values[1] != "")
@@ -257,6 +258,112 @@ public class CharacterSheetController {
             }
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Saves an additional value to an array of saved values.
+     * for saving inventory items. NOT for use in SetArray.
+     * @param id
+     * @param value
+     */
+    public static void SaveInventory(String id, String value){
+        /**************************
+         ****** SAVE TO FILE ******
+         **************************/
+        String path = "inventory.txt";
+        try {
+            String line = "";
+            String save = "";
+            value = "\"" + value + "\""; // Values have to be in quotes.
+            BufferedReader bufferreader = new BufferedReader(new FileReader(path));
+
+            boolean idFound = false; // Does the array already exist?
+
+            // For each line in the file,
+            while ((line = bufferreader.readLine()) != null) {
+                // find the location of the target array
+                if (line.contains(id)) {
+                    line = line.replace(value,"");
+                    line += "," + value;
+                    idFound = true; // the category exists
+                }
+                // Save modified line to file
+                save += line + "\n";
+            }
+
+            // If the array does not already exist, create it.
+            if (!idFound) save += id + "=" + value;
+
+            // Get file reader that accesses save
+            FileWriter file = new FileWriter(path);
+
+            // Save data
+            file.write(save);
+
+            // Close file writer
+            file.flush();
+            file.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Loads inventory values from lists into the sheet from a database. Locates items by name.
+     * @param scene
+     */
+    public static void LoadInventory(Scene scene, CharacterSheet characterSheet){
+        /**************************
+         **** LOAD FROM FILE ******
+         **************************/
+        String path = "inventory.txt";
+        try {
+            String line = "";
+            BufferedReader bufferreader = new BufferedReader(new FileReader(path));
+
+            ArrayList<Item> items = new ArrayList<Item>();
+            ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+            ArrayList<Armor> armor = new ArrayList<Armor>();
+
+            ArrayList<Item> list = new ArrayList<Item>();
+
+
+            // For each line in the save file, set values in character creator and the gui.
+            while ((line = bufferreader.readLine()) != null) {
+                // Separate ID and array
+                String[] values = line.split("=");
+
+                // Load inventory if value is not null
+                if (values.length > 1){
+                    list = SQLiteHandler.LoadItemsFromSave(SQLiteHandler.Setup(), values[0] , values[1]);
+
+                    if (list.get(0).getClass() == Weapon.class){
+                        // LOAD LIST FROM SQL
+                        for(int i = 0; i < list.size(); i++)
+                            weapons.add((Weapon)list.get(i));
+                    }
+                    if (list.get(0).getClass() == Armor.class){
+                        // LOAD LIST FROM SQL
+                        for(int i = 0; i < list.size(); i++)
+                            armor.add((Armor)list.get(i));
+                    }
+                    else{
+                        items.addAll(list);
+                    }
+                }
+            }
+
+            characterSheet.getInventory().setItems(items);
+            characterSheet.getInventory().getCharEquipment().setWeaponList(weapons);
+            characterSheet.getInventory().getCharEquipment().setArmor(armor.get(0));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -704,6 +811,9 @@ public class CharacterSheetController {
                     characterSheet.getInventory().setItems(items);
                     break;
             }
+
+            // Save item to file
+            SaveInventory(item.getCategory(), item.getName());
 
             // Show changes
             StartSceneController.UpdateTables(SQLiteHandler.Setup(), scene, characterSheet);

@@ -454,42 +454,13 @@ public class SQLiteHandler {
         }//end try
     }
 
-    public static void Test() throws Exception {
-        Item item;
-        //SQLiteHandler.Setup();
-        Connection connection = SQLiteHandler.Setup();
-        ArrayList<Spell> spells = SQLiteHandler.LoadSpells(connection);
 
-        // Print all spells
-        for(int i = 0; i < spells.size(); i++){
-            System.out.println(spells.get(i).getName());
-        }
-
-        // Add a new spell
-        Spell zoneOfTruth = new Spell(
-                "Zone of Truth",
-                "Cast a sphere in which victims must speak the truth.",
-                1,
-                1,
-                1,
-                "School",
-                "Duration",
-                "Range",
-                "Save",
-                "Components");
-
-        SQLiteHandler.AddSpell(connection, zoneOfTruth);
-        System.out.println(zoneOfTruth.getName() + " has been added to the databases.");
-
-        SQLiteHandler.Sort("SPELLS", "id");
-
-        // Print all spells
-        for(int i = 0; i < spells.size(); i++){
-            System.out.println(spells.get(i).getName());
-        }
-    }
-
-
+    /**
+     * Gets all distinct categories from all tables.
+     * @param connection
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<String> GetCategories(Connection connection) throws Exception
     {
 
@@ -550,6 +521,13 @@ public class SQLiteHandler {
     }
 
 
+    /**
+     * Filters table results by category.
+     * @param connection
+     * @param element
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Item> Filter(Connection connection, String element ) throws Exception
     {
 
@@ -653,5 +631,121 @@ public class SQLiteHandler {
 
         return items;
     }
+
+
+    /**
+     * Loads inventory items by name and category.
+     * @param connection
+     * @param table
+     * @param names
+     * @return
+     * @throws Exception
+     */
+    public static ArrayList<Item> LoadItemsFromSave(Connection connection, String table, String names) throws Exception{
+
+        ArrayList<Item> items = new ArrayList<Item>();
+
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //STEP 4: Execute a query
+            stmt = conn.createStatement();
+
+            String sql;
+
+
+            sql = "SELECT * FROM INVENTORY WHERE NAME IN (" + names + ")";
+
+            System.out.println(sql);
+
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                String name         = rs.getString(2);
+                String description  = rs.getString(3);
+                int amount          = rs.getInt(4);
+                float weight        = rs.getFloat(5);
+                float cost         = rs.getFloat(6);
+                String category     = rs.getString(7);
+
+                Item item = new Item(name, weight, category, description, amount, cost);
+                System.out.println("Name: " + name);
+                items.add(item);
+            }
+
+            sql = "SELECT * FROM WEAPONS WHERE NAME IN (" + names + ") ORDER BY NAME ASC";
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                String name         = rs.getString(2);
+                float cost         = rs.getFloat(3);
+                float weight        = rs.getFloat(4);
+                String description  = rs.getString(5);
+                String category     = rs.getString(6);
+                int amount          = rs.getInt(7);
+
+                int damage        = rs.getInt(8);
+                int range        = rs.getInt(9);
+                boolean martial = rs.getBoolean(10);
+                boolean ranged = rs.getBoolean(11);
+                boolean finesse = rs.getBoolean(12);
+                String type      = rs.getString(13);
+
+                Weapon weapon = new Weapon(name, weight, category, description, amount, cost, Integer.toString(damage), range, martial, ranged, finesse, type);
+
+                items.add(weapon);
+            }
+
+            sql = "SELECT * FROM ARMOR WHERE NAME IN (" + names + ") ORDER BY NAME ASC";
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                String name         = rs.getString(2);
+                float cost         = rs.getFloat(3);
+                float weight        = rs.getFloat(4);
+                String description  = rs.getString(5);
+                String category     = rs.getString(6);
+                int amount          = rs.getInt(7);
+
+                int ac          = rs.getInt(8);
+                String group    = rs.getString(9);
+                boolean stealth = rs.getBoolean(10);
+
+                Armor armor = new Armor(name, weight, category, description, amount, cost, ac, group, stealth);
+                items.add(armor);
+            }
+
+            System.out.println("\nCommand: " + sql + "\n");
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.close();
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }finally{
+            //finally block used to close resources
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se2){
+            }// nothing we can do
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+
+        return items;
+    }
+
 
 }

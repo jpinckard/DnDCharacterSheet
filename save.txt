@@ -53,3 +53,4 @@ stats-statsGrid_5-5=1
 stats-statsGrid_2-1=-2
 stats-statsGrid_2-0=7
 stats-statsGrid_2-3=7
+currency-pp_int=1

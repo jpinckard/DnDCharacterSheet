@@ -331,7 +331,6 @@ public class CharacterSheetController {
 
             ArrayList<Item> list = new ArrayList<Item>();
 
-
             // For each line in the save file, set values in character creator and the gui.
             while ((line = bufferreader.readLine()) != null) {
                 // Separate ID and array
@@ -359,7 +358,7 @@ public class CharacterSheetController {
 
             characterSheet.getInventory().setItems(items);
             characterSheet.getInventory().getCharEquipment().setWeaponList(weapons);
-            characterSheet.getInventory().getCharEquipment().setArmor(armor.get(0));
+            characterSheet.getInventory().getCharEquipment().setArmorList(armor);
 
         } catch (IOException e) {
             e.printStackTrace();

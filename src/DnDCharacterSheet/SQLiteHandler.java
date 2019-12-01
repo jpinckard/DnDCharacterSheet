@@ -51,6 +51,12 @@ public class SQLiteHandler {
         return conn;
     }
 
+    /**
+     * Returns a list of all spells.
+     * @param connection
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Spell> LoadSpells(Connection connection) throws Exception
     {
         ArrayList<Spell> spells = new ArrayList<Spell>();
@@ -118,8 +124,12 @@ public class SQLiteHandler {
         return spells;
     }
 
-
-
+    /**
+     * Returns a list of all weapons.
+     * @param connection
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Weapon> LoadWeapons(Connection connection) throws Exception
     {
         ArrayList<Weapon> weapons = new ArrayList<Weapon>();
@@ -190,6 +200,12 @@ public class SQLiteHandler {
         return weapons;
     }
 
+    /**
+     * Returns a list of all items.
+     * @param connection
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Item> LoadInventory(Connection connection) throws Exception
     {
         ArrayList<Item> inventory = new ArrayList<Item>();
@@ -252,7 +268,12 @@ public class SQLiteHandler {
         return inventory;
     }
 
-
+    /**
+     * Returns a list of all armor.
+     * @param connection
+     * @return
+     * @throws Exception
+     */
     public static ArrayList<Armor> LoadArmor(Connection connection) throws Exception
     {
         ArrayList<Armor> armor = new ArrayList<Armor>();
@@ -319,7 +340,12 @@ public class SQLiteHandler {
         return armor;
     }
 
-
+    /**
+     * Adds a spell to the list of all spells.
+     * @param connection
+     * @param spell
+     * @throws Exception
+     */
     public static void AddSpell(Connection connection, Spell spell) throws Exception
     {
         Connection conn = null;
@@ -365,6 +391,12 @@ public class SQLiteHandler {
         }//end try
     }
 
+    /**
+     * Adds an item to the inventory.
+     * @param connection
+     * @param item
+     * @throws Exception
+     */
     public static void AddItem(Connection connection, Item item) throws Exception
     {
         Connection conn = null;
@@ -410,6 +442,12 @@ public class SQLiteHandler {
         }//end try
     }
 
+    /**
+     * Sorts a table by a filter.
+     * @param table
+     * @param filter
+     * @throws Exception
+     */
     public static void Sort(String table, String filter) throws Exception
     {
         Connection conn = null;
@@ -453,7 +491,6 @@ public class SQLiteHandler {
             }//end finally try
         }//end try
     }
-
 
     /**
      * Gets all distinct categories from all tables.
@@ -519,7 +556,6 @@ public class SQLiteHandler {
 
         return categories;
     }
-
 
     /**
      * Filters table results by category.
@@ -631,8 +667,7 @@ public class SQLiteHandler {
 
         return items;
     }
-
-
+    
     /**
      * Loads inventory items by name and category.
      * @param connection
@@ -746,6 +781,5 @@ public class SQLiteHandler {
 
         return items;
     }
-
 
 }

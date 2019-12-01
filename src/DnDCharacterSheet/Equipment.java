@@ -9,6 +9,10 @@ public class Equipment
 {
     private Armor armor; // Armor object for armor being worn
     private ArrayList<Weapon> weaponList; // List of readily available weapons
+
+
+
+    private ArrayList<Armor> armorList; // List of armor in storage.
     private ArrayList<Item> ammoList; // List of ammunition available.
     private boolean shield; //True if character has a shield equipped, false if they do not
 
@@ -80,6 +84,22 @@ public class Equipment
      */
     public void setWeaponList(ArrayList<Weapon> weaponList) {
         this.weaponList = weaponList;
+    }
+
+    /**
+     * Returns the list of armor in the inventory.
+     * @return
+     */
+    public ArrayList<Armor> getArmorList() {
+        return armorList;
+    }
+
+    /**
+     * Sets the list of armor in the inventory
+     * @param armorList
+     */
+    public void setArmorList(ArrayList<Armor> armorList) {
+        this.armorList = armorList;
     }
 
     /**

@@ -503,17 +503,7 @@
                                  <content>
                                     <VBox>
                                        <children>
-                                          <TableView editable="true" prefHeight="200.0" tableMenuButtonVisible="true">
-                                            <columns>
-                                                <TableColumn prefWidth="75.0" text="Column X" />
-                                              <TableColumn prefWidth="75.0" text="Name" />
-                                              <TableColumn prefWidth="75.0" text="Attack Modifiers" />
-                                                <TableColumn prefWidth="75.0" text="Damage" />
-                                                <TableColumn prefWidth="75.0" text="Critical" />
-                                                <TableColumn prefWidth="75.0" text="Range" />
-                                                <TableColumn prefWidth="75.0" text="Type" />
-                                                <TableColumn prefWidth="75.0" text="Weight" />
-                                            </columns>
+                                          <TableView id="TableWeaponsAndAttacks" editable="true" prefHeight="200.0" tableMenuButtonVisible="true">
                                              <columnResizePolicy>
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>

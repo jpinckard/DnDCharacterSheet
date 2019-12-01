@@ -102,9 +102,11 @@ public class StartSceneController {
      */
     public static void UpdateTables(Connection connection, Scene scene, CharacterSheet characterSheet) throws Exception {
         // Populate armor table
-        //LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.getInventory().getCharEquipment().getArmor());
+        LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.getInventory().getCharEquipment().getArmorList());
         LoadInventoryTable(connection, (TableView)scene.lookup("#TableInventory"), characterSheet.getInventory().getItems());
         LoadWeaponsTable(connection, (TableView)scene.lookup("#TableWeapons"), characterSheet.getInventory().getCharEquipment().getWeaponList());
+
+        LoadWeaponsTable(connection, (TableView)scene.lookup("#TableWeaponsAndAttacks"), characterSheet.getInventory().getCharEquipment().getWeaponList());
     }
 
     /**

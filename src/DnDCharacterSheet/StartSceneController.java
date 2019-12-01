@@ -26,6 +26,7 @@ public class StartSceneController {
     @FXML
     private Hyperlink blankcharbutton;
 
+    private CharacterSheet characterSheet;
     /**
      * Function that opens the charactersheetpane. The end.
      * @param event
@@ -41,6 +42,7 @@ public class StartSceneController {
         stage.setTitle("D&D Character Sheet Editor");
         stage.setScene(new Scene(root, 800, 800));
         stage.show();
+        characterSheet = ((CharacterSheetController)fxmlLoader.getController()).getCharacterSheet();
         //stage.setResizable(false);
         blankcharbutton.getScene().getWindow().hide();
 
@@ -51,12 +53,15 @@ public class StartSceneController {
         // Form a connection with the database.
         Connection connection = SQLiteHandler.Setup();
 
+        //CharacterSheet characterSheet = scene
+
         //////////////////////////
         //// LOAD SAVED VALUES ///
         // Get save data
         CharacterSheetController.Load(scene);
+        // Update saving throws
         // Populate armor table
-        //LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.armor);
+        LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.getInventory().getItems());
 
         ////////////////
         // CATEGORIES //

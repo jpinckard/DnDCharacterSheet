@@ -34,7 +34,7 @@ import javax.swing.*;
  */
 public class CharacterSheetController {
 
-    CharacterSheet characterSheet = new CharacterSheet();
+    private CharacterSheet characterSheet = new CharacterSheet();
 
     //for testing only
     ObservableList<String> list = FXCollections.observableArrayList(
@@ -200,6 +200,7 @@ public class CharacterSheetController {
          ****** SAVE TO FILE ******
          **************************/
         String path = "save.txt";
+        System.out.println("Save " + id + " as " + value);
         try {
             String line = "";
             String save = "";
@@ -243,8 +244,15 @@ public class CharacterSheetController {
             while ((line = bufferreader.readLine()) != null) {
                 // Get ID and value
                 String[] values = line.split("=");
-                // Set text field
-                ((TextField) scene.lookup("#" + values[0])).setText(values[1]);
+
+                //System.out.println("1:" + values[0]);
+                //System.out.println("2:" + values[1]);
+
+                // Set text field if value is not null
+                if (values.length > 1){
+                    if (values[1] != null & values[1] != "")
+                        ((TextField) scene.lookup("#" + values[0])).setText(values[1]);
+                }
             }
 
         } catch (IOException e) {
@@ -371,12 +379,25 @@ public class CharacterSheetController {
             // Set 2-Dimensional Array
             if (elements.length > 1) {
                 characterSheet.setStat(Integer.parseInt(elements[0]), Integer.parseInt(elements[1]), value);
+
+                // ID's of total and mod
+                String total = subclass + "-" + field + "_" + elements[0] + "-" + "0";
+                String mod = subclass + "-" + field + "_" + elements[0] + "-" + "1";
+
+                // Calculated values of total and mod
+                String modVal   = String.valueOf(characterSheet.getStats().getStat(Integer.parseInt(elements[0]), 1));
+                String totalVal = String.valueOf(characterSheet.getStats().getStat(Integer.parseInt(elements[0]), 0));
+
                 // now that it's set let's update the mod
-                ((TextField) scene.lookup("#" + subclass + "-" + field + "_" + elements[0] + "-" + "1")).setText(String.valueOf(characterSheet.getStats().getStat(Integer.parseInt(elements[0]), 1)));
+                ((TextField) scene.lookup("#" + mod)).setText(String.valueOf(modVal));
                 // now update the total
-                ((TextField) scene.lookup("#" + subclass + "-" + field + "_" + elements[0] + "-" + "0")).setText(String.valueOf(characterSheet.getStats().getStat(Integer.parseInt(elements[0]), 0)));
+                ((TextField) scene.lookup("#" + total)).setText(String.valueOf(totalVal));
                 // now update saving throws
                 updateSavingThrows();
+                // Save to be loaded in later
+                Save(mod, modVal); // Save mod
+                // Save total to be loaded in later
+                Save(total, totalVal); // Save total
             }
             // Set 1-Dimensional Array
             else {
@@ -394,6 +415,7 @@ public class CharacterSheetController {
                     temp[Integer.parseInt(elements[0])] = value;
                     // Set the target field to hold the copied object
                     targetField.set(subclassField.get(characterSheet), temp);
+
                 } else {
                     // Make a copy of the target field within CharacterSheet
                     int[] temp = (int[]) targetField.get(characterSheet);
@@ -404,7 +426,6 @@ public class CharacterSheetController {
                 }
             }
         }
-
         System.out.println("Misc stats AC value: " + characterSheet.getMiscStats().getAC()[3]);
 
         // Assign value to original field.
@@ -412,6 +433,12 @@ public class CharacterSheetController {
 
         // Reposition the caret
         ((TextInputControl) event.getSource()).positionCaret(caretPos);
+
+        // Save values
+        Save(id, Integer.toString(value)); // Save value
+
+
+
     }
 
     /**
@@ -642,5 +669,9 @@ public class CharacterSheetController {
             characterSheet.getCurrency().decPp();
             currencyPP.setText(String.valueOf(characterSheet.getCurrency().getPp()));
         }
+    }
+
+    public CharacterSheet getCharacterSheet() {
+        return characterSheet;
     }
 }

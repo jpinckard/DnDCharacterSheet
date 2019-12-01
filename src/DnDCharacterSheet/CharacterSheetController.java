@@ -38,10 +38,12 @@ public class CharacterSheetController {
     private CharacterSheet characterSheet = new CharacterSheet();
 
     //for testing only
-    ObservableList<String> list = FXCollections.observableArrayList(
-            "Asparagus", "Beans", "Broccoli", "Cabbage", "Carrot",
-            "Celery", "Cucumber", "Leek", "Mushroom", "Pepper",
-            "Radish", "Shallot", "Spinach", "Swede", "Turnip");
+    ObservableList<Spell> list = FXCollections.observableArrayList(
+            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
+            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
+            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash")
+    );
+
 
     // declare fields for saving throws
     @FXML TextField strSavingThrow;
@@ -626,36 +628,86 @@ public class CharacterSheetController {
 
         // add new items to list
         spellgrid.add(new TextField(), 0, rowindex, 1, 1);
-        spellgrid.add(new ComboBox(list), 1, rowindex, 1, 1);
-        spellgrid.add(new Button("X"), 2, rowindex, 1, 1);
+        spellgrid.add(new TextField(), 1, rowindex, 1, 1);
+        spellgrid.add(new ComboBox<>(), 2, rowindex, 1, 1);
+        spellgrid.add(new Button("X"), 3, rowindex, 1, 1);
 
         // get all the fields we're currently working with to format them
-        TextField currentfield = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
-        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex - 1);
-        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 1, rowindex);
-        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 2, rowindex);
+        TextField currentPrep = (TextField) getNodeFromGridPane(spellgrid, 0, rowindex);
+        TextField currentUsed = (TextField) getNodeFromGridPane(spellgrid, 1, rowindex);
+        ComboBox prevbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex - 1);
+        ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex);
+        Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 3, rowindex);
 
         //format the items
+        currentbox.setItems(list);
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);
-        currentbox.setOnAction(new EventHandler<ActionEvent>(){
+/*
+        currentbox.setConverter(new StringConverter<Spell>(){
             @Override
-            public void handle(ActionEvent e){
-                dynamicSpellAdder(spellgrid);
+            public String toString(Spell spell) {
+                if (spell == null) return null;
+                else {
+                    return spell.getName();
+                }
+            }
+
+            @Override
+            public Spell fromString(String s) {
+                System.out.println("The String inside fromString is: " + s);
+               // return new Spell("test", "test", 0, 0, 0, "test", "test", "test", "test", "test");
+                for (Spell o: list) {
+                    if(o.getName().equals(s)){
+                        return o;
+                    }
+                }
+                return null;
             }
         });
-        //spellLevel1Grid.setMargin(currentbox, new Insets(3, 0, 0, 0));
+*/
+        currentbox.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
 
-        if(prevbox != null)prevbox.setDisable(true);
+            if (currentbox.getSelectionModel().getSelectedItem() != null && list.contains(currentbox.getSelectionModel().getSelectedItem())){
+                dynamicSpellAdder(spellgrid);
+            }
 
-       currentbutton.setOnAction(new EventHandler<ActionEvent>() {
-           @Override public void handle(ActionEvent e) {
-               if((getNodeFromGridPane(spellgrid, 1, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
-                   spellgrid.getChildren().removeIf(node -> (GridPane.getRowIndex(node) != null) && (GridPane.getRowIndex(node) == rowindex));
-               }
-       }
-       });
+
+            System.out.println(currentbox.getSelectionModel().getSelectedItem());
+            System.out.println("observablevalue is : " + observableValue);
+            System.out.println("o is: " + o);
+            System.out.println("t1 is: " + t1.toString());
+            System.out.println("getValue is: " + currentbox.getValue());
+
+        });
+
+
+        // Tell the combobox the format to display the items in
+        currentbox.setCellFactory(new SpellCellFactory());
+        // Tell the button area the format to display the items in
+        currentbox.setButtonCell(new SpellCell());
+
+
+        if(prevbox != null){
+
+            // When a new box is populated, make sure the old one is not editable
+            prevbox.setEditable(false);
+            // Make sure the old one is also disabled
+            prevbox.setDisable(true);
+            // Set the opacity of the box so that the labels inside are visible
+            // Note that this does not change the opacity of the labels themselves
+            prevbox.setStyle("-fx-opacity: 1");
+
+        }
+
+        currentbutton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                if((getNodeFromGridPane(spellgrid, 2, GridPane.getRowIndex((Node) e.getSource()))).isDisabled()) {
+                    spellgrid.getChildren().removeIf(node -> (GridPane.getRowIndex(node) != null) && (GridPane.getRowIndex(node) == rowindex));
+                }
+            }
+        });
     }
 
     /**

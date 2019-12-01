@@ -1,1 +1,2 @@
-Armor="Leather"
+Armor="Leather","Chain mail"
+Tool="Crowbar"

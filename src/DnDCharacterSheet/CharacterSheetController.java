@@ -1,9 +1,6 @@
 package DnDCharacterSheet;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -117,11 +114,8 @@ public class CharacterSheetController {
      * name of the TextField. Calls the filter method to disallow invalid entries for certain fields and then updates
      * the TextBox based on what was allowed.
      * @param event
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
-     * @throws ClassNotFoundException
      */
-    public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
+    public void SetValue(KeyEvent event){
 
         /**************************
          **** DEFINE VARIABLES ****
@@ -156,22 +150,30 @@ public class CharacterSheetController {
         /**************************
          *** GET SELECTED FIELD ***
          **************************/
-        if (subclasses.length > 1) {
-            System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
-            // The subclass is the first value,
-            String subclass = subclasses[0];
-            field = subclasses[1];
-            // And its field is the second.
-            subclassField = (CharacterSheet.class.getDeclaredField(subclass));
-            targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
-        } else {
-            // Get the field we're editing
-            targetField = CharacterSheet.class.getDeclaredField(field);
+        try {
+            if (subclasses.length > 1) {
+                System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
+                // The subclass is the first value,
+                String subclass = subclasses[0];
+                field = subclasses[1];
+                // And its field is the second.
+                subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+                targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+            } else {
+                // Get the field we're editing
+                targetField = CharacterSheet.class.getDeclaredField(field);
+            }
+        } catch (NoSuchFieldException e){
+            exceptionPane("NoSuchFieldException caught!", e);
         }
 
 
         // Filter text values
-        text = Filter(subclassField, targetField, text, dataType);
+        try {
+            text = Filter(subclassField, targetField, text, dataType);
+        } catch (IllegalAccessException e) {
+            exceptionPane("IllegalAccessException caught!", e);
+        }
 
         /**************************
          *** SET ALL CONTROL VALS *
@@ -379,9 +381,8 @@ public class CharacterSheetController {
      * @param dataType
      * @return
      * @throws IllegalAccessException
-     * @throws NoSuchFieldException
      */
-    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
+    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException{
 
         field.setAccessible(true);
         Object value = null;
@@ -451,10 +452,8 @@ public class CharacterSheetController {
      * datatype for these is int. Determines which array based upon reflection and the TextField ID in the
      * FXML. DOES NOT support any 2D array except for Stats.
      * @param event
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
      */
-    public void SetArrayValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException {
+    public void SetArrayValue(KeyEvent event){
         //subclass-field_element1-element2
 
         /* *************************
@@ -510,30 +509,35 @@ public class CharacterSheetController {
             }
             // Set 1-Dimensional Array
             else {
-                Field targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
-                targetField.setAccessible(true);
+                try {
+                    Field targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+                    targetField.setAccessible(true);
 
-                // Set Value
-                if (subclass != null) {
-                    Field subclassField = (CharacterSheet.class.getDeclaredField(subclass));
-                    subclassField.setAccessible(true);
+                    // Set Value
+                    if (subclass != null) {
+                        Field subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+                        subclassField.setAccessible(true);
 
-                    // Get value of target field
-                    int[] temp = (int[]) targetField.get(subclassField.get(characterSheet));
-                    // Change the value of the copy
-                    temp[Integer.parseInt(elements[0])] = value;
-                    // Set the target field to hold the copied object
-                    targetField.set(subclassField.get(characterSheet), temp);
+                        // Get value of target field
+                        int[] temp = (int[]) targetField.get(subclassField.get(characterSheet));
+                        // Change the value of the copy
+                        temp[Integer.parseInt(elements[0])] = value;
+                        // Set the target field to hold the copied object
+                        targetField.set(subclassField.get(characterSheet), temp);
 
-                } else {
-                    // Make a copy of the target field within CharacterSheet
-                    int[] temp = (int[]) targetField.get(characterSheet);
-                    // Set the target field to hold our new value
-                    temp[Integer.parseInt(elements[0])] = value;
-                    // Set the field to hold the copy object
-                    targetField.set(characterSheet, temp);
+                    } else {
+                        // Make a copy of the target field within CharacterSheet
+                        int[] temp = (int[]) targetField.get(characterSheet);
+                        // Set the target field to hold our new value
+                        temp[Integer.parseInt(elements[0])] = value;
+                        // Set the field to hold the copy object
+                        targetField.set(characterSheet, temp);
+                    }
+                } catch(NoSuchFieldException | IllegalAccessException e){
+                    exceptionPane("IllegalAccessException or NoSuchFieldException caught!", e);
                 }
             }
+
         }
         System.out.println("Misc stats AC value: " + characterSheet.getMiscStats().getAC()[3]);
 
@@ -553,11 +557,8 @@ public class CharacterSheetController {
      * Updates the progress bar to give visual representation of HP value
      * and calls various helper functions to calculate damage, healing, etc.
      * @param event
-     * @throws IllegalAccessException
-     * @throws NoSuchFieldException
-     * @throws ClassNotFoundException
      */
-    public void setHP(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void setHP(KeyEvent event){
 
         Scene scene = ((Control) event.getSource()).getScene();
         String id = ((Control) event.getSource()).getId();
@@ -763,11 +764,8 @@ public class CharacterSheetController {
      * Controller method that updates the value of the proficiency bonus via setValue method
      * and then updates the saving throws to reflect the change via updateSavingThrow method.
      * @param event
-     * @throws IllegalAccessException
-     * @throws NoSuchFieldException
-     * @throws ClassNotFoundException
      */
-    public void updateProf(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void updateProf(KeyEvent event) {
         SetValue(event);
         updateSavingThrows();
     }
@@ -877,5 +875,48 @@ public class CharacterSheetController {
         // Remove Cost
 
         AddItem(event);
+    }
+
+    public void changeSkills(){
+
+    }
+
+    /**
+     * This is just a method to provide reusable dialogue windows for exceptions.
+     * @param content
+     * @param ex
+     */
+    public void exceptionPane(String content, Exception ex){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("There's been an exception!");
+        alert.setContentText(content);
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
     }
 }

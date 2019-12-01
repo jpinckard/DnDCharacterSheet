@@ -927,51 +927,51 @@
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-AC_0" alignment="CENTER" editable="false" onKeyTyped="#SetValue" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_0" alignment="CENTER" editable="false" onKeyTyped="#SetArrayValue" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-AC_1" alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_1" alignment="CENTER" editable="false" onKeyTyped="#SetArrayValue" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-AC_2" alignment="CENTER" editable="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                      <TextField id="miscStats-AC_2" alignment="CENTER" editable="false" onKeyTyped="#SetArrayValue" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
                                                       <TextField id="miscStats-AC_3" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="7" GridPane.rowIndex="1" />
                                                       <TextField id="miscStats-AC_4" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                                                      <TextField id="miscStats-AC_5" alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                                                      <TextField id="miscStats-AC_5" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="11" GridPane.rowIndex="1" />
                                                       <TextField alignment="CENTER" editable="false" text="Initiative" GridPane.rowIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-init_0" alignment="CENTER" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                      <TextField id="miscStats-init_0" alignment="CENTER" editable="false" onKeyTyped="#SetArrayValue" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-init_1" alignment="CENTER" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                      <TextField id="miscStats-init_1" alignment="CENTER" editable="false" onKeyTyped="#SetArrayValue" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-init_2" alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                                      <TextField id="miscStats-init_2" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="5" GridPane.rowIndex="3" />
                                                       <TextField alignment="CENTER" editable="false" text="Speed" GridPane.rowIndex="5">
                                                          <cursor>
                                                             <Cursor fx:constant="DEFAULT" />
                                                          </cursor>
                                                       </TextField>
-                                                      <TextField id="miscStats-speed_0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                      <TextField id="miscStats-speed_1" alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                                      <TextField id="miscStats-speed_2" alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                                                      <TextField id="miscStats-speed_3" alignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                                                      <TextField id="miscStats-speed_4" alignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="5" />
-                                                      <TextField id="miscStats-speed_5" alignment="CENTER" GridPane.columnIndex="11" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_0" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_1" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_2" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_3" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_4" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+                                                      <TextField id="miscStats-speed_5" alignment="CENTER" onKeyTyped="#SetArrayValue" GridPane.columnIndex="11" GridPane.rowIndex="5" />
                                                    </children>
                                                    <VBox.margin>
                                                       <Insets right="10.0" />

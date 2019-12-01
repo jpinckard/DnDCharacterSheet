@@ -436,9 +436,6 @@ public class CharacterSheetController {
 
         // Save values
         Save(id, Integer.toString(value)); // Save value
-
-
-
     }
 
     /**

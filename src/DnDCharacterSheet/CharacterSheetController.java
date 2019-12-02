@@ -272,7 +272,7 @@ public class CharacterSheetController {
                 // Set text field if value is not null
                 if (values.length > 1){
                     if (values[1] != null & values[1] != "")
-                        ((TextField) scene.lookup("#" + values[0])).setText(values[1]);
+                        ((TextInputControl) scene.lookup("#" + values[0])).setText(values[1]);
                 }
             }
 
@@ -872,6 +872,10 @@ public class CharacterSheetController {
         AddItem(event);
     }
 
+    /**
+     * This is a method for entering values into the skills array and updating the skill total
+     * @param event
+     */
     public void changeSkills(KeyEvent event) {
 
         Scene scene = ((Control) event.getSource()).getScene();
@@ -944,6 +948,10 @@ public class CharacterSheetController {
         }
     }
 
+    /**
+     * This is a method to assign to the radiobuttons on the skill pane
+     * @param event
+     */
     public void skillTrainToggle(ActionEvent event){
 
         int rowIndex = GridPane.getRowIndex((Node) event.getSource()) - 1;
@@ -957,6 +965,11 @@ public class CharacterSheetController {
 
     }
 
+    /**
+     * This is a method to call from component methods that cchange classes that skill uses
+     * in order to ensure that both the view and the model are udpated correctly. Currently used in
+     * skillTrainToggle and setArrayValue.
+     */
     public void updateSkills(){
 
         // This method is being called from inside of the update stat/setarray method and skillTrainToggle

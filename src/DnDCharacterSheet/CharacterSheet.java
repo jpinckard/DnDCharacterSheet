@@ -23,7 +23,7 @@ public class CharacterSheet {
     private int[] savingThrows;
     private MiscStats miscStats;
     private int exp;
-    private ArrayList<Feature> features;
+    //private ArrayList<Feature> features;
     //private Story charstory;
     private int proficiency;
     private Currency currency;
@@ -36,6 +36,10 @@ public class CharacterSheet {
     private static final int WIS = 4;
     private static final int CHA = 5;
 
+    /**
+     * This is the master CharacterSheet class that aggregates all of the component classes.
+     * The control interacts with everything else through this class.
+     */
     public CharacterSheet() {
         this.name = "";
         this.level = 1;
@@ -73,7 +77,7 @@ public class CharacterSheet {
         //this.savingThrows = new int[6];
         this.miscStats = new MiscStats();
         this.exp = 0;
-        this.features = new ArrayList<Feature>();
+        //this.features = new ArrayList<Feature>();
         //this.charstory = new Story();
         this.currency = new Currency();
     }
@@ -130,6 +134,12 @@ public class CharacterSheet {
         return skills;
     }
 
+    /**
+     * Used to calculate the derived total skill stat from the stat modifier, the assigned skill proficiency bonus,
+     * the assigned skill expertise bonus, and the assign skill miscellaneous bonus.
+     * @param skillnum
+     * @return
+     */
     public int getSkillTotal(int skillnum){
         //to calculate the skill total we must add the skill modifier to the proficiency, expertise, and misc bonuses in skill
         return (stats.getStat(skills[skillnum].getModType(), 1) + skills[skillnum].getProf() + skills[skillnum].getExpert() + skills[skillnum].getMisc());
@@ -176,6 +186,9 @@ public class CharacterSheet {
         return savingThrows;
     }
 
+    /**
+     * This method calculates the saving throw values from the stats class.
+     */
     public void calcSavingThrows()
     {
         savingThrows = new int[]{0,0,0,0,0,0};
@@ -206,7 +219,7 @@ public class CharacterSheet {
     public void setExp(int exp) {
         this.exp = exp;
     }
-
+/*
     public ArrayList<Feature> getFeatures() {
         return features;
     }
@@ -214,7 +227,7 @@ public class CharacterSheet {
     public void setFeatures(ArrayList<Feature> features) {
         this.features = features;
     }
-
+*/
     public void setProficiency(int prof){
         proficiency = prof;
     }

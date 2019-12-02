@@ -19,8 +19,12 @@ public class Info {
     private String alignment;
     private String size;
     private String background;
+    private String misc;
     private int age;
     private int wt;
+
+    //This is a temporary holder for features until a future version
+    private String features;
 
     /**
      * Parameterized constructor for class Info.
@@ -41,7 +45,7 @@ public class Info {
      */
     public Info(String name, String ht, String eyes, String skin, String hair,
                 String gender, String deity, String homeland, String languages,
-                String alignment, String size, String background, int age, int wt) {
+                String alignment, String size, String background, String misc, int age, int wt, String features) {
         this.name = name;
         this.ht = ht;
         this.eyes = eyes;
@@ -56,6 +60,8 @@ public class Info {
         this.background = background;
         this.age = age;
         this.wt = wt;
+        this.misc = misc;
+        this.features = features;
     }
 
     /**
@@ -74,8 +80,10 @@ public class Info {
         this.alignment = "";
         this.size = "";
         this.background = "";
+        this.misc = "";
         this.age = 0;
         this.wt = 0;
+        this.features = "";
     }
 
     public String getName() {

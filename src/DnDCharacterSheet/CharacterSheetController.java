@@ -260,7 +260,7 @@ public class CharacterSheetController {
                 // Set text field if value is not null
                 if (values.length > 1){
                     if (values[1] != null & values[1] != "")
-                        ((TextField) scene.lookup("#" + values[0])).setText(values[1]);
+                        ((TextInputControl) scene.lookup("#" + values[0])).setText(values[1]);
                 }
             }
 

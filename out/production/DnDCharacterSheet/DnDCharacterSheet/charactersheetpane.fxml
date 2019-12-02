@@ -1328,8 +1328,8 @@
                                     </VBox>
                                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <TextArea prefHeight="350.0" wrapText="true" />
-                                          <Label text="Label" />
+                                          <TextArea id="info-misc_str" prefHeight="350.0" wrapText="true" />
+                                          <Label text="Misc" />
                                           <TextArea id="story-allies_str" onKeyTyped="#SetValue" prefHeight="200.0" prefWidth="200.0" wrapText="true">
                                              <VBox.margin>
                                                 <Insets top="15.0" />
@@ -2204,7 +2204,7 @@
                               <VBox prefHeight="600.0" prefWidth="375.0" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Label text="Features" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <TextArea id="info-features_str" onKeyTyped="#SetValue" prefHeight="200.0" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS" />
                                  </children>
                                  <HBox.margin>
                                     <Insets left="20.0" />

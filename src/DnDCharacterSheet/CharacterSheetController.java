@@ -287,8 +287,10 @@ public class CharacterSheetController {
             while ((line = bufferreader.readLine()) != null) {
                 // find the location of the target array
                 if (line.contains(id)) {
-                    line = line.replace(value,"");
-                    line += "," + value;
+                    // If the item is not yet in the inventory
+                    if (!line.contains(value)){
+                        line += "," + value;
+                    }
                     idFound = true; // the category exists
                 }
                 // Save modified line to file

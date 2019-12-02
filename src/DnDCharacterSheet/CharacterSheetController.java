@@ -899,7 +899,6 @@ public class CharacterSheetController {
                             characterSheet.getSkills()[rowIndex].setProf(Integer.parseInt(text));
                             // Assign the field the value in the model for consistency and testing purposes
                             ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getProf()));
-                            System.out.println("Inside of case 4");
                             break;
 
                         // Expert is the 5th
@@ -919,8 +918,6 @@ public class CharacterSheetController {
                             break;
 
                     }
-
-                    System.out.println("The value in the model is: " + characterSheet.getSkills()[rowIndex].getProf());
 
                     ((TextField) getNodeFromGridPane(skillGridPane, 3, (rowIndex + 1))).setText(String.valueOf(characterSheet.getSkillTotal(rowIndex)));
                     ((TextInputControl) event.getSource()).positionCaret(caretPos);

@@ -29,6 +29,10 @@ import javax.swing.*;
  * This class handles everything in the main charactersheet GUI.
  * On loading a new character need to perform check if file has been provided,
  * then use initialize method to initialize the character sheet with loaded in values.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class CharacterSheetController {
 

@@ -2,8 +2,14 @@ package DnDCharacterSheet;
 
 import java.util.ArrayList;
 
-
-
+/**
+ * This is the master CharacterSheet class that aggregates all of the component classes.
+ * The control interacts with everything else through this class.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
+ */
 public class CharacterSheet {
     private String name;
     private int level;
@@ -36,10 +42,6 @@ public class CharacterSheet {
     private static final int WIS = 4;
     private static final int CHA = 5;
 
-    /**
-     * This is the master CharacterSheet class that aggregates all of the component classes.
-     * The control interacts with everything else through this class.
-     */
     public CharacterSheet() {
         this.name = "";
         this.level = 1;

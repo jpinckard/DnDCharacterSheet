@@ -2,6 +2,8 @@ package DnDCharacterSheet;
 
 import java.util.ArrayList;
 
+
+
 public class CharacterSheet {
     private String name;
     private int level;
@@ -26,6 +28,14 @@ public class CharacterSheet {
     private int proficiency;
     private Currency currency;
 
+    // These represent the ROW of the stats array
+    private static final int STR = 0;
+    private static final int DEX = 1;
+    private static final int CON = 2;
+    private static final int INT = 3;
+    private static final int WIS = 4;
+    private static final int CHA = 5;
+
     public CharacterSheet() {
         this.name = "";
         this.level = 1;
@@ -36,7 +46,26 @@ public class CharacterSheet {
         this.info = new Info();
         this.story = new Story();
         this.hitPoints = new HitPoints();
-        this.skills = new Skill[18];
+        this.skills = new Skill[] {
+                new Skill("Acrobatics", DEX, false, 0, 0, 0),
+                new Skill("Animal Handling", WIS, false, 0, 0, 0),
+                new Skill("Arcana", INT, false, 0, 0, 0),
+                new Skill("Athletics", STR, false, 0, 0, 0),
+                new Skill("Deception", CHA, false, 0, 0, 0),
+                new Skill("History", INT, false, 0, 0, 0),
+                new Skill("Insight", WIS, false, 0, 0, 0),
+                new Skill("Intimidation", CHA, false, 0, 0, 0),
+                new Skill("Investigation", INT, false, 0, 0, 0),
+                new Skill("Medicine", WIS, false, 0, 0, 0),
+                new Skill("Nature", INT, false, 0, 0, 0),
+                new Skill("Perception", WIS, false, 0, 0, 0),
+                new Skill("Performance", CHA, false, 0, 0, 0),
+                new Skill("Persuasion", CHA, false, 0, 0, 0),
+                new Skill("Religion", INT, false, 0, 0, 0),
+                new Skill("Sleight of Hand", DEX, false, 0, 0, 0),
+                new Skill("Stealth", DEX, false, 0, 0, 0),
+                new Skill("Survival", WIS, false, 0, 0, 0)
+        };
         this.stats = new Stats();
         this.wizText = new WizText();
         this.inventory = new Inventory();
@@ -99,6 +128,11 @@ public class CharacterSheet {
 
     public Skill[] getSkills() {
         return skills;
+    }
+
+    public int getSkillTotal(int skillnum){
+        //to calculate the skill total we must add the skill modifier to the proficiency, expertise, and misc bonuses in skill
+        return (stats.getStat(skills[skillnum].getModType(), 1) + skills[skillnum].getProf() + skills[skillnum].getExpert() + skills[skillnum].getMisc());
     }
 
     public void setSkills(Skill[] skills) {

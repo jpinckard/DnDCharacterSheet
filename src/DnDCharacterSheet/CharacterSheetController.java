@@ -42,6 +42,9 @@ public class CharacterSheetController {
     );
 
 
+    // declare gridpane for skills
+    @FXML GridPane skillGridPane;
+
     // declare fields for saving throws
     @FXML TextField strSavingThrow;
     @FXML TextField dexSavingThrow;
@@ -506,6 +509,8 @@ public class CharacterSheetController {
                 Save(mod, modVal); // Save mod
                 // Save total to be loaded in later
                 Save(total, totalVal); // Save total
+
+                updateSkills(); //update the skills
             }
             // Set 1-Dimensional Array
             else {
@@ -592,7 +597,7 @@ public class CharacterSheetController {
                     text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
                 }
 
-                System.out.println("Text is: " + text);
+                //System.out.println("Text is: " + text);
 
                 ((TextField) scene.lookup("#damagefield")).setText(text);
                 ((TextInputControl) event.getSource()).positionCaret(caretPos);
@@ -645,29 +650,7 @@ public class CharacterSheetController {
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);
-/*
-        currentbox.setConverter(new StringConverter<Spell>(){
-            @Override
-            public String toString(Spell spell) {
-                if (spell == null) return null;
-                else {
-                    return spell.getName();
-                }
-            }
 
-            @Override
-            public Spell fromString(String s) {
-                System.out.println("The String inside fromString is: " + s);
-               // return new Spell("test", "test", 0, 0, 0, "test", "test", "test", "test", "test");
-                for (Spell o: list) {
-                    if(o.getName().equals(s)){
-                        return o;
-                    }
-                }
-                return null;
-            }
-        });
-*/
         currentbox.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
 
             if (currentbox.getSelectionModel().getSelectedItem() != null && list.contains(currentbox.getSelectionModel().getSelectedItem())){
@@ -877,7 +860,126 @@ public class CharacterSheetController {
         AddItem(event);
     }
 
-    public void changeSkills(){
+    public void changeSkills(KeyEvent event) {
+
+        Scene scene = ((Control) event.getSource()).getScene();
+        String id = ((Control) event.getSource()).getId();
+
+        // The row index is the index that corresponds to the index of the skills array in the CharacterSheet class
+        // always subtract 1 so we begin indexing at 0.
+        int rowIndex = GridPane.getRowIndex((Node) event.getSource()) - 1;
+        // The column index is the index that corresponds to the value in Skill that we are setting
+        int columnIndex = GridPane.getColumnIndex((Node) event.getSource());
+
+        // basically writing a truncated version of setValue with Filter here
+        int caretPos = ((TextInputControl) event.getSource()).getCaretPosition();
+        String text = ((TextInputControl) event.getSource()).getText();
+
+        // make sure it's not blank to avoid errors
+        if (!text.equals("") && text != null) {
+            //Check to see if we're entering a negative number
+            // Allow a dash for the first character
+            text = text.replaceFirst("[^\\d-]", "");
+            // If the length of the string is greater than 1, then replace everything NOT an integer
+            if ((text.length() > 1)) {
+                String textsub = text.substring(1);
+                text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
+            }
+
+
+            // See if the skill is trained, if not then do none of this, per the rules of D&D
+            if(characterSheet.getSkills()[rowIndex].getTrained()) {
+                if (!text.equals("-")) {
+
+                    switch (columnIndex) {
+
+                        // Prof is the 4th column of the grid
+                        case 4:
+                            // Update the model
+                            characterSheet.getSkills()[rowIndex].setProf(Integer.parseInt(text));
+                            // Assign the field the value in the model for consistency and testing purposes
+                            ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getProf()));
+                            System.out.println("Inside of case 4");
+                            break;
+
+                        // Expert is the 5th
+                        case 5:
+                            // Update the model
+                            characterSheet.getSkills()[rowIndex].setExpert(Integer.parseInt(text));
+                            // Assign the field the value in the model for consistency and testing purposes
+                            ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getExpert()));
+                            break;
+
+                        // Misc is the 6th
+                        case 6:
+                            // Update the model
+                            characterSheet.getSkills()[rowIndex].setMisc(Integer.parseInt(text));
+                            // Assign the field the value in the model for consistency and testing purposes
+                            ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getMisc()));
+                            break;
+
+                    }
+
+                    System.out.println("The value in the model is: " + characterSheet.getSkills()[rowIndex].getProf());
+
+                    ((TextField) getNodeFromGridPane(skillGridPane, 3, (rowIndex + 1))).setText(String.valueOf(characterSheet.getSkillTotal(rowIndex)));
+                    ((TextInputControl) event.getSource()).positionCaret(caretPos);
+
+                }
+            } else{
+                // if the radio button isn't selected, then we're not going to allow any input.
+                ((TextField) event.getSource()).setText("");
+            }
+
+
+        }
+    }
+
+    public void skillTrainToggle(ActionEvent event){
+
+        int rowIndex = GridPane.getRowIndex((Node) event.getSource()) - 1;
+
+        // Update the model
+        characterSheet.getSkills()[rowIndex].setTrained(((RadioButton) event.getSource()).isSelected());
+
+        // update the skills
+        updateSkills();
+
+
+    }
+
+    public void updateSkills(){
+
+        // This method is being called from inside of the update stat/setarray method and skillTrainToggle
+        // so, we need to iterate through the entire list of skill and find all skills that are trained
+        // once we find those, we will call the getSkillTotal method for their corresponding total boxes
+        // in the skillGridPane. If they aren't trained, we need to clear the text boxes and the internal values back to 0.
+
+        // keep track of how many times we've hit an element
+        // the row in the gridpane is equal to this +1, the index of the skill is equal to this
+        int skillIndex = 0;
+        // iterate
+        for(Skill skill : characterSheet.getSkills()){
+            // if trained
+            if(skill.getTrained()) {
+                //update their totals
+                ((TextField) getNodeFromGridPane(skillGridPane, 3, (skillIndex + 1))).setText(String.valueOf(characterSheet.getSkillTotal(skillIndex)));
+            } else {
+                // if not trained, clear the skill values in the model and update their text boxes:
+                characterSheet.getSkills()[skillIndex].setProf(0);
+                ((TextField) getNodeFromGridPane(skillGridPane, 4, (skillIndex + 1))).setText("");
+                characterSheet.getSkills()[skillIndex].setExpert(0);
+                ((TextField) getNodeFromGridPane(skillGridPane, 5, (skillIndex + 1))).setText("");
+                characterSheet.getSkills()[skillIndex].setMisc(0);
+                ((TextField) getNodeFromGridPane(skillGridPane, 6, (skillIndex + 1))).setText("");
+
+                //Lastly, set the total to blank for consistency's sake
+                ((TextField) getNodeFromGridPane(skillGridPane, 3, (skillIndex + 1))).setText("");
+            }
+            // post-increment
+            ++ skillIndex;
+        }
+
 
     }
 

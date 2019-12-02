@@ -1675,7 +1675,7 @@
                               <VBox prefHeight="600.0" HBox.hgrow="NEVER">
                                  <children>
                                     <Label text="Skills" />
-                                    <GridPane gridLinesVisible="true" VBox.vgrow="ALWAYS">
+                                    <GridPane fx:id="skillGridPane" gridLinesVisible="true" VBox.vgrow="ALWAYS">
                                       <columnConstraints>
                                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                                         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
@@ -1717,7 +1717,7 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                          <TextField onKeyTyped="#changeSkills" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
@@ -1792,7 +1792,7 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <Label text="Preception" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                          <Label text="Perception" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
@@ -2185,24 +2185,24 @@
                                                 <Insets left="5.0" right="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="1" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="2" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="3" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="4" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="5" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="6" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="7" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="8" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="9" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="10" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="11" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="12" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="13" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="14" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="15" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="16" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="17" />
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="18" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="1" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="2" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="3" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="4" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="5" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="6" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="7" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="8" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="9" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="10" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="11" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="12" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="13" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="14" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="15" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="16" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="17" />
+                                          <RadioButton mnemonicParsing="false" onAction="#skillTrainToggle" GridPane.rowIndex="18" />
                                        </children>
                                     </GridPane>
                                  </children>

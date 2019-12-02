@@ -36,9 +36,21 @@ public class CharacterSheetController {
 
     //for testing only
     ObservableList<Spell> list = FXCollections.observableArrayList(
-            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
-            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
-            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash")
+            new Spell("Fire Bolt","Test", 0, 1, 0, "Evocation","instant", "120 feet","None", "V,S"),
+            new Spell("Produce Flame","Test", 0, 1, 0, "Evocation","instant", "30 feet","None", "V,S"),
+            new Spell("Sacred Flame","Test", 0, 1, 0, "Evocation","instant", "60 feet","Dex", "V,S"),
+            new Spell("Thunderwave","Test", 1, 1, 0, "Evocation","instant", "Self (15-foot cube)","Con", "V,S"),
+            new Spell("Cure Wounds","Test", 1, 1, 0, "Evocation","instant", "touch","None", "V,S"),
+            new Spell("Grease","Test", 1, 1, 0, "Conjuration","1 minute", "60 feet","Dex", "V,S,M"),
+            new Spell("Hold Person","Test", 2, 1, 0, "Enchantment","Concentration, 1 minute", "60 feet","Wis", "V,S,M"),
+            new Spell("Ray of Enfeeblement","Test", 2, 1, 0, "Necromancy","Concentration, 1 minute", "60 feet","None", "V,S"),
+            new Spell("Zone of Truth","Test", 2, 1, 0, "Enchantment","10 minutes", "60 feet","Cha", "V,S"),
+            new Spell("Slow","Test", 3, 1, 0, "Transmutation","Concentration, 1 minute", "120 feet","Wisdom", "V,S,M"),
+            new Spell("Fireball","Test", 3, 1, 0, "Evocation","instant", "150 feet","Dex", "V,S,M"),
+            new Spell("Beacon of Hope","Test", 3, 1, 0, "Abjuration","Concentration, 1 minute", "30 feet","None", "V,S"),
+            new Spell("Conjure Woodland Beings","Test", 4, 1, 0, "Conjuration","Concentration, 10 minutes", "60 feet","None", "V,S,M"),
+            new Spell("Guardian of Faith","Test", 4, 1, 0, "Conjuration","8 hours", "30 feet","Dex", "V"),
+            new Spell("Polymorph","Test", 4, 1, 0, "Transmutation","Concentration, 1 hour", "60 feet","Wisdom", "V,S,M")
     );
 
 

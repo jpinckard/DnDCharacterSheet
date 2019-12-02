@@ -23,24 +23,18 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-        <schema name="main" object-types="column, table, view, dataset trigger, constraint, index" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="300bf2d3-0e81-48bf-9d00-79974e948bdc">
-      <console name="Connection" type="STANDARD" schema="main" session="Main">/*
-select * from INVENTORY;
-select * from ARMOR;
-select * from SPELLS;
-select * from WEAPONS;
-select * from RACES;
-select * from PROFESSIONS;
-*/
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[select * from inventory;
+select * from armor;
+select * from spells;
+select * from weapons;
+select * from races;
+select * from proffesions;
 
-CREATE TABLE PROFESSIONS (
+CREATE TABLE proffesions (
     ID INT primary key,
     NAME TEXT,
     HD INT,
@@ -50,7 +44,7 @@ CREATE TABLE PROFESSIONS (
     SKILLS TEXT
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -58,12 +52,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     601,
-    &quot;Barbarian&quot;,
+    "Barbarian",
     12,
-    &quot;101000&quot;
+    "101000"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -71,12 +65,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     602,
-    &quot;Bard&quot;,
+    "Bard",
     8,
-    &quot;010001&quot;
+    "010001"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -84,12 +78,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     603,
-    &quot;Cleric&quot;,
+    "Cleric",
     8,
-    &quot;000011&quot;
+    "000011"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -97,12 +91,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     604,
-    &quot;Druid&quot;,
+    "Druid",
     8,
-    &quot;000110&quot;
+    "000110"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -110,12 +104,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     605,
-    &quot;Fighter&quot;,
+    "Fighter",
     10,
-    &quot;110000&quot;
+    "110000"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -123,12 +117,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     606,
-    &quot;Monk&quot;,
+    "Monk",
     8,
-    &quot;010010&quot;
+    "010010"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -136,12 +130,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     607,
-    &quot;Paladin&quot;,
+    "Paladin",
     10,
-    &quot;100001&quot;
+    "100001"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -149,12 +143,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     608,
-    &quot;Ranger&quot;,
+    "Ranger",
     10,
-    &quot;010010&quot;
+    "010010"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -162,12 +156,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     609,
-    &quot;Rogue&quot;,
+    "Rogue",
     8,
-    &quot;010100&quot;
+    "010100"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -175,12 +169,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     610,
-    &quot;Sorceror&quot;,
+    "Sorceror",
     6,
-    &quot;001001&quot;
+    "001001"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -188,12 +182,12 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     611,
-    &quot;Warlock&quot;,
+    "Warlock",
     8,
-    &quot;000011&quot;
+    "000011"
 );
 
-INSERT INTO PROFESSIONS (
+INSERT INTO PROFFESIONS (
     ID,
     NAME,
     HD,
@@ -201,13 +195,13 @@ INSERT INTO PROFESSIONS (
     SKILLS
 ) VALUES (
     612,
-    &quot;Wizard&quot;,
+    "Wizard",
     6,
-    &quot;000110&quot;
+    "000110"
 );
 
 
-CREATE TABLE RACES (
+CREATE TABLE races (
     ID INT primary key,
     NAME TEXT,
     STAT TEXT,
@@ -215,148 +209,173 @@ CREATE TABLE RACES (
 );
 
 INSERT INTO RACES (
-    NAME,
-    STAT,
-    SPEED
+    ID,
+    NAME
 ) VALUES (
-    &quot;Barbarian&quot;,
-    &quot;002010&quot;,
+    601,
+    "Barbarian",
     12
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Dwarf, Hill&quot;,
-    &quot;002010&quot;,
+    701,
+    "Dwarf, Hill",
+    "002010",
     25
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Dwarf, Mountain&quot;,
-    &quot;202000&quot;,
+    702,
+    "Dwarf, Mountain",
+    "202000",
     25
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Elf, High&quot;,
-    &quot;020100&quot;,
+    703,
+    "Elf, High",
+    "020100",
     30
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Elf, Wood&quot;,
-    &quot;020010&quot;,
+    704,
+    "Elf, Wood",
+    "020010",
     35
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Elf, Dark&quot;,
-    &quot;020001&quot;,
+    705,
+    "Elf, Dark",
+    "020001",
     30
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Halfling, Lightfoot&quot;,
-    &quot;020001&quot;,
+    706,
+    "Halfling, Lightfoot",
+    "020001",
     25
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Halfling, Stout&quot;,
-    &quot;021000&quot;,
+    707,
+    "Halfling, Stout",
+    "021000",
     25
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Human&quot;,
-    &quot;111111&quot;,
+    708,
+    "Human",
+    "111111",
     30
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Dragonborn&quot;,
-    &quot;200001&quot;,
+    709,
+    "Dragonborn",
+    "200001",
     30
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Gnome, Forest&quot;,
-    &quot;010200&quot;,
+    710,
+    "Gnome, Forest",
+    "010200",
     25
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Gnome, Rock&quot;,
-    &quot;001200&quot;,
+    711,
+    "Gnome, Rock",
+    "001200",
     25
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Half-Orc&quot;,
-    &quot;201000&quot;,
+    712,
+    "Half-Orc",
+    "201000",
     30
 );
 
 INSERT INTO RACES (
+    ID,
     NAME,
     STAT,
     SPEED
 ) VALUES (
-    &quot;Tiefling&quot;,
-    &quot;000102&quot;,
+    712,
+    "Tiefling",
+    "000102",
     30
 );
 
 
 
-CREATE TABLE ARMOR (
+CREATE TABLE armor (
     ID INT primary key,
     NAME TEXT,
     COST FLOAT,
@@ -370,6 +389,7 @@ CREATE TABLE ARMOR (
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -380,18 +400,20 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Padded&quot;,
+    201,
+    "Padded",
     5,
     8,
-    &quot;Padded armor consists of quilted layers of cloth and batting.&quot;,
-    &quot;Armor&quot;,
+    "Padded armor consists of quilted layers of cloth and batting.",
+    "Armor",
     1,
     11,
-    &quot;Light&quot;,
+    "Light",
     1
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -402,18 +424,20 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Leather&quot;,
+    202,
+    "Leather",
     10,
     10,
-    &quot;The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.&quot;,
-    &quot;Armor&quot;,
+    "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.",
+    "Armor",
     1,
     11,
-    &quot;Light&quot;,
+    "Light",
     0
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -424,18 +448,20 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Studded Leather&quot;,
+    203,
+    "Studded Leather",
     45,
     13,
-    &quot;Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes.&quot;,
-    &quot;Armor&quot;,
+    "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes.",
+    "Armor",
     1,
     12,
-    &quot;Light&quot;,
+    "Light",
     0
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -446,18 +472,20 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Hide&quot;,
+    204,
+    "Hide",
     10,
     12,
-    &quot;This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor.&quot;,
-    &quot;Armor&quot;,
+    "This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor.",
+    "Armor",
     1,
     12,
-    &quot;Medium&quot;,
+    "Medium",
     0
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -468,18 +496,20 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Scale mail&quot;,
+    206,
+    "Scale mail",
     50,
     45,
-    &quot;This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.&quot;,
-    &quot;Armor&quot;,
+    "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.",
+    "Armor",
     1,
     14,
-    &quot;Medium&quot;,
+    "Medium",
     1
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -490,18 +520,20 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Chain mail&quot;,
+    210,
+    "Chain mail",
     75,
     55,
-    &quot;Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. This suit includes gauntlets.&quot;,
-    &quot;Armor&quot;,
+    "Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. This suit includes gauntlets.",
+    "Armor",
     1,
     16,
-    &quot;Heavy&quot;,
+    "Heavy",
     1
 );
 
 INSERT INTO ARMOR (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -512,14 +544,15 @@ INSERT INTO ARMOR (
     TYPE,
     STEALTH
 ) VALUES (
-    &quot;Plate&quot;,
+    212,
+    "Plate",
     1500,
     65,
-    &quot;Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneather the armor. Buckles and straps distribute the weight over the body.&quot;,
-    &quot;Armor&quot;,
+    "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneather the armor. Buckles and straps distribute the weight over the body.",
+    "Armor",
     1,
     18,
-    &quot;Heavy&quot;,
+    "Heavy",
     1
 );
 
@@ -541,6 +574,7 @@ CREATE TABLE WEAPONS (
 );
 
 INSERT INTO WEAPONS (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -554,21 +588,23 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    &quot;Club&quot;,
+    301,
+    "Club",
     0.1,
     2,
-    &quot;Club&quot;,
-    &quot;Weapon&quot;,
+    "Club",
+    "Weapon",
     1,
-    &quot;1d4&quot;,
+    "dave",
     5,
     0,
     0,
     0,
-    &quot;bludgeoning&quot;
+    "dave"
 );
 
 INSERT INTO WEAPONS (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -582,21 +618,23 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    &quot;Dagger&quot;,
+    302,
+    "Dagger",
     2,
     1,
-    &quot;Dagger&quot;,
-    &quot;Weapon&quot;,
+    "Dagger",
+    "Weapon",
     1,
-    &quot;1d4&quot;,
+    "1d4",
     5,
     0,
     0,
     1,
-    &quot;piercing&quot;
+    "piercing"
 );
 
 INSERT INTO WEAPONS (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -610,21 +648,23 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    &quot;Shortbow&quot;,
+    313,
+    "Shortbow",
     25,
     2,
-    &quot;Shortbow&quot;,
-    &quot;Weapon&quot;,
+    "Shortbow",
+    "Weapon",
     1,
-    &quot;1d6&quot;,
+    "1d6",
     80,
     0,
     1,
     0,
-    &quot;piercing&quot;
+    "piercing"
 );
 
 INSERT INTO WEAPONS (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -638,21 +678,23 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    &quot;Battleaxe&quot;,
+    315,
+    "Battleaxe",
     10,
     4,
-    &quot;Battleaxe&quot;,
-    &quot;Weapon&quot;,
+    "Battleaxe",
+    "Weapon",
     1,
-    &quot;1d8&quot;,
+    "1d8",
     5,
     1,
     0,
     0,
-    &quot;slashing&quot;
+    "slashing"
 );
 
 INSERT INTO WEAPONS (
+    ID,
     NAME,
     COST,
     WEIGHT,
@@ -666,21 +708,22 @@ INSERT INTO WEAPONS (
     FINESSE,
     TYPE
 ) VALUES (
-    &quot;Hand Crossbow&quot;,
+    334,
+    "Hand Crossbow",
     75,
     3,
-    &quot;Hand Crossbow&quot;,
-    &quot;Weapon&quot;,
+    "Hand Crossbow",
+    "Weapon",
     1,
-    &quot;1d6&quot;,
+    "1d6",
     30,
     1,
     1,
     0,
-    &quot;bludgeoning&quot;
+    "bludgeoning"
 );
 
-CREATE TABLE INVENTORY (
+CREATE TABLE inventory (
     ID INT primary key,
     NAME TEXT,
     DESCRIPTION TEXT,
@@ -690,7 +733,8 @@ CREATE TABLE INVENTORY (
     CATEGORY TEXT
 );
 
-INSERT INTO INVENTORY (
+INSERT INTO inventory (
+    ID,
     NAME,
     DESCRIPTION,
     AMOUNT,
@@ -698,15 +742,17 @@ INSERT INTO INVENTORY (
     COST,
     CATEGORY
 ) VALUES (
-    &quot;Candle&quot;,
-    &quot;For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet.&quot;,
+    101,
+    "Candle",
+    "For 1 hour, a candle sheds bright light in a 5-foot radius and dim light for an additional 5 feet.",
     1,
     0,
     .01,
-    &quot;Consumable&quot;
+    "Consumable"
 );
 
-INSERT INTO INVENTORY (
+INSERT INTO inventory (
+    ID,
     NAME,
     DESCRIPTION,
     AMOUNT,
@@ -714,15 +760,16 @@ INSERT INTO INVENTORY (
     COST,
     CATEGORY
 ) VALUES (
-    &quot;Crowbar&quot;,
-    &quot;Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied&quot;,
+    102,
+    "Crowbar",
+    "Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied",
     1,
     5,
     2,
-    &quot;Tool&quot;
+    "Tool"
 );
 
-CREATE TABLE SPELLS     (
+CREATE TABLE spells     (
     ID INT primary key,
     NAME TEXT,
     DESCRIPTION TEXT,
@@ -737,7 +784,7 @@ CREATE TABLE SPELLS     (
 );
 
 
-INSERT INTO SPELLS     (
+INSERT INTO spells     (
     ID,
     NAME,
     DESCRIPTION,
@@ -751,20 +798,22 @@ INSERT INTO SPELLS     (
     COMPONENTS
 ) VALUES (
     504,
-    &quot;Magic Missile&quot;,
-    &quot;You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.&quot;,
+    "Magic Missile",
+    "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range. A dart deals 1d4 + 1 force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
     1,
     1,
     1,
-    &quot;Sorcerer, Wizard&quot;,
-    &quot;Instantaneous&quot;,
-    &quot;120 Feet&quot;,
-    &quot;Save&quot;,
-    &quot;V S&quot;
+    "Sorcerer, Wizard",
+    "Instantaneous",
+    "120 Feet",
+    "Save",
+    "V S"
 );
 
 
-DROP TABLE &quot;spells&quot;</console>
+
+
+DROP TABLE "characterSheet"]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -1019,12 +1068,22 @@ DROP TABLE &quot;spells&quot;</console>
           <content-type name="DTD" enabled="true" />
           <content-type name="HTML" enabled="true" />
           <content-type name="XHTML" enabled="true" />
+          <content-type name="CSS" enabled="true" />
           <content-type name="Java" enabled="true" />
           <content-type name="SQL" enabled="true" />
           <content-type name="PL/SQL" enabled="true" />
+          <content-type name="JavaScript" enabled="true" />
+          <content-type name="JSP" enabled="true" />
+          <content-type name="JSPx" enabled="true" />
           <content-type name="Groovy" enabled="true" />
+          <content-type name="FTL" enabled="true" />
+          <content-type name="TML" enabled="true" />
+          <content-type name="GSP" enabled="true" />
+          <content-type name="ASP" enabled="true" />
+          <content-type name="VTL" enabled="true" />
           <content-type name="AIDL" enabled="true" />
           <content-type name="YAML" enabled="true" />
+          <content-type name="Flex" enabled="true" />
           <content-type name="Manifest" enabled="true" />
         </content-types>
       </qualified-text-editor>

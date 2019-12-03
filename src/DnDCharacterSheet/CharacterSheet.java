@@ -82,6 +82,11 @@ public class CharacterSheet {
         //this.features = new ArrayList<Feature>();
         //this.charstory = new Story();
         this.currency = new Currency();
+        int array[] = new int[]{0,0,0,0,0,0};
+        races.add(new Race("Human", new int[]{0,0,0,0,0,0}, 30));
+        races.add(new Race("Dwarf", new int[]{0,0,0,0,0,0}, 30));
+        races.add(new Race("Elf", new int[]{0,0,0,0,0,0}, 30));
+        races.add(new Race("Kobold", new int[]{0,0,0,0,0,0}, 30));
     }
 
     public String getName() {
@@ -237,4 +242,6 @@ public class CharacterSheet {
     public int getProficiency(){ return proficiency; }
 
     public Currency getCurrency(){ return currency; }
+
+    public ArrayList<Race> getRaces(){ return races; }
 }

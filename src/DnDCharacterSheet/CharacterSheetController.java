@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import javax.swing.*;
 
@@ -38,6 +39,9 @@ import javax.swing.*;
 public class CharacterSheetController {
 
     private CharacterSheet characterSheet = new CharacterSheet();
+
+    ObservableList<Race> raceList = FXCollections.observableArrayList(characterSheet.getRaces());
+    @FXML ComboBox cbRaces;
 
     //for testing only under normal operation, a database could be loaded into this
     ObservableList<Spell> list = FXCollections.observableArrayList(
@@ -125,7 +129,28 @@ public class CharacterSheetController {
     @FXML
     private void initialize() {
 
+        cbRaces.setItems(raceList);
+        cbRaces.setConverter(
+                new StringConverter<Race>(){
 
+                    @Override
+                    public String toString(Race race) {
+                        if(race != null) {
+                            return race.getrName();
+                        } else return null;
+                    }
+
+                    @Override
+                    public Race fromString(String s) {
+
+                        for(Race r : raceList){
+                            if(r.getrName().equals(s)){
+                                return r;
+                            }
+                        }
+                        return null;
+                        }
+                    });
 
 
         dynamicSpellAdder(spellLevel0Grid);

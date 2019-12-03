@@ -167,7 +167,7 @@
                                           <Insets left="5.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <ComboBox editable="true" maxWidth="1.7976931348623157E308" GridPane.vgrow="ALWAYS">
+                                    <ComboBox fx:id="cbRaces" editable="true" maxWidth="1.7976931348623157E308" GridPane.vgrow="ALWAYS">
                                        <GridPane.margin>
                                           <Insets right="5.0" />
                                        </GridPane.margin>

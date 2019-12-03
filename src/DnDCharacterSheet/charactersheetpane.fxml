@@ -1328,7 +1328,7 @@
                                     </VBox>
                                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <TextArea id="info-misc_str" prefHeight="350.0" wrapText="true" />
+                                          <TextArea id="info-misc_str" onKeyTyped="#SetValue" prefHeight="350.0" wrapText="true" />
                                           <Label text="Misc" />
                                           <TextArea id="story-allies_str" onKeyTyped="#SetValue" prefHeight="200.0" prefWidth="200.0" wrapText="true">
                                              <VBox.margin>

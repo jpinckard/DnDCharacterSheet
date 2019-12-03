@@ -27,8 +27,8 @@ import java.util.ArrayList;
  */
 public class StartSceneController {
 
-    @FXML
-    private Hyperlink blankcharbutton;
+    @FXML private Hyperlink blankcharbutton;
+    @FXML private Hyperlink loadcharbutton;
 
     private CharacterSheet characterSheet; // the interface controller
     /**
@@ -36,6 +36,29 @@ public class StartSceneController {
      * @param event
      */
     public void openCharSheetPane (ActionEvent event){
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setOpacity(1);
+            stage.setTitle("D&D Character Sheet Editor");
+            stage.setScene(new Scene(root, 800, 800));
+            stage.show();
+            // Retrieve the instance of CharacterSheet that controls the interface.
+            characterSheet = ((CharacterSheetController) fxmlLoader.getController()).getCharacterSheet();
+            //stage.setResizable(false);
+            blankcharbutton.getScene().getWindow().hide();
+
+            // Load default values into text boxes from save.
+            LoadDefaultValues(stage.getScene());
+        } catch(Exception e){
+            exceptionPane("Critical exception caught on program start.", e);
+        }
+    }
+
+    public void loadSavedCharacter (ActionEvent event){
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));

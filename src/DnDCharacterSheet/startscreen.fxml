@@ -7,6 +7,6 @@
    <children>
       <Hyperlink text="Start Character Creation Wizard" translateY="-10.0" visible="false" />
       <Hyperlink fx:id="blankcharbutton" onAction="#openCharSheetPane" text="Blank Character Sheet" translateY="-5.0" />
-      <Hyperlink text="Load Character Sheet" translateY="5.0" />
+      <Hyperlink fx:id="loadcharbutton" onAction="#loadSavedCharacter" text="Load Character Sheet" translateY="5.0" />
    </children>
 </VBox>

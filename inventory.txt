@@ -1,0 +1,4 @@
+Armor="Hide","Padded","Leather"
+Tool="Crowbar"
+Consumable="Candle"
+Weapon="Dagger","Hand Crossbow"

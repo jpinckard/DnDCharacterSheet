@@ -69,8 +69,8 @@ public class StartSceneController {
             pwOb.close();
             fwOb.close();
 
-            // Load information into the shop table
-            CategoryList(stage.getScene(), connection);
+            // Load default values into text boxes from save.
+            LoadSave(stage.getScene());
 
         } catch(Exception e){
             exceptionPane("Critical exception caught on program start.", e);

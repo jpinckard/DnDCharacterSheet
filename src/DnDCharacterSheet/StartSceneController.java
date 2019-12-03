@@ -9,9 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.Array;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -30,28 +34,31 @@ public class StartSceneController {
     /**
      * Function that opens the charactersheetpane. The end.
      * @param event
-     * @throws Exception
      */
-    public void openCharSheetPane (ActionEvent event) throws Exception{
+    public void openCharSheetPane (ActionEvent event){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setOpacity(1);
-        stage.setTitle("D&D Character Sheet Editor");
-        stage.setScene(new Scene(root, 800, 800));
-        stage.show();
-        // Retrieve the instance of CharacterSheet that controls the interface.
-        characterSheet = ((CharacterSheetController)fxmlLoader.getController()).getCharacterSheet();
-        //stage.setResizable(false);
-        blankcharbutton.getScene().getWindow().hide();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("charactersheetpane.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setOpacity(1);
+            stage.setTitle("D&D Character Sheet Editor");
+            stage.setScene(new Scene(root, 800, 800));
+            stage.show();
+            // Retrieve the instance of CharacterSheet that controls the interface.
+            characterSheet = ((CharacterSheetController) fxmlLoader.getController()).getCharacterSheet();
+            //stage.setResizable(false);
+            blankcharbutton.getScene().getWindow().hide();
 
-        // Load default values into text boxes from save.
-        LoadDefaultValues(stage.getScene());
+            // Load default values into text boxes from save.
+            LoadDefaultValues(stage.getScene());
+        } catch(Exception e){
+            exceptionPane("Critical exception caught on program start.", e);
+        }
     }
 
-    public void LoadDefaultValues(Scene scene) throws Exception {
+    public void LoadDefaultValues(Scene scene){
         // Form a connection with the database
         Connection connection = SQLiteHandler.Setup();
         //////////////////////////
@@ -67,9 +74,13 @@ public class StartSceneController {
         ////////////////
         // CATEGORIES //
         ListView categoryList = (ListView)scene.lookup("#ListCategories");
-        ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
-        System.out.println("First category: " + categories.get(0));
-        categoryList.getItems().addAll(categories);
+        try {
+            ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
+            System.out.println("First category: " + categories.get(0));
+            categoryList.getItems().addAll(categories);
+        } catch(Exception e){
+            exceptionPane("Exception caught on category load in!", e);
+        }
 
         // Set onclicked event for list elements
         categoryList.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -98,9 +109,8 @@ public class StartSceneController {
      * Updates tables with information from CharacterSheet.
      * @param connection
      * @param scene
-     * @throws Exception
      */
-    public static void UpdateTables(Connection connection, Scene scene, CharacterSheet characterSheet) throws Exception {
+    public static void UpdateTables(Connection connection, Scene scene, CharacterSheet characterSheet) {
         // Populate armor table
         LoadArmorTable(connection, (TableView)scene.lookup("#TableArmor"), characterSheet.getInventory().getCharEquipment().getArmorList());
         LoadInventoryTable(connection, (TableView)scene.lookup("#TableInventory"), characterSheet.getInventory().getItems());
@@ -115,7 +125,7 @@ public class StartSceneController {
      * @param table
      * @param items
      */
-    public static void LoadInventoryTable(Connection connection, TableView table, ArrayList<Item> items) throws Exception {
+    public static void LoadInventoryTable(Connection connection, TableView table, ArrayList<Item> items) {
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn costColumn = new TableColumn("Cost");
@@ -142,7 +152,7 @@ public class StartSceneController {
      * @param table
      * @param armor
      */
-    public static void LoadArmorTable(Connection connection, TableView table, ArrayList<Armor> armor) throws Exception {
+    public static void LoadArmorTable(Connection connection, TableView table, ArrayList<Armor> armor){
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn costColumn = new TableColumn("Cost");
@@ -176,7 +186,7 @@ public class StartSceneController {
      * @param table
      * @param weapons
      */
-    public static void LoadWeaponsTable(Connection connection, TableView table, ArrayList<Weapon> weapons) throws Exception {
+    public static void LoadWeaponsTable(Connection connection, TableView table, ArrayList<Weapon> weapons) {
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn costColumn = new TableColumn("Cost");
@@ -215,5 +225,44 @@ public class StartSceneController {
         table.getColumns().addAll(nameColumn, descriptionColumn, amountColumn, costColumn, weightColumn,  damageColumn, rangeColumn,
                 martialColumn, rangedColumn,  typeColumn);
         table.getItems().addAll(weapons);
+    }
+
+    /**
+     * A simple method to allow graphics exception handling.
+     * @param content
+     * @param ex
+     */
+    public void exceptionPane(String content, Exception ex){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("There's been an exception!");
+        alert.setContentText(content);
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
     }
 }

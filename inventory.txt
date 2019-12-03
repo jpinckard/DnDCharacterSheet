@@ -1,4 +1,3 @@
-Armor="Leather","Hide","Padded","Chain mail","Scale mail","Studded Leather"
-Weapon="Battleaxe","Hand Crossbow","Dagger","Club"
 Consumable="Candle"
-Tool="Crowbar"
+Weapon="Battleaxe"
+Armor="Hide"

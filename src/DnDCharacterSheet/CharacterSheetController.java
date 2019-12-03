@@ -1,15 +1,13 @@
 package DnDCharacterSheet;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
@@ -32,6 +30,10 @@ import javax.swing.*;
  * This class handles everything in the main charactersheet GUI.
  * On loading a new character need to perform check if file has been provided,
  * then use initialize method to initialize the character sheet with loaded in values.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class CharacterSheetController {
 
@@ -39,11 +41,31 @@ public class CharacterSheetController {
 
     //for testing only
     ObservableList<Spell> list = FXCollections.observableArrayList(
-            new Spell("Burning Hands", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
-            new Spell("Arctic Armor", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash"),
-            new Spell("Dazzling Light", "Test", 0, 1, 0, "Conjuration", "1 Round", "30 Yd", "Cha", "Ash")
+            new Spell("Fire Bolt","Test", 0, 1, 0, "Evocation","instant", "120 feet","None", "V,S"),
+            new Spell("Produce Flame","Test", 0, 1, 0, "Evocation","instant", "30 feet","None", "V,S"),
+            new Spell("Sacred Flame","Test", 0, 1, 0, "Evocation","instant", "60 feet","Dex", "V,S"),
+            new Spell("Thunderwave","Test", 1, 1, 0, "Evocation","instant", "Self (15-foot cube)","Con", "V,S"),
+            new Spell("Cure Wounds","Test", 1, 1, 0, "Evocation","instant", "touch","None", "V,S"),
+            new Spell("Grease","Test", 1, 1, 0, "Conjuration","1 minute", "60 feet","Dex", "V,S,M"),
+            new Spell("Hold Person","Test", 2, 1, 0, "Enchantment","Concentration, 1 minute", "60 feet","Wis", "V,S,M"),
+            new Spell("Ray of Enfeeblement","Test", 2, 1, 0, "Necromancy","Concentration, 1 minute", "60 feet","None", "V,S"),
+            new Spell("Zone of Truth","Test", 2, 1, 0, "Enchantment","10 minutes", "60 feet","Cha", "V,S"),
+            new Spell("Slow","Test", 3, 1, 0, "Transmutation","Concentration, 1 minute", "120 feet","Wisdom", "V,S,M"),
+            new Spell("Fireball","Test", 3, 1, 0, "Evocation","instant", "150 feet","Dex", "V,S,M"),
+            new Spell("Beacon of Hope","Test", 3, 1, 0, "Abjuration","Concentration, 1 minute", "30 feet","None", "V,S"),
+            new Spell("Conjure Woodland Beings","Test", 4, 1, 0, "Conjuration","Concentration, 10 minutes", "60 feet","None", "V,S,M"),
+            new Spell("Guardian of Faith","Test", 4, 1, 0, "Conjuration","8 hours", "30 feet","Dex", "V"),
+            new Spell("Polymorph","Test", 4, 1, 0, "Transmutation","Concentration, 1 hour", "60 feet","Wisdom", "V,S,M")
     );
 
+    FilteredList<Spell> level0Spells = new FilteredList<>(list, s -> s.getLevel() == 0);
+    FilteredList<Spell> level1Spells = new FilteredList<>(list, s -> s.getLevel() == 1);
+    FilteredList<Spell> level2Spells = new FilteredList<>(list, s -> s.getLevel() == 2);
+    FilteredList<Spell> level3Spells = new FilteredList<>(list, s -> s.getLevel() == 3);
+    FilteredList<Spell> level4Spells = new FilteredList<>(list, s -> s.getLevel() == 4);
+
+    // declare gridpane for skills
+    @FXML GridPane skillGridPane;
 
     // declare fields for saving throws
     @FXML TextField strSavingThrow;
@@ -99,6 +121,10 @@ public class CharacterSheetController {
      */
     @FXML
     private void initialize() {
+
+
+
+
         dynamicSpellAdder(spellLevel0Grid);
         dynamicSpellAdder(spellLevel1Grid);
         dynamicSpellAdder(spellLevel2Grid);
@@ -117,11 +143,8 @@ public class CharacterSheetController {
      * name of the TextField. Calls the filter method to disallow invalid entries for certain fields and then updates
      * the TextBox based on what was allowed.
      * @param event
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
-     * @throws ClassNotFoundException
      */
-    public void SetValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
+    public void SetValue(KeyEvent event){
 
         /**************************
          **** DEFINE VARIABLES ****
@@ -156,22 +179,30 @@ public class CharacterSheetController {
         /**************************
          *** GET SELECTED FIELD ***
          **************************/
-        if (subclasses.length > 1) {
-            System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
-            // The subclass is the first value,
-            String subclass = subclasses[0];
-            field = subclasses[1];
-            // And its field is the second.
-            subclassField = (CharacterSheet.class.getDeclaredField(subclass));
-            targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
-        } else {
-            // Get the field we're editing
-            targetField = CharacterSheet.class.getDeclaredField(field);
+        try {
+            if (subclasses.length > 1) {
+                System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
+                // The subclass is the first value,
+                String subclass = subclasses[0];
+                field = subclasses[1];
+                // And its field is the second.
+                subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+                targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+            } else {
+                // Get the field we're editing
+                targetField = CharacterSheet.class.getDeclaredField(field);
+            }
+        } catch (NoSuchFieldException e){
+            exceptionPane("NoSuchFieldException caught!", e);
         }
 
 
         // Filter text values
-        text = Filter(subclassField, targetField, text, dataType);
+        try {
+            text = Filter(subclassField, targetField, text, dataType);
+        } catch (IllegalAccessException e) {
+            exceptionPane("IllegalAccessException caught!", e);
+        }
 
         /**************************
          *** SET ALL CONTROL VALS *
@@ -255,7 +286,7 @@ public class CharacterSheetController {
                 // Set text field if value is not null
                 if (values.length > 1){
                     if (values[1] != null & values[1] != "")
-                        ((TextField) scene.lookup("#" + values[0])).setText(values[1]);
+                        ((TextInputControl) scene.lookup("#" + values[0])).setText(values[1]);
                 }
             }
 
@@ -381,9 +412,8 @@ public class CharacterSheetController {
      * @param dataType
      * @return
      * @throws IllegalAccessException
-     * @throws NoSuchFieldException
      */
-    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException, NoSuchFieldException {
+    public String Filter(Field subclass, Field field, String text, String dataType) throws IllegalAccessException{
 
         field.setAccessible(true);
         Object value = null;
@@ -453,10 +483,8 @@ public class CharacterSheetController {
      * datatype for these is int. Determines which array based upon reflection and the TextField ID in the
      * FXML. DOES NOT support any 2D array except for Stats.
      * @param event
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
      */
-    public void SetArrayValue(KeyEvent event) throws NoSuchFieldException, IllegalAccessException {
+    public void SetArrayValue(KeyEvent event){
         //subclass-field_element1-element2
 
         /* *************************
@@ -509,33 +537,40 @@ public class CharacterSheetController {
                 Save(mod, modVal); // Save mod
                 // Save total to be loaded in later
                 Save(total, totalVal); // Save total
+
+                updateSkills(); //update the skills
             }
             // Set 1-Dimensional Array
             else {
-                Field targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
-                targetField.setAccessible(true);
+                try {
+                    Field targetField = (CharacterSheet.class.getDeclaredField(subclass)).getType().getDeclaredField(field);
+                    targetField.setAccessible(true);
 
-                // Set Value
-                if (subclass != null) {
-                    Field subclassField = (CharacterSheet.class.getDeclaredField(subclass));
-                    subclassField.setAccessible(true);
+                    // Set Value
+                    if (subclass != null) {
+                        Field subclassField = (CharacterSheet.class.getDeclaredField(subclass));
+                        subclassField.setAccessible(true);
 
-                    // Get value of target field
-                    int[] temp = (int[]) targetField.get(subclassField.get(characterSheet));
-                    // Change the value of the copy
-                    temp[Integer.parseInt(elements[0])] = value;
-                    // Set the target field to hold the copied object
-                    targetField.set(subclassField.get(characterSheet), temp);
+                        // Get value of target field
+                        int[] temp = (int[]) targetField.get(subclassField.get(characterSheet));
+                        // Change the value of the copy
+                        temp[Integer.parseInt(elements[0])] = value;
+                        // Set the target field to hold the copied object
+                        targetField.set(subclassField.get(characterSheet), temp);
 
-                } else {
-                    // Make a copy of the target field within CharacterSheet
-                    int[] temp = (int[]) targetField.get(characterSheet);
-                    // Set the target field to hold our new value
-                    temp[Integer.parseInt(elements[0])] = value;
-                    // Set the field to hold the copy object
-                    targetField.set(characterSheet, temp);
+                    } else {
+                        // Make a copy of the target field within CharacterSheet
+                        int[] temp = (int[]) targetField.get(characterSheet);
+                        // Set the target field to hold our new value
+                        temp[Integer.parseInt(elements[0])] = value;
+                        // Set the field to hold the copy object
+                        targetField.set(characterSheet, temp);
+                    }
+                } catch(NoSuchFieldException | IllegalAccessException e){
+                    exceptionPane("IllegalAccessException or NoSuchFieldException caught!", e);
                 }
             }
+
         }
         System.out.println("Misc stats AC value: " + characterSheet.getMiscStats().getAC()[3]);
 
@@ -555,11 +590,8 @@ public class CharacterSheetController {
      * Updates the progress bar to give visual representation of HP value
      * and calls various helper functions to calculate damage, healing, etc.
      * @param event
-     * @throws IllegalAccessException
-     * @throws NoSuchFieldException
-     * @throws ClassNotFoundException
      */
-    public void setHP(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void setHP(KeyEvent event){
 
         Scene scene = ((Control) event.getSource()).getScene();
         String id = ((Control) event.getSource()).getId();
@@ -593,7 +625,7 @@ public class CharacterSheetController {
                     text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
                 }
 
-                System.out.println("Text is: " + text);
+                //System.out.println("Text is: " + text);
 
                 ((TextField) scene.lookup("#damagefield")).setText(text);
                 ((TextInputControl) event.getSource()).positionCaret(caretPos);
@@ -641,34 +673,24 @@ public class CharacterSheetController {
         ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex);
         Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 3, rowindex);
 
+        if(spellgrid == spellLevel0Grid){
+            currentbox.setItems(level0Spells);
+        } else if (spellgrid == spellLevel1Grid){
+            currentbox.setItems(level1Spells);
+        } else if (spellgrid == spellLevel2Grid){
+            currentbox.setItems(level2Spells);
+        } else if (spellgrid == spellLevel3Grid){
+            currentbox.setItems(level3Spells);
+        } else if (spellgrid == spellLevel4Grid){
+            currentbox.setItems(level4Spells);
+        } else {
+            currentbox.setItems(list);
+        }
         //format the items
-        currentbox.setItems(list);
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);
-/*
-        currentbox.setConverter(new StringConverter<Spell>(){
-            @Override
-            public String toString(Spell spell) {
-                if (spell == null) return null;
-                else {
-                    return spell.getName();
-                }
-            }
 
-            @Override
-            public Spell fromString(String s) {
-                System.out.println("The String inside fromString is: " + s);
-               // return new Spell("test", "test", 0, 0, 0, "test", "test", "test", "test", "test");
-                for (Spell o: list) {
-                    if(o.getName().equals(s)){
-                        return o;
-                    }
-                }
-                return null;
-            }
-        });
-*/
         currentbox.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
 
             if (currentbox.getSelectionModel().getSelectedItem() != null && list.contains(currentbox.getSelectionModel().getSelectedItem())){
@@ -765,11 +787,8 @@ public class CharacterSheetController {
      * Controller method that updates the value of the proficiency bonus via setValue method
      * and then updates the saving throws to reflect the change via updateSavingThrow method.
      * @param event
-     * @throws IllegalAccessException
-     * @throws NoSuchFieldException
-     * @throws ClassNotFoundException
      */
-    public void updateProf(KeyEvent event) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException {
+    public void updateProf(KeyEvent event) {
         SetValue(event);
         updateSavingThrows();
     }
@@ -879,5 +898,177 @@ public class CharacterSheetController {
         // Remove Cost
 
         AddItem(event);
+    }
+
+    /**
+     * This is a method for entering values into the skills array and updating the skill total
+     * @param event
+     */
+    public void changeSkills(KeyEvent event) {
+
+        Scene scene = ((Control) event.getSource()).getScene();
+        String id = ((Control) event.getSource()).getId();
+
+        // The row index is the index that corresponds to the index of the skills array in the CharacterSheet class
+        // always subtract 1 so we begin indexing at 0.
+        int rowIndex = GridPane.getRowIndex((Node) event.getSource()) - 1;
+        // The column index is the index that corresponds to the value in Skill that we are setting
+        int columnIndex = GridPane.getColumnIndex((Node) event.getSource());
+
+        // basically writing a truncated version of setValue with Filter here
+        int caretPos = ((TextInputControl) event.getSource()).getCaretPosition();
+        String text = ((TextInputControl) event.getSource()).getText();
+
+        // make sure it's not blank to avoid errors
+        if (!text.equals("") && text != null) {
+            //Check to see if we're entering a negative number
+            // Allow a dash for the first character
+            text = text.replaceFirst("[^\\d-]", "");
+            // If the length of the string is greater than 1, then replace everything NOT an integer
+            if ((text.length() > 1)) {
+                String textsub = text.substring(1);
+                text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
+            }
+
+
+            // See if the skill is trained, if not then do none of this, per the rules of D&D
+            if(characterSheet.getSkills()[rowIndex].getTrained()) {
+                if (!text.equals("-")) {
+
+                    switch (columnIndex) {
+
+                        // Prof is the 4th column of the grid
+                        case 4:
+                            // Update the model
+                            characterSheet.getSkills()[rowIndex].setProf(Integer.parseInt(text));
+                            // Assign the field the value in the model for consistency and testing purposes
+                            ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getProf()));
+                            break;
+
+                        // Expert is the 5th
+                        case 5:
+                            // Update the model
+                            characterSheet.getSkills()[rowIndex].setExpert(Integer.parseInt(text));
+                            // Assign the field the value in the model for consistency and testing purposes
+                            ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getExpert()));
+                            break;
+
+                        // Misc is the 6th
+                        case 6:
+                            // Update the model
+                            characterSheet.getSkills()[rowIndex].setMisc(Integer.parseInt(text));
+                            // Assign the field the value in the model for consistency and testing purposes
+                            ((TextField) event.getSource()).setText(String.valueOf(characterSheet.getSkills()[rowIndex].getMisc()));
+                            break;
+
+                    }
+
+                    ((TextField) getNodeFromGridPane(skillGridPane, 3, (rowIndex + 1))).setText(String.valueOf(characterSheet.getSkillTotal(rowIndex)));
+                    ((TextInputControl) event.getSource()).positionCaret(caretPos);
+
+                }
+            } else{
+                // if the radio button isn't selected, then we're not going to allow any input.
+                ((TextField) event.getSource()).setText("");
+            }
+
+
+        }
+    }
+
+    /**
+     * This is a method to assign to the radiobuttons on the skill pane
+     * @param event
+     */
+    public void skillTrainToggle(ActionEvent event){
+
+        int rowIndex = GridPane.getRowIndex((Node) event.getSource()) - 1;
+
+        // Update the model
+        characterSheet.getSkills()[rowIndex].setTrained(((RadioButton) event.getSource()).isSelected());
+
+        // update the skills
+        updateSkills();
+
+
+    }
+
+    /**
+     * This is a method to call from component methods that cchange classes that skill uses
+     * in order to ensure that both the view and the model are udpated correctly. Currently used in
+     * skillTrainToggle and setArrayValue.
+     */
+    public void updateSkills(){
+
+        // This method is being called from inside of the update stat/setarray method and skillTrainToggle
+        // so, we need to iterate through the entire list of skill and find all skills that are trained
+        // once we find those, we will call the getSkillTotal method for their corresponding total boxes
+        // in the skillGridPane. If they aren't trained, we need to clear the text boxes and the internal values back to 0.
+
+        // keep track of how many times we've hit an element
+        // the row in the gridpane is equal to this +1, the index of the skill is equal to this
+        int skillIndex = 0;
+        // iterate
+        for(Skill skill : characterSheet.getSkills()){
+            // if trained
+            if(skill.getTrained()) {
+                //update their totals
+                ((TextField) getNodeFromGridPane(skillGridPane, 3, (skillIndex + 1))).setText(String.valueOf(characterSheet.getSkillTotal(skillIndex)));
+            } else {
+                // if not trained, clear the skill values in the model and update their text boxes:
+                characterSheet.getSkills()[skillIndex].setProf(0);
+                ((TextField) getNodeFromGridPane(skillGridPane, 4, (skillIndex + 1))).setText("");
+                characterSheet.getSkills()[skillIndex].setExpert(0);
+                ((TextField) getNodeFromGridPane(skillGridPane, 5, (skillIndex + 1))).setText("");
+                characterSheet.getSkills()[skillIndex].setMisc(0);
+                ((TextField) getNodeFromGridPane(skillGridPane, 6, (skillIndex + 1))).setText("");
+
+                //Lastly, set the total to blank for consistency's sake
+                ((TextField) getNodeFromGridPane(skillGridPane, 3, (skillIndex + 1))).setText("");
+            }
+            // post-increment
+            ++ skillIndex;
+        }
+
+
+    }
+
+    /**
+     * This is just a method to provide reusable dialogue windows for exceptions.
+     * @param content
+     * @param ex
+     */
+    public void exceptionPane(String content, Exception ex){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("There's been an exception!");
+        alert.setContentText(content);
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
     }
 }

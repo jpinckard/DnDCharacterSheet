@@ -161,7 +161,7 @@ public class SQLiteHandler {
                 String category     = rs.getString(5);
                 int amount          = rs.getInt(6);
 
-                int damage        = rs.getInt(8);
+                int damage        = rs.getInt(7);
                 int range        = rs.getInt(9);
                 boolean martial = rs.getBoolean(10);
                 boolean ranged = rs.getBoolean(11);

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
@@ -57,6 +58,11 @@ public class CharacterSheetController {
             new Spell("Polymorph","Test", 4, 1, 0, "Transmutation","Concentration, 1 hour", "60 feet","Wisdom", "V,S,M")
     );
 
+    FilteredList<Spell> level0Spells = new FilteredList<>(list, s -> s.getLevel() == 0);
+    FilteredList<Spell> level1Spells = new FilteredList<>(list, s -> s.getLevel() == 1);
+    FilteredList<Spell> level2Spells = new FilteredList<>(list, s -> s.getLevel() == 2);
+    FilteredList<Spell> level3Spells = new FilteredList<>(list, s -> s.getLevel() == 3);
+    FilteredList<Spell> level4Spells = new FilteredList<>(list, s -> s.getLevel() == 4);
 
     // declare gridpane for skills
     @FXML GridPane skillGridPane;
@@ -115,6 +121,10 @@ public class CharacterSheetController {
      */
     @FXML
     private void initialize() {
+
+
+
+
         dynamicSpellAdder(spellLevel0Grid);
         dynamicSpellAdder(spellLevel1Grid);
         dynamicSpellAdder(spellLevel2Grid);
@@ -661,8 +671,20 @@ public class CharacterSheetController {
         ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex);
         Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 3, rowindex);
 
+        if(spellgrid == spellLevel0Grid){
+            currentbox.setItems(level0Spells);
+        } else if (spellgrid == spellLevel1Grid){
+            currentbox.setItems(level1Spells);
+        } else if (spellgrid == spellLevel2Grid){
+            currentbox.setItems(level2Spells);
+        } else if (spellgrid == spellLevel3Grid){
+            currentbox.setItems(level3Spells);
+        } else if (spellgrid == spellLevel4Grid){
+            currentbox.setItems(level4Spells);
+        } else {
+            currentbox.setItems(list);
+        }
         //format the items
-        currentbox.setItems(list);
         currentbox.setEditable(true);
         currentbox.setPrefWidth(770);
         currentbox.setMaxWidth(1.7976931348623157E308);

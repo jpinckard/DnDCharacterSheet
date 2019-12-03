@@ -39,7 +39,7 @@ public class CharacterSheetController {
 
     private CharacterSheet characterSheet = new CharacterSheet();
 
-    //for testing only
+    //for testing only under normal operation, a database could be loaded into this
     ObservableList<Spell> list = FXCollections.observableArrayList(
             new Spell("Fire Bolt","Test", 0, 1, 0, "Evocation","instant", "120 feet","None", "V,S"),
             new Spell("Produce Flame","Test", 0, 1, 0, "Evocation","instant", "30 feet","None", "V,S"),
@@ -58,6 +58,9 @@ public class CharacterSheetController {
             new Spell("Polymorph","Test", 4, 1, 0, "Transmutation","Concentration, 1 hour", "60 feet","Wisdom", "V,S,M")
     );
 
+    // This actually filters the spells by level
+    // can further filter by setting the lambda predicate && s.getName().contains(FilterBox.getText())
+    // in an if/then statement in the method and listname.setPredicate()
     FilteredList<Spell> level0Spells = new FilteredList<>(list, s -> s.getLevel() == 0);
     FilteredList<Spell> level1Spells = new FilteredList<>(list, s -> s.getLevel() == 1);
     FilteredList<Spell> level2Spells = new FilteredList<>(list, s -> s.getLevel() == 2);
@@ -181,7 +184,7 @@ public class CharacterSheetController {
          **************************/
         try {
             if (subclasses.length > 1) {
-                System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
+                //System.out.println("Set " + subclasses[0] + "." + subclasses[1] + ".");
                 // The subclass is the first value,
                 String subclass = subclasses[0];
                 field = subclasses[1];
@@ -234,7 +237,7 @@ public class CharacterSheetController {
          ****** SAVE TO FILE ******
          **************************/
         String path = "save.txt";
-        System.out.println("Save " + id + " as " + value);
+        //System.out.println("Save " + id + " as " + value);
         try {
             String line = "";
             String save = "";
@@ -422,7 +425,7 @@ public class CharacterSheetController {
             dataType = dataType.split("-")[0];
         }
 
-        System.out.println("Data type: " + dataType + "; fieldName: " + field.getName());
+        //System.out.println("Data type: " + dataType + "; fieldName: " + field.getName());
         // Ensure text meets requirements
         switch (dataType) {
             case "int":
@@ -433,7 +436,7 @@ public class CharacterSheetController {
                     String textsub = text.substring(1);
                     text = text.substring(0, 1) + textsub.replaceAll("[^\\d]", "");
                 }
-                System.out.println("Text is: " + text);
+                //System.out.println("Text is: " + text);
                 // Make sure there is at least one number in the field
                 if (!text.equals("") && !text.equals("-")) {
                     value = Integer.parseInt(text);
@@ -570,7 +573,7 @@ public class CharacterSheetController {
             }
 
         }
-        System.out.println("Misc stats AC value: " + characterSheet.getMiscStats().getAC()[3]);
+        //System.out.println("Misc stats AC value: " + characterSheet.getMiscStats().getAC()[3]);
 
         // Assign value to original field.
         ((TextInputControl) event.getSource()).setText(text);
@@ -671,6 +674,8 @@ public class CharacterSheetController {
         ComboBox currentbox = (ComboBox) getNodeFromGridPane(spellgrid, 2, rowindex);
         Button currentbutton = (Button) getNodeFromGridPane(spellgrid, 3, rowindex);
 
+        // set the items of the box by which gridpane we're using
+        // basically, we're filtering the spells here
         if(spellgrid == spellLevel0Grid){
             currentbox.setItems(level0Spells);
         } else if (spellgrid == spellLevel1Grid){
@@ -694,13 +699,6 @@ public class CharacterSheetController {
             if (currentbox.getSelectionModel().getSelectedItem() != null && list.contains(currentbox.getSelectionModel().getSelectedItem())){
                 dynamicSpellAdder(spellgrid);
             }
-
-
-            System.out.println(currentbox.getSelectionModel().getSelectedItem());
-            System.out.println("observablevalue is : " + observableValue);
-            System.out.println("o is: " + o);
-            System.out.println("t1 is: " + t1.toString());
-            System.out.println("getValue is: " + currentbox.getValue());
 
         });
 

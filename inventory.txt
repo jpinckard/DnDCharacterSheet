@@ -1,3 +1,0 @@
-Consumable="Candle"
-Weapon="Battleaxe"
-Armor="Hide"

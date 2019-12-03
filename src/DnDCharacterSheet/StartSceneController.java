@@ -14,6 +14,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Array;
@@ -51,8 +52,26 @@ public class StartSceneController {
             //stage.setResizable(false);
             blankcharbutton.getScene().getWindow().hide();
 
-            // Load default values into text boxes from save.
-            LoadDefaultValues(stage.getScene());
+            // Form a connection with the database
+            Connection connection = SQLiteHandler.Setup();
+
+            // Clear save
+            FileWriter fwOb = new FileWriter("save.txt", false);
+            PrintWriter pwOb = new PrintWriter(fwOb, false);
+            pwOb.flush();
+            pwOb.close();
+            fwOb.close();
+
+            // Clear inventory save
+            fwOb = new FileWriter("inventory.txt", false);
+            pwOb = new PrintWriter(fwOb, false);
+            pwOb.flush();
+            pwOb.close();
+            fwOb.close();
+
+            // Load information into the shop table
+            CategoryList(stage.getScene(), connection);
+
         } catch(Exception e){
             exceptionPane("Critical exception caught on program start.", e);
         }
@@ -75,28 +94,38 @@ public class StartSceneController {
             blankcharbutton.getScene().getWindow().hide();
 
             // Load default values into text boxes from save.
-            LoadDefaultValues(stage.getScene());
+            LoadSave(stage.getScene());
         } catch(Exception e){
             exceptionPane("Critical exception caught on program start.", e);
         }
     }
 
-    public void LoadDefaultValues(Scene scene){
+    /**
+     * Loads values into the scene from save.
+     * @param scene
+     */
+    public void LoadSave(Scene scene){
         // Form a connection with the database
         Connection connection = SQLiteHandler.Setup();
-        //////////////////////////
-        //// LOAD SAVED VALUES ///
-        // Get inventory
-
         // Get save data
         CharacterSheetController.Load(scene);
         CharacterSheetController.LoadInventory(scene, characterSheet);
         // Update Tables
         UpdateTables(connection, scene, characterSheet);
+        // Load shop category list
+        CategoryList(scene, connection);
 
-        ////////////////
-        // CATEGORIES //
+    }
+
+    /**
+     * Loads values into shop category list from table and defines what happens when a category is clicked.
+     * @param connection Connection to the database
+     * @param scene The current scene
+     */
+    public void CategoryList(Scene scene, Connection connection){
+
         ListView categoryList = (ListView)scene.lookup("#ListCategories");
+
         try {
             ArrayList<String> categories = SQLiteHandler.GetCategories(connection);
             System.out.println("First category: " + categories.get(0));

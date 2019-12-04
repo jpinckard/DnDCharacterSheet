@@ -22,7 +22,6 @@ public class CharacterSheet {
     private HitPoints hitPoints;
     private Skill[] skills;
     private Stats stats;
-    private WizText wizText;
     private Inventory inventory;
     private SpellSheet spellSheet;
     //private SavingThrow[] savingThrows;
@@ -73,7 +72,6 @@ public class CharacterSheet {
                 new Skill("Survival", WIS, false, 0, 0, 0)
         };
         this.stats = new Stats();
-        this.wizText = new WizText();
         this.inventory = new Inventory();
         this.spellSheet = new SpellSheet();
         //this.savingThrows = new int[6];
@@ -162,14 +160,6 @@ public class CharacterSheet {
         stats.setStat(row, col, tempStat);
         stats.calcTotal(race);
         stats.calcMod(row);
-    }
-
-    public WizText getWizText() {
-        return wizText;
-    }
-
-    public void setWizText(WizText wizText) {
-        this.wizText = wizText;
     }
 
     public Inventory getInventory() {

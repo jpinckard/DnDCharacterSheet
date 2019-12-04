@@ -2,6 +2,10 @@ package DnDCharacterSheet;
 
 /**
  *A class for calculating and producing other miscellaneous stats for a character.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class MiscStats {
 
@@ -40,26 +44,14 @@ public class MiscStats {
         this.carryLoad = carryLoad;
     }
 
-    /**
-     *Sets the stats based on the parameter passed in.
-     * @param stats - an object of Stats type for the stats of the character
-     */
     public void setStats(Stats stats) {
         this.stats = stats;
     }
 
-    /**
-     *Returns the number for the proficiency bonus.
-     * @return the number for the proficiency bonus
-     */
     public int getProfBonus() {
         return profBonus;
     }
 
-    /**
-     *Returns the array for armor class.
-     * @return - array of ints for the armor class
-     */
     public int[] getAC() {
         return AC;
     }
@@ -97,7 +89,7 @@ public class MiscStats {
     }
 
     /**
-     * Calculates the AC of the character based on the equipment.
+     * Used to calculate the AC of the character based on the equipment.
      */
     public void calcAC(Equipment equip)
     {
@@ -129,7 +121,7 @@ public class MiscStats {
     }
 
     /**
-     *
+     *Used to calculate the initiative
      */
     public void calcInit()
     {
@@ -138,7 +130,7 @@ public class MiscStats {
     }
 
     /**
-     *
+     *Used to calculate the carry load of a character.
      */
     public void calcCarryLoad()
     {

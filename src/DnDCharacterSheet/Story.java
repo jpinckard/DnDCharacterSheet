@@ -2,26 +2,31 @@ package DnDCharacterSheet;
 
 /**
  * Class that holds all story information of the character.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class Story {
 
-    private String personality;
-    private String ideals;
-    private String bonds;
-    private String flaws;
-    private String backstory;
-    private String allies;
-    private String otherProf;
+    private String personality; //string associated with the character's personality
+    private String ideals; //string associated with the character's ideals
+    private String bonds; //string associated with the character's bonds
+    private String flaws; //string associated with the character's flaws
+    private String backstory; //string associated with the character's backstory
+    private String allies; //string associated with the character's allies
+    private String otherProf; //string associated with the character's other proficiencies
 
     /**
      * Parameterized constructor for Story class.
-     * @param personality
-     * @param ideals
-     * @param bonds
-     * @param flaws
-     * @param backstory
-     * @param allies
-     * @param otherProf
+     *
+     * @param personality - string for personality
+     * @param ideals - string for ideals
+     * @param bonds - string for bonds
+     * @param flaws - string for flaws
+     * @param backstory - string for backstory
+     * @param allies - string for allies
+     * @param otherProf - string for other proficiencies
      */
     public Story(String personality, String ideals, String bonds, String flaws,
                  String backstory, String allies, String otherProf) {

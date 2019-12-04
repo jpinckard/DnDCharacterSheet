@@ -3,22 +3,28 @@ package DnDCharacterSheet;
 import java.util.*;
 
 /**
+ *The inventory class keeps track of the character's money, equipment, and items, as well as
+ * the carried weight of these. It contains methods to calculate this carried weight.
  *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class Inventory {
 
-    private Currency money;
-    private Equipment charEquipment;
-    private ArrayList<Item> items = new ArrayList<Item>();
-    private float carriedWeight;
+    private Currency money; //an object of Currency to associated with the character's money
+    private Equipment charEquipment; //an object of Equipment associated with the character's equipment
+    private ArrayList<Item> items = new ArrayList<Item>(); //an array list of Items to hold the character's items
+    private float carriedWeight; //float associated with the carried weight
     private String treasure;
 
     /**
      * Parameterized constructor for Inventory class.
-     * @param money
-     * @param charEquipment
-     * @param items
-     * @param carriedWeight
+     *
+     * @param money - an object of currency
+     * @param charEquipment - an object of equipment
+     * @param items - an array list of items
+     * @param carriedWeight - a float for the carried weight
      */
     public Inventory(Currency money, Equipment charEquipment, ArrayList<Item> items, float carriedWeight) {
         this.money = money;

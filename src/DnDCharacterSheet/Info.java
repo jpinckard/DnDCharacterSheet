@@ -3,45 +3,49 @@ package DnDCharacterSheet;
 import java.lang.*;
 
 /**
- * Class that holds all the basic character info.
+ * The info class holds all the basic character info.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class Info {
 
-    private String name;
-    private String ht;
-    private String eyes;
-    private String skin;
-    private String hair;
-    private String gender;
-    private String deity;
-    private String homeland;
-    private String languages;
-    private String alignment;
-    private String size;
-    private String background;
+    private String name; //string associated with the character's name
+    private String ht; //string associated with the character's height
+    private String eyes; //string associated with the character's eye color
+    private String skin; //string associated with the character's skin color
+    private String hair; //string associated with the character's hair color
+    private String gender; //string associated with the character's gender
+    private String deity; //string associated with the character's deity
+    private String homeland; //string associated with the character's homeland
+    private String languages; //string associated with the character's languages known
+    private String alignment; //string associated with the character's alignment
+    private String size; //string associated with the character's size
+    private String background; //string associated with the character's background
     private String misc;
-    private int age;
-    private int wt;
+    private int age; //int associated with the character's age
+    private int wt; //int associated with the character's weight in pounds
 
     //This is a temporary holder for features until a future version
     private String features;
 
     /**
      * Parameterized constructor for class Info.
-     * @param name
-     * @param ht
-     * @param eyes
-     * @param skin
-     * @param hair
-     * @param gender
-     * @param deity
-     * @param homeland
-     * @param languages
-     * @param alignment
-     * @param size
-     * @param background
-     * @param age
-     * @param wt
+     * @param name - string for the name
+     * @param ht - string for the height
+     * @param eyes - string for eye color
+     * @param skin - string for skin color
+     * @param hair - string for hair color
+     * @param gender -string for gender
+     * @param deity - string for deity
+     * @param homeland - string for homeland
+     * @param languages - string for languages
+     * @param alignment - string for alignment
+     * @param size - string for size
+     * @param background - string for background
+     * @param age - int for age
+     * @param wt - int for weight
      */
     public Info(String name, String ht, String eyes, String skin, String hair,
                 String gender, String deity, String homeland, String languages,

@@ -1,25 +1,30 @@
 package DnDCharacterSheet;
 
 /**
+ *The item class holds all the necessary information for an Item object.
  *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class Item {
 
-    private String name;
-    private float weight;
-    private String category;
-    private String description;
-    private int amount;
+    private String name; //string associated with the item's name
+    private float weight; //float associated with the item's weight
+    private String category; //string associated with the item's category
+    private String description; //string associated with the item's description
+    private int amount; //int associated with the item's amount
     private float cost; // Cost in gold pieces
 
     /**
+     *Parameterized constructor for the Item class.
      *
-     * @param name
-     * @param weight
-     * @param category
-     * @param description
-     * @param amount
-     * @param cost
+     * @param name - string for item name
+     * @param weight - float for the weight of the item
+     * @param category - string for the category of the item
+     * @param description - string for the description of the item
+     * @param amount - int for the amount of the item
+     * @param cost - float for the cost of the item
      */
     public Item(String name, float weight, String category, String description, int amount, float cost) {
         this.name = name;
@@ -31,7 +36,7 @@ public class Item {
     }
 
     /**
-     *
+     *Default constructor for the Item class.
      */
     public Item(){
         this.name = " ";
@@ -42,82 +47,42 @@ public class Item {
         cost = 0.0f;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     *
-     * @return
-     */
     public float getWeight() {
         return weight;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getCategory() {
         return category;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getAmount() {
         return amount;
     }
 
-    /**
-     *
-     * @param name
-     */
     public void setItemName(String name) {
         this.name = name;
     }
 
-    /**
-     *
-     * @param weight
-     */
     public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    /**
-     *
-     * @param category
-     */
     public void setCategory(String category) {
         this.category = category;
     }
 
-    /**
-     *
-     * @param description
-     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     *
-     * @param amount
-     */
     public void setAmount(int amount) {
         this.amount = amount;
     }

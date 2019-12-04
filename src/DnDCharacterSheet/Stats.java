@@ -6,6 +6,10 @@ import java.security.PrivilegedActionException;
  *A class for producing a 2d array of stats for a character. The rows correspond to Strength, Dexterity, Constitution,
  * Intelligence, Wisdom, and Charisma from 0-5 in the array. The columns are total stat, modifier, base stat, racial bonus,
  * magical bonus, and temporary effects from 0-5 in the array.
+ *
+ * @author Alex Abel-Boozer, Joy Pinckard, Fred Snopl, Jared Taylor
+ * @version 0.1
+ * @since 2019-12-05
  */
 public class Stats {
 
@@ -18,28 +22,17 @@ public class Stats {
 
     /**
      *Constructs a new Stats object.
+     *
      * @param statsGrid - a 2d array of ints for the stats
      */
     public Stats(int[][] statsGrid) {
         this.statsGrid = statsGrid;
     }
 
-    /**
-     * Returns a stat from the 2d array of stats.
-     * @param row - the row number for the targeted stat
-     * @param col - the column number for the targeted stat
-     * @return the number for a stat
-     */
     public int getStat(int row, int col) {
         return statsGrid[row][col];
     }
 
-    /**
-     *Sets an individual stat based on the parameter that is passed in.
-     * @param row - the row number for the stat to set
-     * @param col - the column number for the stat to set
-     * @param tempStat - the number to set the stat to
-     */
     public void setStat(int row, int col, int tempStat) {
         this.statsGrid[row][col] = tempStat;
         //System.out.println("The stat has been updated to: " + statsGrid[row][col]);
@@ -47,6 +40,7 @@ public class Stats {
 
     /**
      *Calculates the total for stats based on the base stat, the race boost, the misc, and the temp.
+     *
      * @param tempRace - a Race used for the race boost
      */
     public void calcTotal(Race tempRace){
@@ -64,6 +58,7 @@ public class Stats {
 
     /**
      *Calculates the mod for a particular stat.
+     *
      * @param row - the row number that correlates to a particular stat
      */
     public void calcMod(int row){
